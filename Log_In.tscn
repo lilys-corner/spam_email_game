@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dsif87yvcwbdf"]
+
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_gdbqr"]
+[ext_resource type="Script" uid="uid://cpfek266p3iqk" path="res://log_in.gd" id="1_ikkgi"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_3pm4s"]
+
+[node name="Control" type="Control" unique_id=1813088277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikkgi")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=33879632]
+position = Vector2(965, 552)
+texture = ExtResource("1_gdbqr")
+
+[node name="EnterUsername" type="LineEdit" parent="." unique_id=544282636]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 329.0
+offset_right = 1203.0
+offset_bottom = 409.0
+
+[node name="EnterPassword" type="LineEdit" parent="." unique_id=1448245107]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 542.0
+offset_right = 1247.0
+offset_bottom = 622.0
+
+[node name="submitButton" type="TextureButton" parent="." unique_id=261211869]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 832.0
+offset_right = 1132.0
+offset_bottom = 1032.0
+texture_normal = ExtResource("2_3pm4s")
+
+[connection signal="text_submitted" from="EnterUsername" to="." method="_on_enter_username_text_submitted"]
+[connection signal="pressed" from="submitButton" to="." method="_on_submit_button_pressed"]

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://davuqqvx4o2yw"]
+
+[ext_resource type="Script" uid="uid://x65aw3p5xulx" path="res://main_menu.gd" id="1_m625n"]
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_gtid3"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_wugcc"]
+
+[node name="Control" type="Control" unique_id=246110809]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m625n")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=173408306]
+position = Vector2(965, 552)
+texture = ExtResource("2_gtid3")
+
+[node name="settingsButton" type="TextureButton" parent="." unique_id=1852969848]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 694.0
+offset_right = 827.0
+offset_bottom = 894.0
+texture_normal = ExtResource("2_wugcc")
+
+[node name="scoreboardButton" type="TextureButton" parent="." unique_id=1863131517]
+layout_mode = 0
+offset_left = 970.0
+offset_top = 683.0
+offset_right = 1270.0
+offset_bottom = 883.0
+texture_normal = ExtResource("2_wugcc")
+
+[node name="quizButton" type="TextureButton" parent="." unique_id=2080396299]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 397.0
+offset_right = 1261.0
+offset_bottom = 597.0
+texture_normal = ExtResource("2_wugcc")
+
+[node name="gameButton" type="TextureButton" parent="." unique_id=1283770098]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 347.0
+offset_right = 827.0
+offset_bottom = 547.0
+texture_normal = ExtResource("2_wugcc")
+
+[connection signal="pressed" from="settingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="quizButton" to="." method="_on_quiz_button_pressed"]

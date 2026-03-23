@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://box64nh10rttr"]
+
+[ext_resource type="Script" uid="uid://dxxhdgcbhb01" path="res://login_screen.gd" id="1_hoyjq"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_6b3mx"]
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_lf3kl"]
+
+[node name="Control" type="Control" unique_id=64377879]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoyjq")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=753982945]
+position = Vector2(965, 552)
+texture = ExtResource("2_lf3kl")
+
+[node name="tempButton" type="TextureButton" parent="." unique_id=707148909]
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 897.0
+offset_right = 1910.0
+offset_bottom = 1097.0
+texture_normal = ExtResource("2_6b3mx")
+
+[node name="logIn" type="TextureButton" parent="." unique_id=1271053747]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 216.0
+offset_right = 1086.0
+offset_bottom = 416.0
+texture_normal = ExtResource("2_6b3mx")
+
+[node name="signUp" type="TextureButton" parent="." unique_id=951069641]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 422.0
+offset_right = 1096.0
+offset_bottom = 622.0
+texture_normal = ExtResource("2_6b3mx")
+
+[node name="guestButton" type="TextureButton" parent="." unique_id=932030143]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 640.0
+offset_right = 1098.0
+offset_bottom = 840.0
+texture_normal = ExtResource("2_6b3mx")
+
+[connection signal="pressed" from="tempButton" to="." method="_on_temp_button_pressed"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b2e4310gs22h5"]
+
+[ext_resource type="Script" uid="uid://df3uftqn4vwfq" path="res://loading_screen.gd" id="1_jv3fv"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_nisfs"]
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_sa8ka"]
+
+[node name="Control" type="Control" unique_id=613405223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jv3fv")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=1578645262]
+position = Vector2(965, 552)
+texture = ExtResource("2_sa8ka")
+
+[node name="tempButton" type="TextureButton" parent="." unique_id=2060074380]
+layout_mode = 0
+offset_left = 793.0
+offset_top = 444.0
+offset_right = 1093.0
+offset_bottom = 644.0
+texture_normal = ExtResource("2_nisfs")
+
+[connection signal="pressed" from="tempButton" to="." method="_on_temp_button_pressed"]
