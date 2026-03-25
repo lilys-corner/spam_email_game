@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://x65aw3p5xulx" path="res://main_menu.gd" id="1_m625n"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_gtid3"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_wugcc"]
+[ext_resource type="Texture2D" uid="uid://bl3psriqdmgjw" path="res://assets/main_menu/quizButton_1.png" id="4_257up"]
+[ext_resource type="Texture2D" uid="uid://clyndkwq57xq6" path="res://assets/main_menu/gameButton_1.png" id="5_3mro0"]
 
 [node name="Control" type="Control" unique_id=246110809]
 layout_mode = 3
@@ -35,19 +37,19 @@ texture_normal = ExtResource("2_wugcc")
 
 [node name="quizButton" type="TextureButton" parent="." unique_id=2080396299]
 layout_mode = 0
-offset_left = 961.0
+offset_left = 934.0
 offset_top = 397.0
-offset_right = 1261.0
-offset_bottom = 597.0
-texture_normal = ExtResource("2_wugcc")
+offset_right = 1434.0
+offset_bottom = 697.0
+texture_normal = ExtResource("4_257up")
 
 [node name="gameButton" type="TextureButton" parent="." unique_id=1283770098]
 layout_mode = 0
-offset_left = 527.0
-offset_top = 347.0
-offset_right = 827.0
-offset_bottom = 547.0
-texture_normal = ExtResource("2_wugcc")
+offset_left = 438.0
+offset_top = 354.0
+offset_right = 938.0
+offset_bottom = 654.0
+texture_normal = ExtResource("5_3mro0")
 
 [connection signal="pressed" from="settingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="quizButton" to="." method="_on_quiz_button_pressed"]
