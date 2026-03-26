@@ -21,34 +21,34 @@ texture = ExtResource("2_gtid3")
 
 [node name="settingsButton" type="TextureButton" parent="." unique_id=1852969848]
 layout_mode = 0
-offset_left = 527.0
-offset_top = 694.0
-offset_right = 827.0
-offset_bottom = 894.0
+offset_left = 532.0
+offset_top = 751.0
+offset_right = 832.0
+offset_bottom = 951.0
 texture_normal = ExtResource("2_wugcc")
 
 [node name="scoreboardButton" type="TextureButton" parent="." unique_id=1863131517]
 layout_mode = 0
-offset_left = 970.0
-offset_top = 683.0
-offset_right = 1270.0
-offset_bottom = 883.0
+offset_left = 993.0
+offset_top = 783.0
+offset_right = 1293.0
+offset_bottom = 983.0
 texture_normal = ExtResource("2_wugcc")
 
 [node name="quizButton" type="TextureButton" parent="." unique_id=2080396299]
 layout_mode = 0
-offset_left = 934.0
-offset_top = 397.0
-offset_right = 1434.0
-offset_bottom = 697.0
+offset_left = 939.0
+offset_top = 449.0
+offset_right = 1439.0
+offset_bottom = 749.0
 texture_normal = ExtResource("4_257up")
 
 [node name="gameButton" type="TextureButton" parent="." unique_id=1283770098]
 layout_mode = 0
-offset_left = 438.0
-offset_top = 354.0
-offset_right = 938.0
-offset_bottom = 654.0
+offset_left = 443.0
+offset_top = 406.0
+offset_right = 943.0
+offset_bottom = 706.0
 texture_normal = ExtResource("5_3mro0")
 
 [connection signal="pressed" from="settingsButton" to="." method="_on_settings_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ukoc6cxibic8"]
+
+[ext_resource type="Script" uid="uid://dtbcajy18c8ir" path="res://scoreboard.gd" id="1_0ya6e"]
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_1oo4x"]
+
+[node name="Scoreboard" type="Control" unique_id=625598879]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ya6e")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=1287348432]
+position = Vector2(965, 552)
+texture = ExtResource("1_1oo4x")
