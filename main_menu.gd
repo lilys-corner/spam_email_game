@@ -17,3 +17,13 @@ func _on_settings_button_pressed() -> void:
 
 func _on_quiz_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Quiz_Screen.tscn")
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+	#Hooray! You can close the game now!
+
+
+func _on_scoreboard_button_pressed() -> void:
+	#go to the scoreboard page
+	get_tree().change_scene_to_file("res://Scoreboard.tscn")

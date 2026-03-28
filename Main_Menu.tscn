@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://x65aw3p5xulx" path="res://main_menu.gd" id="1_m625n"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_gtid3"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_wugcc"]
+[ext_resource type="Texture2D" uid="uid://b22odagkyyo3m" path="res://assets/main_menu/scoreboardButton_1.png" id="4_3mro0"]
 [ext_resource type="Texture2D" uid="uid://bl3psriqdmgjw" path="res://assets/main_menu/quizButton_1.png" id="4_257up"]
 [ext_resource type="Texture2D" uid="uid://clyndkwq57xq6" path="res://assets/main_menu/gameButton_1.png" id="5_3mro0"]
+[ext_resource type="Texture2D" uid="uid://6oknnjfb687b" path="res://assets/main_menu/exitButton_1.png" id="7_tu7k8"]
 
 [node name="Control" type="Control" unique_id=246110809]
 layout_mode = 3
@@ -21,35 +23,45 @@ texture = ExtResource("2_gtid3")
 
 [node name="settingsButton" type="TextureButton" parent="." unique_id=1852969848]
 layout_mode = 0
-offset_left = 532.0
-offset_top = 751.0
-offset_right = 832.0
-offset_bottom = 951.0
+offset_left = 445.0
+offset_top = 735.0
+offset_right = 745.0
+offset_bottom = 935.0
 texture_normal = ExtResource("2_wugcc")
 
 [node name="scoreboardButton" type="TextureButton" parent="." unique_id=1863131517]
 layout_mode = 0
-offset_left = 993.0
-offset_top = 783.0
-offset_right = 1293.0
-offset_bottom = 983.0
-texture_normal = ExtResource("2_wugcc")
+offset_left = 821.0
+offset_top = 660.0
+offset_right = 1321.0
+offset_bottom = 960.0
+texture_normal = ExtResource("4_3mro0")
 
 [node name="quizButton" type="TextureButton" parent="." unique_id=2080396299]
 layout_mode = 0
-offset_left = 939.0
-offset_top = 449.0
-offset_right = 1439.0
-offset_bottom = 749.0
+offset_left = 941.0
+offset_top = 415.0
+offset_right = 1441.0
+offset_bottom = 715.0
 texture_normal = ExtResource("4_257up")
 
 [node name="gameButton" type="TextureButton" parent="." unique_id=1283770098]
 layout_mode = 0
-offset_left = 443.0
-offset_top = 406.0
-offset_right = 943.0
-offset_bottom = 706.0
+offset_left = 445.0
+offset_top = 372.0
+offset_right = 945.0
+offset_bottom = 672.0
 texture_normal = ExtResource("5_3mro0")
 
+[node name="exitButton" type="TextureButton" parent="." unique_id=1450886164]
+layout_mode = 0
+offset_left = 1305.0
+offset_top = 717.0
+offset_right = 1625.0
+offset_bottom = 1037.0
+texture_normal = ExtResource("7_tu7k8")
+
 [connection signal="pressed" from="settingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="scoreboardButton" to="." method="_on_scoreboard_button_pressed"]
 [connection signal="pressed" from="quizButton" to="." method="_on_quiz_button_pressed"]
+[connection signal="pressed" from="exitButton" to="." method="_on_exit_button_pressed"]
