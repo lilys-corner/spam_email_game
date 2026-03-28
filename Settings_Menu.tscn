@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_0elue"]
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
-[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
+[ext_resource type="Script" path="res://fullscreen_btn.gd" id="3_oj84s"]
 
 [node name="Control" type="Control" unique_id=48091645]
 layout_mode = 3
