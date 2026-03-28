@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_0elue"]
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
-[ext_resource type="Script" path="res://fullscreen_btn.gd" id="3_oj84s"]
+[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="4_a7sdu"]
 
 [node name="Control" type="Control" unique_id=48091645]
 layout_mode = 3
@@ -27,4 +28,13 @@ text = "Fullscreen
 "
 script = ExtResource("3_oj84s")
 
+[node name="temp" type="TextureButton" parent="." unique_id=2128716427]
+layout_mode = 0
+offset_left = -268.0
+offset_top = 448.0
+offset_right = 32.0
+offset_bottom = 648.0
+texture_normal = ExtResource("4_a7sdu")
+
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
+[connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
