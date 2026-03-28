@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_0elue"]
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
+[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
 
 [node name="Control" type="Control" unique_id=48091645]
 layout_mode = 3
@@ -15,3 +16,15 @@ script = ExtResource("1_nrlic")
 [node name="bkg" type="Sprite2D" parent="." unique_id=684385920]
 position = Vector2(965, 552)
 texture = ExtResource("1_0elue")
+
+[node name="FullscreenBtn" type="CheckButton" parent="." unique_id=264676510]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 306.0
+offset_right = 1286.0
+offset_bottom = 372.0
+text = "Fullscreen
+"
+script = ExtResource("3_oj84s")
+
+[connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
