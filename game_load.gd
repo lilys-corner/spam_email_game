@@ -6,7 +6,13 @@ func _ready() -> void:
 	$Label.text = "THIS IS SUPPOSED TO BE A LOADING SCREEN HIT CONTINUE"
 	#Load in anything that we need
 	#This is the page with your load game, new game, etc data
-	pass # Replace with function body.
+	
+	
+	#and then we have the go to next page function actually
+	#Basically: load in things
+	#then immediately swap to next page
+	# IF YOU BASICALLY DON'T SEE THIS PAGE IT IS WORKING AS INTENDED
+	get_tree().change_scene_to_file("res://Login_Screen.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

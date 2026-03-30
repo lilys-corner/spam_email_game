@@ -12,9 +12,10 @@ var fontSize = 0 #OK we will adjust the default values later when we implement t
 
 var fullScreen = false #Not entirely sure how we implement this though
 
-var masterVolume = 100 #Default is 100% I guess
-var sfxVolume = 100
-var musicVolume = 100
+var masterVolume = 100.0 #Default is 100% I guess
+var sfxVolume = 100.0
+var musicVolume = 100.0
+#these change when you load the player's settings and the like in
 
 #Next thing to load in
 #Any database prep, probably

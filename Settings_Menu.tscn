@@ -36,5 +36,55 @@ offset_right = 32.0
 offset_bottom = 648.0
 texture_normal = ExtResource("4_a7sdu")
 
+[node name="backButton" type="TextureButton" parent="." unique_id=286580873]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 11.0
+offset_right = 325.0
+offset_bottom = 211.0
+texture_normal = ExtResource("4_a7sdu")
+
+[node name="overallVolume" type="HSlider" parent="." unique_id=1383060224]
+layout_mode = 0
+offset_left = 995.0
+offset_top = 370.0
+offset_right = 1286.0
+offset_bottom = 448.0
+ticks_on_borders = true
+
+[node name="musicVolume" type="HSlider" parent="." unique_id=833080938]
+layout_mode = 0
+offset_left = 979.0
+offset_top = 470.0
+offset_right = 1325.0
+offset_bottom = 493.0
+
+[node name="sfxVolume" type="HSlider" parent="." unique_id=1427460340]
+layout_mode = 0
+offset_left = 993.0
+offset_top = 509.0
+offset_right = 1318.0
+offset_bottom = 568.0
+
+[node name="saveSettings" type="TextureButton" parent="." unique_id=1146047821]
+layout_mode = 0
+offset_left = 1251.0
+offset_top = 827.0
+offset_right = 1551.0
+offset_bottom = 1027.0
+texture_normal = ExtResource("4_a7sdu")
+
+[node name="cancelSettings" type="TextureButton" parent="." unique_id=1662181233]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 823.0
+offset_right = 716.0
+offset_bottom = 1023.0
+texture_normal = ExtResource("4_a7sdu")
+
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
+[connection signal="changed" from="overallVolume" to="." method="_on_h_slider_changed"]
+[connection signal="pressed" from="saveSettings" to="." method="_on_save_settings_pressed"]
+[connection signal="pressed" from="cancelSettings" to="." method="_on_cancel_settings_pressed"]

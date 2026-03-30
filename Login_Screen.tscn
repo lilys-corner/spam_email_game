@@ -19,10 +19,10 @@ texture = ExtResource("2_lf3kl")
 
 [node name="tempButton" type="TextureButton" parent="." unique_id=707148909]
 layout_mode = 0
-offset_left = 1610.0
-offset_top = 897.0
-offset_right = 1910.0
-offset_bottom = 1097.0
+offset_left = 1545.0
+offset_top = 828.0
+offset_right = 1845.0
+offset_bottom = 1028.0
 texture_normal = ExtResource("2_6b3mx")
 
 [node name="logIn" type="TextureButton" parent="." unique_id=1271053747]
