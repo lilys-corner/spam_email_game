@@ -2,6 +2,9 @@ extends Control
 
 #ok so you gotta put your variables up here so the program doesn't
 #scream at you
+#maybe have a total question variable that can be adjusted
+#with user input?
+var Totalquestion = 0
 var questionNum = 0
 var questionSet = []
 var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -112,5 +115,10 @@ func _on_option_a_pressed() -> void:
 	#draft code for adding number to score, Correct values as we get database together - Shay
 	#for now I was thinking depending on the question number each value will add up to 100 for a max score
 	if(answerSet[questionNum] = questions.answer(qID)): #placeholder, replace when quiz database complete
-		quizscore += (100/questionNum)
-	#INSERT IMPORT TO LEADERBOARD CODE UNDER CURRENTLY LOGGED IN USER HERE
+		quizscore += (100/Totalquestion)
+	
+
+
+func SubmitToLeaderboard() -> void
+#insert code to import value quizscore to database
+#leaderboard name should be linked to logged in user
