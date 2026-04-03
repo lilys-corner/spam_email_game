@@ -10,6 +10,9 @@ var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 #we will want the submit button to check and see if there are any 0s left
 var rng = RandomNumberGenerator.new()
 
+#adding a default score for the quiz mode which is 0
+var quizscore = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -106,3 +109,8 @@ func updateQuestion() -> void:
 func _on_option_a_pressed() -> void:
 	answerSet[questionNum]
 	
+	#draft code for adding number to score, Correct values as we get database together - Shay
+	#for now I was thinking depending on the question number each value will add up to 100 for a max score
+	if(answerSet[questionNum] = questions.answer(qID)): #placeholder, replace when quiz database complete
+		quizscore += (100/questionNum)
+	#INSERT IMPORT TO LEADERBOARD CODE UNDER CURRENTLY LOGGED IN USER HERE
