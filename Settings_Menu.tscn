@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://b8stwgpxwsyqx"]
 
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_0elue"]
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
+[ext_resource type="Texture2D" uid="uid://d118km7o08kbh" path="res://assets/settings/settings-bkg.png" id="2_h7jdq"]
 [ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="4_a7sdu"]
+[ext_resource type="Texture2D" uid="uid://gjpqboyvm4f8" path="res://assets/settings/saveSettings.png" id="5_50pbl"]
+[ext_resource type="Texture2D" uid="uid://b08ts35vbrufy" path="res://assets/settings/cancelSettings.png" id="6_rysv1"]
 
 [node name="Control" type="Control" unique_id=48091645]
 layout_mode = 3
@@ -16,24 +18,27 @@ script = ExtResource("1_nrlic")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=684385920]
 position = Vector2(965, 552)
-texture = ExtResource("1_0elue")
+texture = ExtResource("2_h7jdq")
 
 [node name="FullscreenBtn" type="CheckButton" parent="." unique_id=264676510]
 layout_mode = 0
-offset_left = 718.0
+offset_left = 699.0
 offset_top = 306.0
-offset_right = 1286.0
+offset_right = 1325.0
 offset_bottom = 372.0
+tooltip_text = "Toggles fullscreen on or off."
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_font_sizes/font_size = 24
 text = "Fullscreen
 "
 script = ExtResource("3_oj84s")
 
 [node name="temp" type="TextureButton" parent="." unique_id=2128716427]
 layout_mode = 0
-offset_left = -268.0
-offset_top = 448.0
-offset_right = 32.0
-offset_bottom = 648.0
+offset_left = -434.0
+offset_top = 589.0
+offset_right = -134.0
+offset_bottom = 789.0
 texture_normal = ExtResource("4_a7sdu")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=286580873]
@@ -46,49 +51,85 @@ texture_normal = ExtResource("4_a7sdu")
 
 [node name="overallVolume" type="HSlider" parent="." unique_id=1383060224]
 layout_mode = 0
-offset_left = 995.0
+offset_left = 993.0
 offset_top = 370.0
-offset_right = 1286.0
+offset_right = 1319.0
 offset_bottom = 448.0
+tooltip_text = "Sets the overall volume of all sound."
 ticks_on_borders = true
 
 [node name="musicVolume" type="HSlider" parent="." unique_id=833080938]
 layout_mode = 0
-offset_left = 979.0
-offset_top = 470.0
-offset_right = 1325.0
-offset_bottom = 493.0
+offset_left = 993.0
+offset_top = 468.0
+offset_right = 1319.0
+offset_bottom = 491.0
+tooltip_text = "Sets the volume of music only."
 
 [node name="sfxVolume" type="HSlider" parent="." unique_id=1427460340]
 layout_mode = 0
 offset_left = 993.0
-offset_top = 509.0
+offset_top = 523.0
 offset_right = 1318.0
-offset_bottom = 568.0
+offset_bottom = 582.0
+tooltip_text = "Sets the volume of sound effects only."
 
 [node name="saveSettings" type="TextureButton" parent="." unique_id=1146047821]
 layout_mode = 0
-offset_left = 1251.0
-offset_top = 827.0
-offset_right = 1551.0
-offset_bottom = 1027.0
-texture_normal = ExtResource("4_a7sdu")
+offset_left = 1062.0
+offset_top = 811.0
+offset_right = 1362.0
+offset_bottom = 1011.0
+texture_normal = ExtResource("5_50pbl")
 
 [node name="cancelSettings" type="TextureButton" parent="." unique_id=1662181233]
 layout_mode = 0
-offset_left = 416.0
-offset_top = 823.0
-offset_right = 716.0
-offset_bottom = 1023.0
-texture_normal = ExtResource("4_a7sdu")
+offset_left = 586.0
+offset_top = 808.0
+offset_right = 886.0
+offset_bottom = 1008.0
+texture_normal = ExtResource("6_rysv1")
 
 [node name="largeText" type="CheckButton" parent="." unique_id=1466843154]
 layout_mode = 0
-offset_left = 708.0
-offset_top = 586.0
-offset_right = 1311.0
-offset_bottom = 634.0
+offset_left = 698.0
+offset_top = 593.0
+offset_right = 1317.0
+offset_bottom = 641.0
+tooltip_text = "Changes the size of the font to be larger."
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_font_sizes/font_size = 24
 text = "Large font"
+
+[node name="overallVol" type="Label" parent="." unique_id=1908844878]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 392.0
+offset_right = 822.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+
+[node name="musicVol" type="Label" parent="." unique_id=1210965805]
+layout_mode = 0
+offset_left = 705.0
+offset_top = 463.0
+offset_right = 814.0
+offset_bottom = 486.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Music Volume"
+
+[node name="sfxVol" type="Label" parent="." unique_id=211413804]
+layout_mode = 0
+offset_left = 705.0
+offset_top = 534.0
+offset_right = 817.0
+offset_bottom = 557.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Sound Volume"
 
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
