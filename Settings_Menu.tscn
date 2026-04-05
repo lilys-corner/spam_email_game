@@ -82,9 +82,18 @@ offset_right = 716.0
 offset_bottom = 1023.0
 texture_normal = ExtResource("4_a7sdu")
 
+[node name="largeText" type="CheckButton" parent="." unique_id=1466843154]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 586.0
+offset_right = 1311.0
+offset_bottom = 634.0
+text = "Large font"
+
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="changed" from="overallVolume" to="." method="_on_h_slider_changed"]
 [connection signal="pressed" from="saveSettings" to="." method="_on_save_settings_pressed"]
 [connection signal="pressed" from="cancelSettings" to="." method="_on_cancel_settings_pressed"]
+[connection signal="toggled" from="largeText" to="." method="_on_check_button_toggled"]

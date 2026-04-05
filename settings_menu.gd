@@ -61,3 +61,11 @@ func _on_save_settings_pressed() -> void:
 	Global.musicVolume = $musicVolume.value
 	Global.sfxVolume = $sfxVolume.value
 	pass # Replace with function body.
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if(toggled_on == true):
+		pass
+	else:
+		pass
+		
