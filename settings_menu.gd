@@ -16,7 +16,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#set up the fullscreen etc
-	Global.sfxVolume = 50.0
+	#Global.sfxVolume = 50.0
 	
 	#volumes
 	$overallVolume.value = Global.masterVolume
@@ -64,6 +64,15 @@ func _on_save_settings_pressed() -> void:
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
+	#volume math
+	#This isn't working btw
+	#I'm not sure why
+	#If anyone can figure it out that'd be awesome I'll keep trying to
+	#figure it out though
+	var sfxVol = 0 + (Global.masterVolume * Global.sfxVolume)/2000
+	$clickSFX.volume_db = sfxVol
+	
+	$clickSFX.play()
 	if(toggled_on == true):
 		pass
 	else:
