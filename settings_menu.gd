@@ -69,8 +69,7 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	#I'm not sure why
 	#If anyone can figure it out that'd be awesome I'll keep trying to
 	#figure it out though
-	var sfxVol = 0 + (Global.masterVolume * Global.sfxVolume)/2000
-	$clickSFX.volume_db = sfxVol
+	$clickSFX.set_volume_linear(1*(Global.masterVolume/100)*(Global.sfxVolume/100))
 	
 	$clickSFX.play()
 	if(toggled_on == true):
