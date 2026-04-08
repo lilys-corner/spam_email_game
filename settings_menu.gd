@@ -22,9 +22,11 @@ func _ready() -> void:
 	$overallVolume.value = Global.masterVolume
 	$musicVolume.value = Global.musicVolume
 	$sfxVolume.value = Global.sfxVolume
-	#Listen I will go and fix the width later. or someone else fix the width later.
-	#it's just all weird and not the same length we just need it to look better
 	
+	#set the actual volumes of the back and click sfx
+	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
+	$clickSFX.set_volume_linear(sfxVol)
+	$backSFX.set_volume_linear(sfxVol)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,16 +62,19 @@ func _on_save_settings_pressed() -> void:
 	Global.masterVolume = $overallVolume.value
 	Global.musicVolume = $musicVolume.value
 	Global.sfxVolume = $sfxVolume.value
-	pass # Replace with function body.
+	
+	#recalculating the volume
+	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
+	$clickSFX.set_volume_linear(sfxVol)
+	$backSFX.set_volume_linear(sfxVol)
+	#No need to recalculate music for here
+	#You know what I should probably just put it in the global variables at this point
+	
 
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	#volume math
-	#This isn't working btw
-	#I'm not sure why
-	#If anyone can figure it out that'd be awesome I'll keep trying to
-	#figure it out though
-	$clickSFX.set_volume_linear(1*(Global.masterVolume/100)*(Global.sfxVolume/100))
+	#it's now done in the ready and save functions
 	
 	$clickSFX.play()
 	if(toggled_on == true):

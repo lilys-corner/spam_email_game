@@ -26,10 +26,10 @@ offset_bottom = 411.0
 
 [node name="tempnext" type="TextureButton" parent="." unique_id=1678314643]
 layout_mode = 0
-offset_left = 755.0
-offset_top = 465.0
-offset_right = 1055.0
-offset_bottom = 665.0
+offset_left = -107.0
+offset_top = -771.0
+offset_right = 193.0
+offset_bottom = -571.0
 texture_normal = ExtResource("3_6g653")
 
 [connection signal="pressed" from="tempnext" to="." method="_on_tempnext_pressed"]
