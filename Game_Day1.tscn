@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://c3sejevofhdg1" path="res://game_day_1.gd" id="1_56b58"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_bqcds"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="3_5l8u1"]
+[ext_resource type="Texture2D" uid="uid://uef1v13eq76a" path="res://assets/options_popup/optionsPage.png" id="3_c4qmm"]
+[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="4_h87ko"]
 
 [node name="Control" type="Control" unique_id=210518850]
 layout_mode = 3
@@ -17,21 +19,92 @@ script = ExtResource("1_56b58")
 position = Vector2(965, 552)
 texture = ExtResource("1_bqcds")
 
-[node name="optionsMenu" type="VBoxContainer" parent="." unique_id=735156166]
-layout_mode = 0
-offset_left = 751.0
-offset_top = -296.0
-offset_right = 1141.0
-offset_bottom = -130.0
+[node name="opBKG" type="Sprite2D" parent="." unique_id=285545698]
+position = Vector2(457, 650)
+texture = ExtResource("3_c4qmm")
 
-[node name="Label" type="Label" parent="optionsMenu" unique_id=968365347]
+[node name="optionsMenu" type="VBoxContainer" parent="opBKG" unique_id=735156166]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -659.5
+offset_top = -654.0
+offset_right = -90.5
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullscreenBtn" type="CheckButton" parent="opBKG/optionsMenu" unique_id=1303647890]
 layout_mode = 2
-text = "TEMPORARY TEXT HELLO"
+tooltip_text = "Toggles fullscreen on or off."
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen
+"
+script = ExtResource("4_h87ko")
 
-[node name="Label2" type="Label" parent="optionsMenu" unique_id=264433520]
+[node name="overallVol" type="Label" parent="opBKG/optionsMenu" unique_id=1390296027]
 layout_mode = 2
-text = "WEE OO"
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
 
-[node name="tempBack" type="TextureButton" parent="optionsMenu" unique_id=1442321745]
+[node name="overallVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=919942570]
+layout_mode = 2
+tooltip_text = "Sets the overall volume of all sound."
+ticks_on_borders = true
+
+[node name="musicVol" type="Label" parent="opBKG/optionsMenu" unique_id=809261307]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Music Volume"
+
+[node name="musicVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=982212870]
+layout_mode = 2
+tooltip_text = "Sets the volume of music only."
+
+[node name="sfxVol" type="Label" parent="opBKG/optionsMenu" unique_id=1904307766]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Sound Volume"
+
+[node name="sfxVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=1965849997]
+layout_mode = 2
+tooltip_text = "Sets the volume of sound effects only."
+
+[node name="largeText" type="CheckButton" parent="opBKG/optionsMenu" unique_id=799488148]
+layout_mode = 2
+tooltip_text = "Changes the size of the font to be larger."
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_font_sizes/font_size = 24
+text = "Large font"
+
+[node name="saveOpt" type="TextureButton" parent="opBKG/optionsMenu" unique_id=1442321745]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_5l8u1")
+
+[node name="cancelOpt" type="TextureButton" parent="opBKG/optionsMenu" unique_id=236403478]
 layout_mode = 2
 texture_normal = ExtResource("3_5l8u1")
+
+[node name="quitGame" type="TextureButton" parent="opBKG/optionsMenu" unique_id=343737246]
+layout_mode = 2
+texture_normal = ExtResource("3_5l8u1")
+
+[node name="exitMenu" type="TextureButton" parent="opBKG" unique_id=975410514]
+offset_left = 289.0
+offset_top = -417.0
+offset_right = 378.0
+offset_bottom = -328.0
+texture_normal = ExtResource("3_5l8u1")
+
+[connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
+[connection signal="pressed" from="opBKG/optionsMenu/saveOpt" to="." method="_on_save_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/cancelOpt" to="." method="_on_cancel_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/quitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="opBKG/exitMenu" to="." method="_on_exit_menu_pressed"]
