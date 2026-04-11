@@ -9,8 +9,9 @@ func _ready() -> void:
 	database = SQLite.new()
 	database.path = "res://questionsData.db" #would want to be using user:// for saves
 	database.open_db()
+	#insert_question()
+	#insert_good_email()
 	
-	insert_good_email()
 	
 	#DIFFERENT FUNCTIONS FOR DATABASES
 	#create_table()
@@ -84,15 +85,27 @@ func _on_tempnext_pressed() -> void:
 		#}
 	#}
 	#database.create_table("mal_emails", table)
+
+func insert_question() -> void:
+	var data: Dictionary = {
+		"qBody": 'How can you verify the legitimacy of a phishing email from a company you do business with?',
+		"qChoice1": 'Trust the email and respond with the requested information.',
+		"qChoice2": 'Click on any links in the email to follow the instructions.'
+		,"qChoice3": 'Contact the company directly using the contact details from their official website and ask if they sent the email.',
+		"qChoice4": 'Reply to the email with your personal details to resolve the issue.',
+		"qCorrect": 3
+
+	}	
+	database.insert_row("questions", data)
 	
 func insert_good_email() -> void:
 	var data: Dictionary = {
-		"emailAddress": "support@digitalocean.com",
-		"emailSubject": "DigitalOcean - Failed to process card payment for team: James",
-		"emailBody": 'Failed Card Payment
-		Hello
-		We attempted to charge the card you have on file for team: James but we were unable to do so.
-		Please confirm that your card is up to date and accurate:
-		https://cloud.digitalocean.com/settings/billing'
+		"emailAddress": "venmo@email.venmo.com",
+		"emailSubject": "John, here's $5",
+		"emailBody": "Venmo
+$5 from us to you!
+Come back to Venmo and cash in with $5. Just use the button below to log in, and we'll
+drop the money into your Venmo account automatically.
+Don't wait - this offer is only good for two weeks!"
 	}
 	database.insert_row("emails", data)
