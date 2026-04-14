@@ -13,17 +13,14 @@ var fontSize = 0 #OK we will adjust the default values later when we implement t
 var fullScreen = false #Not entirely sure how we implement this though
 '''
 ^ For Fullscreen:
-Commented bc idk where to put this but this is the code for swapping
-func _process(_delta):
-	if Input.is_action_just_pressed("full_screen"): // idk what full_screen is exactly tho
-		fullscreen = not fullscreen
-		toggle_fullscreen()
+extends Node # ik we're already gonna have there probably
 
-func toggle_fullscreen():
-	if fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)'''
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Fullscreen"): # idk what Fullscreen is, i can only assume a button?
+		var mode := DisplayServer.window_get_mode() # honestly we can change this and next line for the variable
+		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+'''
 
 var masterVolume = 100.0 #Default is 100% I guess
 var sfxVolume = 100.0
