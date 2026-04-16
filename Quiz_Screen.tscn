@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://bso4bqb8xs0e4"]
 
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_b426b"]
 [ext_resource type="Script" uid="uid://b63xr4xsu0u6x" path="res://quiz_screen.gd" id="1_fhpnn"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_3ojmc"]
-[ext_resource type="Texture2D" uid="uid://3pi6rj2ledjs" path="res://assets/temp/tempA.png" id="4_ni43x"]
-[ext_resource type="Texture2D" uid="uid://c3yvcwv2rnrsy" path="res://assets/temp/tempB.png" id="5_pbobh"]
-[ext_resource type="Texture2D" uid="uid://mcbdkj687wf7" path="res://assets/temp/tempC.png" id="6_no4nv"]
-[ext_resource type="Texture2D" uid="uid://bs1fvunf8kvde" path="res://assets/temp/tempD.png" id="7_870kp"]
+[ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_fw00n"]
+[ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="4_4ns74"]
 
 [node name="Control" type="Control" unique_id=1808749728]
 layout_mode = 3
@@ -19,7 +16,7 @@ script = ExtResource("1_fhpnn")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=2123064636]
 position = Vector2(965, 552)
-texture = ExtResource("1_b426b")
+texture = ExtResource("2_fw00n")
 
 [node name="returnToMenu-temp" type="TextureButton" parent="." unique_id=536488155]
 layout_mode = 0
@@ -28,27 +25,6 @@ offset_top = 837.0
 offset_right = 1839.0
 offset_bottom = 1037.0
 texture_normal = ExtResource("2_3ojmc")
-
-[node name="emailAddress" type="RichTextLabel" parent="." unique_id=1935000635]
-layout_mode = 0
-offset_left = 488.0
-offset_top = 147.0
-offset_right = 870.0
-offset_bottom = 239.0
-
-[node name="emailBody" type="RichTextLabel" parent="." unique_id=1780211287]
-layout_mode = 0
-offset_left = 610.0
-offset_top = 315.0
-offset_right = 1304.0
-offset_bottom = 668.0
-
-[node name="emailSubject" type="RichTextLabel" parent="." unique_id=748556909]
-layout_mode = 0
-offset_left = 679.0
-offset_top = 324.0
-offset_right = 1007.0
-offset_bottom = 416.0
 
 [node name="nextQ" type="TextureButton" parent="." unique_id=213149958]
 layout_mode = 0
@@ -66,34 +42,6 @@ offset_right = 327.0
 offset_bottom = 598.0
 texture_normal = ExtResource("2_3ojmc")
 
-[node name="answer1" type="RichTextLabel" parent="." unique_id=1630337582]
-layout_mode = 0
-offset_left = 643.0
-offset_top = 656.0
-offset_right = 942.0
-offset_bottom = 696.0
-
-[node name="answer2" type="RichTextLabel" parent="." unique_id=1758569832]
-layout_mode = 0
-offset_left = 662.0
-offset_top = 722.0
-offset_right = 984.0
-offset_bottom = 762.0
-
-[node name="answer3" type="RichTextLabel" parent="." unique_id=1519551992]
-layout_mode = 0
-offset_left = 656.0
-offset_top = 851.0
-offset_right = 1024.0
-offset_bottom = 891.0
-
-[node name="answer4" type="RichTextLabel" parent="." unique_id=1087213952]
-layout_mode = 0
-offset_left = 664.0
-offset_top = 950.0
-offset_right = 1024.0
-offset_bottom = 990.0
-
 [node name="questionItself" type="RichTextLabel" parent="." unique_id=1490887971]
 layout_mode = 0
 offset_left = 697.0
@@ -101,39 +49,67 @@ offset_top = 542.0
 offset_right = 1270.0
 offset_bottom = 628.0
 
-[node name="optionA" type="TextureButton" parent="." unique_id=971914898]
+[node name="aChoicebox" type="VBoxContainer" parent="." unique_id=333627872]
 layout_mode = 0
 offset_left = 527.0
-offset_top = 539.0
-offset_right = 627.0
-offset_bottom = 639.0
-texture_normal = ExtResource("4_ni43x")
+offset_top = 509.0
+offset_right = 1447.0
+offset_bottom = 981.0
+alignment = 1
 
-[node name="optionB" type="TextureButton" parent="." unique_id=1316697089]
-layout_mode = 0
-offset_left = 531.0
-offset_top = 681.0
-offset_right = 631.0
-offset_bottom = 781.0
-texture_normal = ExtResource("5_pbobh")
+[node name="HBoxContainer" type="HBoxContainer" parent="aChoicebox" unique_id=1369017025]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="optionC" type="TextureButton" parent="." unique_id=914854573]
-layout_mode = 0
-offset_left = 533.0
-offset_top = 807.0
-offset_right = 633.0
-offset_bottom = 907.0
-texture_normal = ExtResource("6_no4nv")
+[node name="optionA" type="TextureButton" parent="aChoicebox/HBoxContainer" unique_id=971914898]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_4ns74")
 
-[node name="optionD" type="TextureButton" parent="." unique_id=788092219]
-layout_mode = 0
-offset_left = 539.0
-offset_top = 948.0
-offset_right = 639.0
-offset_bottom = 1048.0
-texture_normal = ExtResource("7_870kp")
+[node name="answer1" type="RichTextLabel" parent="aChoicebox/HBoxContainer" unique_id=1630337582]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="aChoicebox" unique_id=1346147837]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="optionB" type="TextureButton" parent="aChoicebox/HBoxContainer2" unique_id=1316697089]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_4ns74")
+
+[node name="answer2" type="RichTextLabel" parent="aChoicebox/HBoxContainer2" unique_id=1758569832]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="aChoicebox" unique_id=727415704]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="optionC" type="TextureButton" parent="aChoicebox/HBoxContainer3" unique_id=914854573]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_4ns74")
+
+[node name="answer3" type="RichTextLabel" parent="aChoicebox/HBoxContainer3" unique_id=1519551992]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="aChoicebox" unique_id=1890304107]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="optionD" type="TextureButton" parent="aChoicebox/HBoxContainer4" unique_id=788092219]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_4ns74")
+
+[node name="answer4" type="RichTextLabel" parent="aChoicebox/HBoxContainer4" unique_id=1087213952]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]
 [connection signal="pressed" from="prevQ" to="." method="_on_prev_q_pressed"]
-[connection signal="pressed" from="optionA" to="." method="_on_option_a_pressed"]
+[connection signal="pressed" from="aChoicebox/HBoxContainer/optionA" to="." method="_on_option_a_pressed"]
