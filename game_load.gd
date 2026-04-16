@@ -11,7 +11,7 @@ func _ready() -> void:
 	database.open_db()
 	#insert_question()
 	#insert_good_email()
-	
+	select_data()
 	
 	#DIFFERENT FUNCTIONS FOR DATABASES
 	#create_table()
@@ -55,6 +55,9 @@ func update_data() -> void:
 
 func delete_data() -> void:
 	database.delete_rows("players", "player_name = 'NAME'")
+
+func select_data() -> void:
+	print(database.select_rows ("questions", "qID = 1", ["*"]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
