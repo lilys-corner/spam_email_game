@@ -4,7 +4,7 @@ extends Control
 #scream at you
 #maybe have a total question variable that can be adjusted
 #with user input?
-var totalQuestion = 0
+var totalQuestion = 20
 var correctCount = 0
 var questionNum = 0
 var questionSet = []
@@ -31,16 +31,16 @@ func _ready() -> void:
 		#if it needs to be more specific, make it more specific
 	
 	#default. you. you messed something up if you see this.
-	$emailAddress.text = "REPLACE LATER. EMAIL ADDRESS."
-	$emailSubject.text = "REPLACE LATER. SUBJECT."
-	$emailBody.text = "REPLACE LATER. EMAIL BODY. ACCORDING TO ALL KNOWN LAWS OF AVIATION THERE IS NO WAY THAT A BEE SHOULD BE ABLE TO FLY. ITS WINGS ARE TOO SMALL TO GET ITS FAT LITTLE BODY OFF THE GROUND. THE BEE OF COURSE, FLIES ANYWAYS. BECAUSE BEES DON'T CARE WHAT HUMANS THINK IS IMPOSSIBLE."
+	#$emailAddress.text = "REPLACE LATER. EMAIL ADDRESS."
+	#$emailSubject.text = "REPLACE LATER. SUBJECT."
+	#$emailBody.text = "REPLACE LATER. EMAIL BODY. ACCORDING TO ALL KNOWN LAWS OF AVIATION THERE IS NO WAY THAT A BEE SHOULD BE ABLE TO FLY. ITS WINGS ARE TOO SMALL TO GET ITS FAT LITTLE BODY OFF THE GROUND. THE BEE OF COURSE, FLIES ANYWAYS. BECAUSE BEES DON'T CARE WHAT HUMANS THINK IS IMPOSSIBLE."
 	#^ long text to show that it is a big text box
 	#question, options
 	$questionItself.text = "QUESTION HERE"
-	$answer1.text = "AAAAA"
-	$answer2.text = "BBBBB"
-	$answer3.text = "C"
-	$answer4.text = "DEFGHIJKLMNOP"
+	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
+	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
+	$aChoicebox/HBoxContainer3/answer3.text = "C"
+	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
 	
 
 	#retrieve information for first question
@@ -103,10 +103,10 @@ func updateQuestion() -> void:
 	$emailBody.text = "b"
 	
 	$questionItself.text = "c"
-	$answer1.text = "d"
-	$answer2.text = "e"
-	$answer3.text = "f"
-	$answer4.text = "g"
+	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
+	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
+	$aChoicebox/HBoxContainer3/answer3.text = "C"
+	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
 	
 
 
@@ -115,8 +115,12 @@ func _on_option_a_pressed() -> void:
 	
 	#draft code for adding number to score, Correct values as we get database together - Shay
 	#for now I was thinking depending on the question number each value will add up to 100 for a max score
-	if(answerSet[questionNum] == questions.answer(qID)): #placeholder, replace when quiz database complete
-		correctCount+=1
+	#if(answerSet[questionNum] == questions.answer(qID)): #placeholder, replace when quiz database complete
+		#correctCount+=1
+		
+#Current thoughts are that we just calculate it out at the end I feel like that would be much easier
+#as far as scoring goes so it doesn't need to recalculate whenever the player picks a different option
+#we can just make a second array that pulls the correct number every time you load a question if necessary
 	
 	#score calculation function
 func ScoreCalc() -> void:
@@ -124,6 +128,7 @@ func ScoreCalc() -> void:
 	
 
 
-func SubmitToLeaderboard() -> void
-#insert code to import value quizscore to database
-#leaderboard name should be linked to logged in user
+func SubmitToLeaderboard() -> void:
+	pass
+	#insert code to import value quizscore to database
+	#leaderboard name should be linked to logged in user

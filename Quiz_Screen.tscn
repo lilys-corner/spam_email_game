@@ -20,10 +20,10 @@ texture = ExtResource("2_fw00n")
 
 [node name="returnToMenu-temp" type="TextureButton" parent="." unique_id=536488155]
 layout_mode = 0
-offset_left = 1539.0
-offset_top = 837.0
-offset_right = 1839.0
-offset_bottom = 1037.0
+offset_left = 1840.0
+offset_top = 1362.0
+offset_right = 2140.0
+offset_bottom = 1562.0
 texture_normal = ExtResource("2_3ojmc")
 
 [node name="nextQ" type="TextureButton" parent="." unique_id=213149958]
@@ -44,17 +44,27 @@ texture_normal = ExtResource("2_3ojmc")
 
 [node name="questionItself" type="RichTextLabel" parent="." unique_id=1490887971]
 layout_mode = 0
-offset_left = 697.0
-offset_top = 542.0
-offset_right = 1270.0
-offset_bottom = 628.0
+offset_left = 512.0
+offset_top = 272.0
+offset_right = 1474.0
+offset_bottom = 479.0
+
+[node name="questionCount" type="RichTextLabel" parent="." unique_id=347104112]
+layout_mode = 0
+offset_left = 1303.0
+offset_top = 120.0
+offset_right = 1558.0
+offset_bottom = 226.0
+theme_override_colors/default_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "Question v/x"
 
 [node name="aChoicebox" type="VBoxContainer" parent="." unique_id=333627872]
 layout_mode = 0
 offset_left = 527.0
-offset_top = 509.0
+offset_top = 559.0
 offset_right = 1447.0
-offset_bottom = 981.0
+offset_bottom = 1017.0
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="aChoicebox" unique_id=1369017025]
