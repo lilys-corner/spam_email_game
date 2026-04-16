@@ -57,7 +57,9 @@ func delete_data() -> void:
 	database.delete_rows("players", "player_name = 'NAME'")
 
 func select_data() -> void:
-	print(database.select_rows ("questions", "qID = 1", ["*"]))
+	#print(database.select_rows ("questions", "qID = 1", ["*"]))
+	var q1Data = database.select_rows ("questions", "qID = 1", ["*"])
+	print(q1Data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
