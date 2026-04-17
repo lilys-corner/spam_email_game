@@ -135,6 +135,7 @@ func updateQuestion() -> void:
 	var tempnum = questionNum + 1
 	$questionCount.text = "Question " + str(tempnum) + "/20"
 	#^ updating the text box that shows you how far you are
+	clearOpt()
 	
 
 
@@ -142,6 +143,7 @@ func _on_option_a_pressed() -> void:
 	#set current selected answer to 1
 	answerSet[questionNum] = 1
 	#set this sprite to different sprite
+	clearOpt()
 	
 	#draft code for adding number to score, Correct values as we get database together - Shay
 	#for now I was thinking depending on the question number each value will add up to 100 for a max score
@@ -166,17 +168,35 @@ func SubmitToLeaderboard() -> void:
 	#leaderboard name should be linked to logged in user
 	
 func clearOpt() -> void:
+	var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
+	var select = preload("res://assets/quiz_mode/opt_selected.png")
 	#resets the sprites of all options when you change questions forwards or back actually
-	$aChoiceBox/HboxContainer/optionA.texture = nonSelect
-	$aChoicebox/HBoxContainer2/optionB.texture = nonSelect
-	$aChoicebox/HBoxContainer3/optionC.texture = nonSelect
-	$aChoicebox/HBoxContainer4/optionD.texture = nonSelect
+	$aChoicebox/HBoxContainer/optionA.texture_normal = nonSelect
+	$aChoicebox/HBoxContainer2/optionB.texture_normal = nonSelect
+	$aChoicebox/HBoxContainer3/optionC.texture_normal = nonSelect
+	$aChoicebox/HBoxContainer4/optionD.texture_normal = nonSelect
 	
 	if answerSet[questionNum] == 1:
-		$aChoiceBox/HboxContainer/optionA.texture = select
+		$aChoicebox/HBoxContainer/optionA.texture_normal = select
 	elif answerSet[questionNum] == 2:
-		$aChoicebox/HBoxContainer2/optionB.texture = select
+		$aChoicebox/HBoxContainer2/optionB.texture_normal = select
 	elif answerSet[questionNum] == 3:
-		$aChoicebox/HBoxContainer3/optionC.texture = select
+		$aChoicebox/HBoxContainer3/optionC.texture_normal = select
 	elif answerSet[questionNum] == 4:
-		$aChoicebox/HBoxContainer4/optionD.texture = select
+		$aChoicebox/HBoxContainer4/optionD.texture_normal = select
+
+
+func _on_option_b_pressed() -> void:
+		answerSet[questionNum] = 2
+		#set this sprite to different sprite
+		clearOpt()
+
+
+func _on_option_c_pressed() -> void:
+	answerSet[questionNum] = 3
+	clearOpt()
+
+
+func _on_option_d_pressed() -> void:
+	answerSet[questionNum] = 4
+	clearOpt()
