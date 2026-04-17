@@ -31,26 +31,19 @@ func _ready() -> void:
 	#randomize numbers and fill in array
 	for i in range(0, 19):
 		pass
-		#questionSet[i] = rng.randi_range(1, 1) #not a clue how many entries we will have
+		#questionSet[i] = rng.randi_range(1, 40) #not a clue how many entries we will have
 		#uhhh task for someone who has access to the database: adjust the question number
 		#based on how many there are
 		#in the randi_range() function
 	
 
 	#retrieve information for first question
-	#var quesBody = database.select_rows ("questions", "qID = 1", ["qBody"])
-	#var quesBodytxt : String = quesBody[0]["qBody"]
 	var questionData = database.select_rows("questions", "qID = 1", ["*"])
 	var quesBody : String = questionData[0]["qBody"]
 	var quesChoice1 : String = questionData[0]["qChoice1"]
 	var quesChoice2 : String = questionData[0]["qChoice2"]
 	var quesChoice3 : String = questionData[0]["qChoice3"]
 	var quesChoice4 : String = questionData[0]["qChoice4"]
-	#var quesChoice1 = database.select_rows ("questions", "qID = 1", ["qChoice1"])
-	#var quesChoice2 = database.select_rows ("questions", "qID = 1", ["qChoice2"])
-	#var quesChoice3 = database.select_rows ("questions", "qID = 1", ["qChoice3"])
-	#var quesChoice4 = database.select_rows ("questions", "qID = 1", ["qChoice4"])
-	#var quesCorrect = database.select_rows ("questions", "qID = 1", ["qCorrect"])
 	
 	
 	#update labels
@@ -108,10 +101,19 @@ func _on_next_q_pressed() -> void:
 	else:
 		#increment
 		questionNum = questionNum + 1
+		updateQuestion()
 	#update
 
 func updateQuestion() -> void:
-	var qID = questionSet[questionNum]
+	#var qID = questionSet[questionNum]
+	var qID = questionNum
+	print(questionNum)
+	var questionData = database.select_rows("questions", "qID = qID", ["*"])
+	var quesBody : String = questionData[qID]["qBody"]
+	var quesChoice1 : String = questionData[qID]["qChoice1"]
+	var quesChoice2 : String = questionData[qID]["qChoice2"]
+	var quesChoice3 : String = questionData[qID]["qChoice3"]
+	var quesChoice4 : String = questionData[qID]["qChoice4"]
 	
 	#retrieve data
 	#ADD DATA RETRIEVAL FOR THIS PARTICULAR QUESTION HERE
@@ -119,11 +121,16 @@ func updateQuestion() -> void:
 	#update:
 	#assign the text retrieved from the database to the text boxes
 	#currently there's temporary info here
-	$questionItself.text = "c"
-	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
-	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
-	$aChoicebox/HBoxContainer3/answer3.text = "C"
-	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+	#$questionItself.text = "c"
+	#$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
+	#$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
+	#$aChoicebox/HBoxContainer3/answer3.text = "C"
+	#$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+	$questionItself.text = quesBody
+	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
+	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
+	$aChoicebox/HBoxContainer3/answer3.text = quesChoice3
+	$aChoicebox/HBoxContainer4/answer4.text = quesChoice4
 	
 	var tempnum = questionNum + 1
 	$questionCount.text = "Question " + str(tempnum) + "/20"
