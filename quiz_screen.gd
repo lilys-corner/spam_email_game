@@ -1,4 +1,5 @@
 extends Control
+var database: SQLite
 
 #ok so you gotta put your variables up here so the program doesn't
 #scream at you
@@ -22,7 +23,9 @@ var select = preload("res://assets/quiz_mode/opt_selected.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	database = SQLite.new()
+	database.path = "res://questionsData.db" #would want to be using user:// for saves
+	database.open_db()
 	#get numbers of each question, put IDs in array
 	#initialize question ID array
 	#randomize numbers and fill in array
@@ -35,14 +38,32 @@ func _ready() -> void:
 	
 
 	#retrieve information for first question
+	#var quesBody = database.select_rows ("questions", "qID = 1", ["qBody"])
+	#var quesBodytxt : String = quesBody[0]["qBody"]
+	var questionData = database.select_rows("questions", "qID = 1", ["*"])
+	var quesBody : String = questionData[0]["qBody"]
+	var quesChoice1 : String = questionData[0]["qChoice1"]
+	var quesChoice2 : String = questionData[0]["qChoice2"]
+	var quesChoice3 : String = questionData[0]["qChoice3"]
+	var quesChoice4 : String = questionData[0]["qChoice4"]
+	#var quesChoice1 = database.select_rows ("questions", "qID = 1", ["qChoice1"])
+	#var quesChoice2 = database.select_rows ("questions", "qID = 1", ["qChoice2"])
+	#var quesChoice3 = database.select_rows ("questions", "qID = 1", ["qChoice3"])
+	#var quesChoice4 = database.select_rows ("questions", "qID = 1", ["qChoice4"])
+	#var quesCorrect = database.select_rows ("questions", "qID = 1", ["qCorrect"])
 	
 	
 	#update labels
-	$questionItself.text = "QUESTION HERE"
-	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
-	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
-	$aChoicebox/HBoxContainer3/answer3.text = "C"
-	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+	#$questionItself.text = "QUESTION HERE"
+	#$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
+	#$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
+	#$aChoicebox/HBoxContainer3/answer3.text = "C"
+	#$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+	$questionItself.text = quesBody
+	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
+	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
+	$aChoicebox/HBoxContainer3/answer3.text = quesChoice3
+	$aChoicebox/HBoxContainer4/answer4.text = quesChoice4
 	var tempnum = questionNum + 1
 	$questionCount.text = "Question " + str(tempnum) + "/20"
 
