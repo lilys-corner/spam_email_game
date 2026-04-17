@@ -15,3 +15,7 @@ func _on_temp_button_pressed() -> void:
 	#remove later. I don't care. I'm just setting up a skeleton
 	#I'm scared of how the logins will work
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
+
+func _on_log_in_pressed() -> void:
+	#go to log in screen upon clicking login button (top)
+	get_tree().change_scene_to_file("res://Log_In.tscn")

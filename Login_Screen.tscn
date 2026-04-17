@@ -50,3 +50,4 @@ offset_bottom = 840.0
 texture_normal = ExtResource("2_6b3mx")
 
 [connection signal="pressed" from="tempButton" to="." method="_on_temp_button_pressed"]
+[connection signal="pressed" from="logIn" to="." method="_on_log_in_pressed"]
