@@ -14,7 +14,11 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_submit_button_pressed() -> void:
+func _on_submit_button_down() -> void:
+	#on submit button down should allow for mouse
+	#click functionality? I was looking at tutorials and
+	#that should work I hope?
+	
 	#wow! It's a submit button
 	#when you click this, you submit the text in the EnterUsername
 	#and EnterPassword boxes
@@ -24,6 +28,9 @@ func _on_submit_button_pressed() -> void:
 	
 	var Username = $EnterUsername.text_submitted()
 	var Password = $EnterPassword.text_submitted()
+	#maybe we should look into using an encryption for the password?
+	#Godot has something like $EnterPassword.text.sha256_text()
+	
 	
 	pass # Replace with function body.
 
