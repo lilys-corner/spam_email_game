@@ -13,8 +13,6 @@ func _ready() -> void:
 	#insert_good_email()
 	select_data()
 	
-	
-	
 	#DIFFERENT FUNCTIONS FOR DATABASES
 	#create_table()
 	#insert_data()
