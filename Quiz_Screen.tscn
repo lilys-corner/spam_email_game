@@ -79,6 +79,8 @@ texture_normal = ExtResource("4_4ns74")
 [node name="answer1" type="RichTextLabel" parent="aChoicebox/HBoxContainer" unique_id=1630337582]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="aChoicebox" unique_id=1346147837]
 layout_mode = 2
@@ -92,6 +94,8 @@ texture_normal = ExtResource("4_4ns74")
 [node name="answer2" type="RichTextLabel" parent="aChoicebox/HBoxContainer2" unique_id=1758569832]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="aChoicebox" unique_id=727415704]
 layout_mode = 2
@@ -105,6 +109,8 @@ texture_normal = ExtResource("4_4ns74")
 [node name="answer3" type="RichTextLabel" parent="aChoicebox/HBoxContainer3" unique_id=1519551992]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="aChoicebox" unique_id=1890304107]
 layout_mode = 2
@@ -118,6 +124,8 @@ texture_normal = ExtResource("4_4ns74")
 [node name="answer4" type="RichTextLabel" parent="aChoicebox/HBoxContainer4" unique_id=1087213952]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
 
 [connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]

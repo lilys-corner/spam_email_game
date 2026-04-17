@@ -17,6 +17,9 @@ var rng = RandomNumberGenerator.new()
 #adding a default score for the quiz mode which is 0
 var quizscore = 0
 
+var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
+var select = preload("res://assets/quiz_mode/opt_selected.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -24,30 +27,24 @@ func _ready() -> void:
 	#initialize question ID array
 	#randomize numbers and fill in array
 	for i in range(0, 19):
-		#determine spam or not spam
-		#get random number
-		questionSet[i] = rng.randi_range(1, 1) #not a clue how many entries we will have
-		#put in array
-		#if it needs to be more specific, make it more specific
-	
-	#default. you. you messed something up if you see this.
-	#$emailAddress.text = "REPLACE LATER. EMAIL ADDRESS."
-	#$emailSubject.text = "REPLACE LATER. SUBJECT."
-	#$emailBody.text = "REPLACE LATER. EMAIL BODY. ACCORDING TO ALL KNOWN LAWS OF AVIATION THERE IS NO WAY THAT A BEE SHOULD BE ABLE TO FLY. ITS WINGS ARE TOO SMALL TO GET ITS FAT LITTLE BODY OFF THE GROUND. THE BEE OF COURSE, FLIES ANYWAYS. BECAUSE BEES DON'T CARE WHAT HUMANS THINK IS IMPOSSIBLE."
-	#^ long text to show that it is a big text box
-	#question, options
-	$questionItself.text = "QUESTION HERE"
-	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
-	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
-	$aChoicebox/HBoxContainer3/answer3.text = "C"
-	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+		pass
+		#questionSet[i] = rng.randi_range(1, 1) #not a clue how many entries we will have
+		#uhhh task for someone who has access to the database: adjust the question number
+		#based on how many there are
+		#in the randi_range() function
 	
 
 	#retrieve information for first question
 	
 	
 	#update labels
-
+	$questionItself.text = "QUESTION HERE"
+	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
+	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
+	$aChoicebox/HBoxContainer3/answer3.text = "C"
+	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
+	var tempnum = questionNum + 1
+	$questionCount.text = "Question " + str(tempnum) + "/20"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -96,33 +93,40 @@ func updateQuestion() -> void:
 	var qID = questionSet[questionNum]
 	
 	#retrieve data
+	#ADD DATA RETRIEVAL FOR THIS PARTICULAR QUESTION HERE
 	
 	#update:
-	$emailAddress.text = "a"
-	$emailSubject.text = "ab"
-	$emailBody.text = "b"
-	
+	#assign the text retrieved from the database to the text boxes
+	#currently there's temporary info here
 	$questionItself.text = "c"
 	$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
 	$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
 	$aChoicebox/HBoxContainer3/answer3.text = "C"
 	$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
 	
+	var tempnum = questionNum + 1
+	$questionCount.text = "Question " + str(tempnum) + "/20"
+	#^ updating the text box that shows you how far you are
+	
 
 
 func _on_option_a_pressed() -> void:
-	answerSet[questionNum]
+	#set current selected answer to 1
+	answerSet[questionNum] = 1
+	#set this sprite to different sprite
 	
 	#draft code for adding number to score, Correct values as we get database together - Shay
 	#for now I was thinking depending on the question number each value will add up to 100 for a max score
 	#if(answerSet[questionNum] == questions.answer(qID)): #placeholder, replace when quiz database complete
 		#correctCount+=1
 		
-#Current thoughts are that we just calculate it out at the end I feel like that would be much easier
-#as far as scoring goes so it doesn't need to recalculate whenever the player picks a different option
-#we can just make a second array that pulls the correct number every time you load a question if necessary
+	#Current thoughts are that we just calculate it out at the end I feel like that would be much easier
+	#as far as scoring goes so it doesn't need to recalculate whenever the player picks a different option
+	#we can just make a second array that pulls the correct number every time you load a question if necessary
 	
-	#score calculation function
+	
+	
+#score calculation function
 func ScoreCalc() -> void:
 	quizscore = (correctCount/totalQuestion)*100
 	
@@ -132,3 +136,19 @@ func SubmitToLeaderboard() -> void:
 	pass
 	#insert code to import value quizscore to database
 	#leaderboard name should be linked to logged in user
+	
+func clearOpt() -> void:
+	#resets the sprites of all options when you change questions forwards or back actually
+	$aChoiceBox/HboxContainer/optionA.texture = nonSelect
+	$aChoicebox/HBoxContainer2/optionB.texture = nonSelect
+	$aChoicebox/HBoxContainer3/optionC.texture = nonSelect
+	$aChoicebox/HBoxContainer4/optionD.texture = nonSelect
+	
+	if answerSet[questionNum] == 1:
+		$aChoiceBox/HboxContainer/optionA.texture = select
+	elif answerSet[questionNum] == 2:
+		$aChoicebox/HBoxContainer2/optionB.texture = select
+	elif answerSet[questionNum] == 3:
+		$aChoicebox/HBoxContainer3/optionC.texture = select
+	elif answerSet[questionNum] == 4:
+		$aChoicebox/HBoxContainer4/optionD.texture = select
