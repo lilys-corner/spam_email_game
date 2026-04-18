@@ -20,3 +20,7 @@ func _on_temp_button_pressed() -> void:
 func _on_log_in_pressed() -> void:
 	#go to log in screen upon clicking login button (top)
 	get_tree().change_scene_to_file("res://Log_In.tscn")
+
+func _on_sign_up_pressed() -> void:
+	#go to sign up screen upon clicking signup button (top)
+	get_tree().change_scene_to_file("res://Sign_Up.tscn")

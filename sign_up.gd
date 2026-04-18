@@ -20,21 +20,14 @@ func _process(delta: float) -> void:
 
 
 func _on_submit_button_pressed() -> void:
-	#on submit button down should allow for mouse
-	#click functionality? I was looking at tutorials and
-	#that should work I hope?
+	# same as log_in with minor changes
+	# i literally just copy pasted log_in.gd
 	
-	#wow! It's a submit button
-	#when you click this, you submit the text in the EnterUsername
-	#and EnterPassword boxes
-	#and then it gets compared to the data in the database
-	#and accepts if the username and password match and gives the user a warning if they don't
-	#think like "Username or password is incorrect"
-	
+	# get username and get the first word
 	var Username = $EnterUsername.text
+	
+	# get password and get the first word
 	var Password = $EnterPassword.text
-	#maybe we should look into using an encryption for the password?
-	#Godot has something like $EnterPassword.text.sha256_text()
 	
 	# is there a username?
 	if not Username:
@@ -46,11 +39,29 @@ func _on_submit_button_pressed() -> void:
 		$ErrorLabel.text = "Enter a password."
 		return
 	
+	# splitting it turns it into packed array for some reason ew
+	# fix that by setting it to the first value before the space
+	Username = Username.split(" ")
+	Username = Username[0]
+	
+	Password = Password.split(" ")
+	Password = Password[0]
+	
+	if Username.length() > 20:
+		$ErrorLabel.text = "Username must be 20 characters or less."
+		return
+	
+	if Password.length() > 20:
+		$ErrorLabel.text = "Password must be 20 characters or less."
+		return
+	
 	# if you're here, you have both a username and password. let's check it
+	# both are <20 char and one word
 	# open up the database so we have access
 	account_db.open_db()
 	
 	# this asks for all the usernames we currently have
+	# to see if this username repeats
 	account_db.query("SELECT username FROM accounts;")
 	var user_match = 0
 	
@@ -60,32 +71,20 @@ func _on_submit_button_pressed() -> void:
 		if Username == account_db.query_result[i]["username"]:
 			user_match = 1
 	
-	if user_match == 0:
-		print(Username)
-		print(account_db.query_result)
-		$ErrorLabel.text = "Username is invalid."
+	if user_match == 1:
+		$ErrorLabel.text = "Username is taken."
 		account_db.close_db()
 		return
 	
-	# omg yay. this means that the username is right
-	# asks for encrypted passwords we got. so gibberish basically
-	account_db.query("SELECT password FROM accounts;")
-	var pass_match = 0
+	# omg yay. this means that the username is new
+	# set the username and (encrypted) password into the database
+	Password = Password.sha256_text()
+	var this_query = "INSERT INTO accounts ('username', 'password') values ('" + Username + "', '" + Password + "');"
+	account_db.query(this_query)
 	
-	# check if password (encrypted to also be gibberish) is valid
-	for i in range (0, account_db.query_result.size()):
-		if Password.sha256_text() == account_db.query_result[i]["password"]:
-			pass_match = 1
-	
-	if pass_match == 0:
-		$ErrorLabel.text = "Password is invalid."
-		account_db.close_db()
-		return
-		
-	else:
-		account_db.close_db()
-		# yay go to game
-		get_tree().change_scene_to_file("res://Main_Menu.tscn")
+	account_db.close_db()
+	# yay go to login
+	get_tree().change_scene_to_file("res://Login_Screen.tscn")
 
 #Honestly I'm not entirely sure what I'm doing here
 #The point is that I want it so that you can submit the username
