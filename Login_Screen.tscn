@@ -17,14 +17,6 @@ script = ExtResource("1_hoyjq")
 position = Vector2(965, 552)
 texture = ExtResource("2_lf3kl")
 
-[node name="tempButton" type="TextureButton" parent="." unique_id=707148909]
-layout_mode = 0
-offset_left = 1545.0
-offset_top = 828.0
-offset_right = 1845.0
-offset_bottom = 1028.0
-texture_normal = ExtResource("2_6b3mx")
-
 [node name="logIn" type="TextureButton" parent="." unique_id=1271053747]
 layout_mode = 0
 offset_left = 786.0
@@ -49,6 +41,6 @@ offset_right = 1098.0
 offset_bottom = 840.0
 texture_normal = ExtResource("2_6b3mx")
 
-[connection signal="pressed" from="tempButton" to="." method="_on_temp_button_pressed"]
 [connection signal="pressed" from="logIn" to="." method="_on_log_in_pressed"]
 [connection signal="pressed" from="signUp" to="." method="_on_sign_up_pressed"]
+[connection signal="pressed" from="guestButton" to="." method="_on_guest_button_pressed"]
