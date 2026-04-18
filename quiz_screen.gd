@@ -26,24 +26,30 @@ func _ready() -> void:
 	database = SQLite.new()
 	database.path = "res://questionsData.db" #would want to be using user:// for saves
 	database.open_db()
+	questionSet.resize(20)
+	print(questionSet)
+
 	#get numbers of each question, put IDs in array
 	#initialize question ID array
 	#randomize numbers and fill in array
-	for i in range(0, 19):
-		pass
-		#questionSet[i] = rng.randi_range(1, 40) #not a clue how many entries we will have
+	for i in range(0, 20):
+		#pass
+		questionSet[i] = rng.randi_range(0, 39) #not a clue how many entries we will have
 		#uhhh task for someone who has access to the database: adjust the question number
 		#based on how many there are
 		#in the randi_range() function
-	
-
+		if questionSet.has(questionSet[i]):
+			questionSet[i] = rng.randi_range(0, 39)
+		
+	print(questionSet)
+	var qID = questionSet[questionNum]
 	#retrieve information for first question
-	var questionData = database.select_rows("questions", "qID = 1", ["*"])
-	var quesBody : String = questionData[0]["qBody"]
-	var quesChoice1 : String = questionData[0]["qChoice1"]
-	var quesChoice2 : String = questionData[0]["qChoice2"]
-	var quesChoice3 : String = questionData[0]["qChoice3"]
-	var quesChoice4 : String = questionData[0]["qChoice4"]
+	var questionData = database.select_rows("questions", "qID = qID", ["*"])
+	var quesBody : String = questionData[qID]["qBody"]
+	var quesChoice1 : String = questionData[qID]["qChoice1"]
+	var quesChoice2 : String = questionData[qID]["qChoice2"]
+	var quesChoice3 : String = questionData[qID]["qChoice3"]
+	var quesChoice4 : String = questionData[qID]["qChoice4"]
 	
 	
 	#update labels
@@ -105,16 +111,17 @@ func _on_next_q_pressed() -> void:
 	#update
 
 func updateQuestion() -> void:
-	#var qID = questionSet[questionNum]
-	var qID = questionNum
+	var qID = questionSet[questionNum]
+	#var qID = questionNum
 	print(questionNum)
 	var questionData = database.select_rows("questions", "qID = qID", ["*"])
+	print(qID)
 	var quesBody : String = questionData[qID]["qBody"]
 	var quesChoice1 : String = questionData[qID]["qChoice1"]
 	var quesChoice2 : String = questionData[qID]["qChoice2"]
 	var quesChoice3 : String = questionData[qID]["qChoice3"]
 	var quesChoice4 : String = questionData[qID]["qChoice4"]
-	
+	print(questionSet)
 	#retrieve data
 	#ADD DATA RETRIEVAL FOR THIS PARTICULAR QUESTION HERE
 	
