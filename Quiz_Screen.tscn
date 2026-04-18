@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_3ojmc"]
 [ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_fw00n"]
 [ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="4_4ns74"]
+[ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="4_s6iab"]
+[ext_resource type="Texture2D" uid="uid://ccblu66qtfuwa" path="res://assets/quiz_mode/nextButton_2.png" id="5_ni43x"]
 
 [node name="Control" type="Control" unique_id=1808749728]
 layout_mode = 3
@@ -32,7 +34,8 @@ offset_left = 1598.0
 offset_top = 419.0
 offset_right = 1898.0
 offset_bottom = 619.0
-texture_normal = ExtResource("2_3ojmc")
+texture_normal = ExtResource("4_s6iab")
+texture_hover = ExtResource("5_ni43x")
 
 [node name="prevQ" type="TextureButton" parent="." unique_id=1220619886]
 layout_mode = 0

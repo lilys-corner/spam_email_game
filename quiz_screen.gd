@@ -81,7 +81,7 @@ func _on_return_to_menutemp_pressed() -> void:
 
 func _on_prev_q_pressed() -> void:
 	#check
-	if questionNum == 1:
+	if questionNum == 0:
 		pass
 		#do nothing. you can't go back. unless we want you to be able to quit out of the quiz.
 	else:
@@ -147,6 +147,7 @@ func updateQuestion() -> void:
 	$questionCount.text = "Question " + str(tempnum) + "/20"
 	#^ updating the text box that shows you how far you are
 	clearOpt()
+	next_submit_swap()
 	
 
 
@@ -211,3 +212,23 @@ func _on_option_c_pressed() -> void:
 func _on_option_d_pressed() -> void:
 	answerSet[questionNum] = 4
 	clearOpt()
+	
+func next_submit_swap() -> void:
+	var next1 = preload("res://assets/quiz_mode/nextButton_1.png")
+	var next2 = preload("res://assets/quiz_mode/nextButton_2.png")
+	
+	var submit1 = preload("res://assets/quiz_mode/submitButton_1.png")
+	var submit2 = preload("res://assets/quiz_mode/submitButton_2.png")
+	
+	if questionNum == 19:
+		$nextQ.texture_normal = submit1
+		$nextQ.texture_hover = submit2
+	else:
+		$nextQ.texture_normal = next1
+		$nextQ.texture_hover = next2
+
+func checkAllAnswers() -> void:
+	var allAns = true
+	#you are legally required to submit an answer for every question now
+	#step 1: LOOPS BABEY
+	
