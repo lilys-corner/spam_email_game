@@ -83,7 +83,13 @@ func _on_submit_button_pressed() -> void:
 		return
 		
 	else:
+		# get the user id
+		var user_query = "SELECT id FROM accounts WHERE username = " + Username
+		account_db.query(user_query)
+		Global.userID = account_db.query_results
+		
 		account_db.close_db()
+		
 		# yay go to game
 		get_tree().change_scene_to_file("res://Main_Menu.tscn")
 

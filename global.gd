@@ -27,6 +27,10 @@ var sfxVolume = 100.0
 var musicVolume = 100.0
 #these change when you load the player's settings and the like in
 
-#Next thing to load in
-#Any database prep, probably
-#Honestly I have no idea how we're going about integrating the database
+# defaults to 0 (guest), stays that way when guest
+# when logging in, it's the user id in the accounts database
+var userID = 0
+
+# db prep if you're looking for it:
+# questionsData.db: in game_load.gd
+# accounts.db: in log_in.gd and sign_up.gd
