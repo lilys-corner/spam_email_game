@@ -34,12 +34,16 @@ func _ready() -> void:
 	#randomize numbers and fill in array
 	for i in range(0, 20):
 		#pass
-		questionSet[i] = rng.randi_range(0, 39) #not a clue how many entries we will have
+		var temp_val = rng.randi_range(0, 39) #not a clue how many entries we will have
+		print("Before reroll", temp_val)
 		#uhhh task for someone who has access to the database: adjust the question number
 		#based on how many there are
 		#in the randi_range() function
-		if questionSet.has(questionSet[i]):
-			questionSet[i] = rng.randi_range(0, 39)
+		
+		while questionSet.has(temp_val):
+			temp_val = rng.randi_range(0, 39)
+			print("After reroll", temp_val)
+		questionSet[i] = temp_val
 		
 	print(questionSet)
 	var qID = questionSet[questionNum]
