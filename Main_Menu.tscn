@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clyndkwq57xq6" path="res://assets/main_menu/gameButton_1.png" id="5_3mro0"]
 [ext_resource type="Texture2D" uid="uid://bo6mnkm4m0hxo" path="res://assets/main_menu/scoreboardButton_2.png" id="5_es6ti"]
 [ext_resource type="Texture2D" uid="uid://bvknexfd5lkew" path="res://assets/main_menu/quizButton_2.png" id="7_t301m"]
-[ext_resource type="Texture2D" uid="uid://6oknnjfb687b" path="res://assets/main_menu/exitButton_1.png" id="7_tu7k8"]
+[ext_resource type="Texture2D" uid="uid://bv4cn103pi3d2" path="res://assets/main_menu/exitButton_1.png" id="7_tu7k8"]
 [ext_resource type="Texture2D" uid="uid://d4dswwp3ianuv" path="res://assets/main_menu/gameButton_2.png" id="9_wrfco"]
 
 [node name="Control" type="Control" unique_id=246110809]

@@ -8,7 +8,7 @@ func _ready() -> void:
 	#and then put them into a bunch of rich text labels or just labels
 	$tempLabel.text = "SCOREBOARD PAGE"
 	
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	# DATABASE PULL
 	
 	# WHOO labels and the like
@@ -75,7 +75,7 @@ func _ready() -> void:
 	# rank 10
 	$gBoard/tier10/username.text = ""
 	$gBoard/tier10/score.text = ""
-=======
+#=======
 	account_db = SQLite.new()
 	account_db.path = "res://accounts.db"
 	
@@ -91,7 +91,7 @@ func _ready() -> void:
 	
 	
 	pass # Replace with function body.
->>>>>>> 8ce060e70f6ca65c96dc665312e935c07b86d861
+#>>>>>>> 8ce060e70f6ca65c96dc665312e935c07b86d861
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
