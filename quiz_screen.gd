@@ -98,15 +98,7 @@ func _on_next_q_pressed() -> void:
 		#change texture to submit button
 		
 		#check if all answers are filled
-		var allChecked = true
-		for i in range(0, 19):
-			if(answerSet[i] == 0):
-				#you have not answered every question and there will be a warning
-				allChecked = false
-				#maybe get a warning
-				
-				#append each question that you haven't checked to a string and display it afterwards
-				
+		checkAllAnswers()
 		#obligatory are you sure you want to submit warning
 	else:
 		#increment
@@ -229,6 +221,20 @@ func next_submit_swap() -> void:
 
 func checkAllAnswers() -> void:
 	var allAns = true
+	var ANSWERME = ""
 	#you are legally required to submit an answer for every question now
 	#step 1: LOOPS BABEY
-	
+	for i in range(0, 20):
+		if answerSet[i] == 0:
+			allAns = false
+			ANSWERME = ANSWERME + ", " + str(i + 1)
+		
+	if allAns == true:
+		pass
+		#you can submit yayyyyy
+	else:
+		# NOOOOOO YOU CAN'T DO THATTTTT
+		#testing a bit here
+		$missingQBox/qText.text = ANSWERME
+		pass
+		#I want my java forloops back

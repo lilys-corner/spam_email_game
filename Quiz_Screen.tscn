@@ -133,6 +133,21 @@ size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 theme_override_font_sizes/normal_font_size = 28
 
+[node name="missingQBox" type="Sprite2D" parent="." unique_id=1848027258]
+
+[node name="qtext2" type="RichTextLabel" parent="missingQBox" unique_id=459559482]
+offset_left = 149.0
+offset_top = -746.0
+offset_right = 681.0
+offset_bottom = -609.0
+text = "Quiz could not be submitted, the following questions have not been answered: "
+
+[node name="qText" type="RichTextLabel" parent="missingQBox" unique_id=1426439499]
+offset_left = 163.0
+offset_top = -583.0
+offset_right = 590.0
+offset_bottom = -449.0
+
 [connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]
 [connection signal="pressed" from="prevQ" to="." method="_on_prev_q_pressed"]
