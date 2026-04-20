@@ -61,6 +61,8 @@ func _on_submit_button_pressed() -> void:
 			user_match = 1
 	
 	if user_match == 0:
+		print(Username)
+		print(account_db.query_result)
 		$ErrorLabel.text = "Username is invalid."
 		account_db.close_db()
 		return
