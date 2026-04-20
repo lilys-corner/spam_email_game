@@ -34,6 +34,7 @@ func _ready() -> void:
 	# rank 7
 	$qBoard/tier7/username.text = ""
 	$qBoard/tier7/score.text = ""
+	#E
 	# rank 8
 	$qBoard/tier8/username.text = ""
 	$qBoard/tier8/score.text = ""
