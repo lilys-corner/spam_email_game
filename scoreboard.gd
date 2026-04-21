@@ -96,6 +96,8 @@ func _ready() -> void:
 	account_db.query("SELECT username, score FROM game_scores JOIN accounts ON game_scores.ID = accounts.ID ORDER BY score")
 	# we now have each entry's first value is username, second is score stored in query_result
 	fill_game()
+	
+	account_db.close_db()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

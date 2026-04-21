@@ -1,5 +1,6 @@
 extends Control
 var database: SQLite
+var account_db
 
 #ok so you gotta put your variables up here so the program doesn't
 #scream at you
@@ -169,8 +170,23 @@ func ScoreCalc() -> void:
 func SubmitToLeaderboard() -> void:
 	pass
 	#insert code to import value quizscore to database
-	#leaderboard name should be linked to logged in user
+	#leaderboard name should be linked to logged in user using global var
+	# use var quizscore when submitted
 	
+	# it's database time
+	# we're going to insert into quiz scores table the score and user id
+	account_db = SQLite.new()
+	account_db.path = "res://accounts.db"
+	
+	# open the database so we can get stuff
+	account_db.open_db()
+	
+	# put it on in, this is saved in the database to you the user yay
+	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + quizscore + ", " + Global.userID + ");"
+	account_db.query(my_query)
+	
+	account_db.close_db()
+
 func clearOpt() -> void:
 	var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 	var select = preload("res://assets/quiz_mode/opt_selected.png")
@@ -230,7 +246,11 @@ func checkAllAnswers() -> void:
 			ANSWERME = ANSWERME + ", " + str(i + 1)
 		
 	if allAns == true:
-		#you can submit yayyyyy
+		#calculate score
+		ScoreCalc()
+		# put that in the database yippee
+		SubmitToLeaderboard()
+		# skedaddle to results page
 		get_tree().change_scene_to_file("res://Results_Screen.tscn")
 
 	else:
