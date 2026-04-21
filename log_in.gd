@@ -51,7 +51,7 @@ func _on_submit_button_pressed() -> void:
 	account_db.open_db()
 	
 	# this asks for all the usernames we currently have
-	account_db.query("SELECT username FROM accounts;")
+	account_db.query("SELECT ID, username FROM accounts;")
 	var user_match = 0
 	
 	# the result of a query will save in the query_result method
@@ -59,6 +59,8 @@ func _on_submit_button_pressed() -> void:
 	for i in range (0, account_db.query_result.size()):
 		if Username == account_db.query_result[i]["username"]:
 			user_match = 1
+			# if it matches, make sure that the global user id is that
+			Global.userID = account_db.query_result[i]["ID"]
 	
 	if user_match == 0:
 		print(Username)
@@ -83,13 +85,7 @@ func _on_submit_button_pressed() -> void:
 		return
 		
 	else:
-		# get the user id
-		var user_query = "SELECT id FROM accounts WHERE username = " + Username
-		account_db.query(user_query)
-		Global.userID = account_db.query_results
-		
 		account_db.close_db()
-		
 		# yay go to game
 		get_tree().change_scene_to_file("res://Main_Menu.tscn")
 

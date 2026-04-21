@@ -179,7 +179,7 @@ func SubmitToLeaderboard() -> void:
 	account_db.open_db()
 	
 	# put it on in, this is saved in the database to you the user yay
-	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + Global.quizscore + ", " + Global.userID + ");"
+	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + str(Global.quizscore) + ", " + str(Global.userID) + ");"
 	account_db.query(my_query)
 	
 	account_db.close_db()
