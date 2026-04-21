@@ -32,8 +32,10 @@ var musicVolume = 100.0
 var userID = 0
 
 var gamescore = 0
+var incorrectgame = []
 
 var quizscore = 0
+var incorrectquiz = []
 
 var incorrectanswers
 

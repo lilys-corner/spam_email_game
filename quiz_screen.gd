@@ -146,10 +146,14 @@ func _on_option_a_pressed() -> void:
 
 #score calculation function
 func ScoreCalc() -> void:
+	# this is pretty temporary it's just so i can search it later
+	var correct = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	
 	# we need to get correctCount and totalQuestion (we got totalQuestion)
 	# we also need to make an array with the incorrect question ids for the results page. this is done after
 	# when we have the num of correct questions. and then we can get num of incorrect, then make array
 	# first order of business. go through questions, match answers with info from the qid in questionSet
+	
 	for i in range(0, 20):
 		# the question we are currently checking, goes from first to last
 		var qID = questionSet[i] + 1
@@ -163,6 +167,7 @@ func ScoreCalc() -> void:
 		# now. if it matches, correctCount + 1. if not, ignore (for now)
 		if (database.query_result[0]["qCorrect"] == answerSet[i]):
 			correctCount += 1
+			correct[i] = 1
 	
 	# when we are done with this for loop, we have correctCount. yayy we can calculate the score!!
 	# quizscore is an int hence why i *100 and then divide, bc otherwise it's 0
@@ -171,6 +176,20 @@ func ScoreCalc() -> void:
 	# OKAY. so we have the number of correct questions.
 	# get incorrectCount for our incorrect array!
 	var incorrectCount = totalQuestion - correctCount
+	
+	# resize array to incorrect amount
+	# cur_index is to make sure we fill in the array correctly
+	Global.incorrectquiz.resize(incorrectCount)
+	var cur_index = 0
+	
+	for i in range (0, 20):
+		if (correct[i] == 0):
+			# fill incorrectquiz with the IDs of the wrongly answered questions
+			Global.incorrectquiz[cur_index] = questionSet[i] + 1
+			cur_index += 1
+	# now we should have a global array filled with qIDs
+	
+	print(Global.incorrectquiz)
 
 func SubmitToLeaderboard() -> void:
 	pass
