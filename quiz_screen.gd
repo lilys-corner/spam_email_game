@@ -248,8 +248,9 @@ func checkAllAnswers() -> void:
 	if allAns == true:
 		#calculate score
 		ScoreCalc()
-		# put that in the database yippee
-		SubmitToLeaderboard()
+		# put that in the database yippee BUT ONLY if you have an account
+		if Global.userID != 0:
+			SubmitToLeaderboard()
 		# skedaddle to results page
 		get_tree().change_scene_to_file("res://Results_Screen.tscn")
 
