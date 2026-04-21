@@ -9,7 +9,7 @@ var account_db
 var totalQuestion = 20
 var correctCount = 0
 var questionNum = 0
-var questionSet = []
+var questionSet = [] # question set full of qIDs in order, correlate with answerSet
 var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 #assuming I can count that is 20 0s. if we change the number of questions we will have to change that too
 #0: no answer selected
@@ -34,15 +34,13 @@ func _ready() -> void:
 		#pass
 		var temp_val = rng.randi_range(0, 39) #not a clue how many entries we will have
 		print("Before reroll", temp_val)
-		#uhhh task for someone who has access to the database: adjust the question number
-		#based on how many there are
-		#in the randi_range() function
+		# confirmed to be 40 questions in db (for randi_range)
 		
 		while questionSet.has(temp_val):
 			temp_val = rng.randi_range(0, 39)
 			print("After reroll", temp_val)
 		questionSet[i] = temp_val
-		
+	
 	print(questionSet)
 	var qID = questionSet[questionNum]
 	#retrieve information for first question
@@ -76,7 +74,6 @@ func _process(delta: float) -> void:
 func _on_return_to_menutemp_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
-
 func _on_prev_q_pressed() -> void:
 	#check
 	if questionNum == 0:
@@ -93,7 +90,7 @@ func _on_prev_q_pressed() -> void:
 func _on_next_q_pressed() -> void:
 	#check
 	if(questionNum == 19):
-		#change texture to submit button
+		#texture is submit button
 		
 		#check if all answers are filled
 		checkAllAnswers()
@@ -116,17 +113,8 @@ func updateQuestion() -> void:
 	var quesChoice3 : String = questionData[qID]["qChoice3"]
 	var quesChoice4 : String = questionData[qID]["qChoice4"]
 	print(questionSet)
-	#retrieve data
-	#ADD DATA RETRIEVAL FOR THIS PARTICULAR QUESTION HERE
 	
 	#update:
-	#assign the text retrieved from the database to the text boxes
-	#currently there's temporary info here
-	#$questionItself.text = "c"
-	#$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
-	#$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
-	#$aChoicebox/HBoxContainer3/answer3.text = "C"
-	#$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
 	$questionItself.text = quesBody
 	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
 	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
@@ -138,8 +126,6 @@ func updateQuestion() -> void:
 	#^ updating the text box that shows you how far you are
 	clearOpt()
 	next_submit_swap()
-	
-
 
 func _on_option_a_pressed() -> void:
 	#set current selected answer to 1
@@ -156,13 +142,35 @@ func _on_option_a_pressed() -> void:
 	#as far as scoring goes so it doesn't need to recalculate whenever the player picks a different option
 	#we can just make a second array that pulls the correct number every time you load a question if necessary
 	
-	
-	
+	# Correct values will be determined in ScoreCalc() let's gooo
+
 #score calculation function
 func ScoreCalc() -> void:
-	Global.quizscore = (correctCount/totalQuestion)*100
+	# we need to get correctCount and totalQuestion (we got totalQuestion)
+	# we also need to make an array with the incorrect question ids for the results page. this is done after
+	# when we have the num of correct questions. and then we can get num of incorrect, then make array
+	# first order of business. go through questions, match answers with info from the qid in questionSet
+	for i in range(0, 20):
+		# the question we are currently checking, goes from first to last
+		var qID = questionSet[i] + 1
+		# i don't know why i need to + 1 but if i encounter a 0 it crashes and this works
+		# my sanity is gone but i live
+		
+		# query for the int number of the correct answer. this will be stored in database.query_result
+		var my_query = "SELECT qCorrect FROM questions WHERE qID = " + str(qID)
+		database.query(my_query)
+		
+		# now. if it matches, correctCount + 1. if not, ignore (for now)
+		if (database.query_result[0]["qCorrect"] == answerSet[i]):
+			correctCount += 1
 	
-
+	# when we are done with this for loop, we have correctCount. yayy we can calculate the score!!
+	# quizscore is an int hence why i *100 and then divide, bc otherwise it's 0
+	Global.quizscore = (correctCount*100)/totalQuestion
+	
+	# OKAY. so we have the number of correct questions.
+	# get incorrectCount for our incorrect array!
+	var incorrectCount = totalQuestion - correctCount
 
 func SubmitToLeaderboard() -> void:
 	pass
