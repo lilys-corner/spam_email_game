@@ -16,9 +16,6 @@ var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 #we will want the submit button to check and see if there are any 0s left
 var rng = RandomNumberGenerator.new()
 
-#adding a default score for the quiz mode which is 0
-var quizscore = 0
-
 var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 var select = preload("res://assets/quiz_mode/opt_selected.png")
 
@@ -163,7 +160,7 @@ func _on_option_a_pressed() -> void:
 	
 #score calculation function
 func ScoreCalc() -> void:
-	quizscore = (correctCount/totalQuestion)*100
+	Global.quizscore = (correctCount/totalQuestion)*100
 	
 
 
@@ -182,7 +179,7 @@ func SubmitToLeaderboard() -> void:
 	account_db.open_db()
 	
 	# put it on in, this is saved in the database to you the user yay
-	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + quizscore + ", " + Global.userID + ");"
+	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + Global.quizscore + ", " + Global.userID + ");"
 	account_db.query(my_query)
 	
 	account_db.close_db()

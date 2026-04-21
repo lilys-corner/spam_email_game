@@ -31,6 +31,12 @@ var musicVolume = 100.0
 # when logging in, it's the user id in the accounts database
 var userID = 0
 
+var gamescore = 0
+
+var quizscore = 0
+
+var incorrectanswers
+
 # db prep if you're looking for it:
 # questionsData.db: in game_load.gd
 # accounts.db: in log_in.gd and sign_up.gd
