@@ -230,8 +230,9 @@ func checkAllAnswers() -> void:
 			ANSWERME = ANSWERME + ", " + str(i + 1)
 		
 	if allAns == true:
-		pass
 		#you can submit yayyyyy
+		get_tree().change_scene_to_file("res://Results_Screen.tscn")
+
 	else:
 		# NOOOOOO YOU CAN'T DO THATTTTT
 		#testing a bit here
