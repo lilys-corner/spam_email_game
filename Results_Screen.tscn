@@ -25,4 +25,75 @@ offset_right = 331.0
 offset_bottom = 224.0
 texture_normal = ExtResource("3_6evo4")
 
+[node name="ScoreLabel" type="Label" parent="." unique_id=2058724637]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 195.0
+offset_right = 1402.0
+offset_bottom = 456.0
+theme_override_font_sizes/font_size = 80
+text = "Your Score:"
+horizontal_alignment = 1
+
+[node name="wrongQuestion" type="RichTextLabel" parent="." unique_id=1635616321]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 529.0
+offset_right = 1438.0
+offset_bottom = 764.0
+theme_override_font_sizes/normal_font_size = 28
+vertical_alignment = 1
+
+[node name="lastQuestion" type="TextureButton" parent="." unique_id=789881320]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 347.0
+offset_right = 615.0
+offset_bottom = 547.0
+texture_normal = ExtResource("3_6evo4")
+
+[node name="nextQuestion" type="TextureButton" parent="." unique_id=1411527662]
+layout_mode = 0
+offset_left = 1283.0
+offset_top = 344.0
+offset_right = 1583.0
+offset_bottom = 544.0
+texture_normal = ExtResource("3_6evo4")
+
+[node name="corrAns" type="RichTextLabel" parent="." unique_id=503571110]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 739.0
+offset_right = 1438.0
+offset_bottom = 974.0
+theme_override_colors/default_color = Color(0.4527853, 0.6914769, 0.28300613, 1)
+theme_override_font_sizes/normal_font_size = 28
+vertical_alignment = 1
+
+[node name="ScoreLabel2" type="Label" parent="." unique_id=548878652]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 570.0
+offset_right = 353.0
+offset_bottom = 741.0
+theme_override_font_sizes/font_size = 40
+text = "Incorrectly
+Answered
+Question:"
+horizontal_alignment = 2
+
+[node name="ScoreLabel3" type="Label" parent="." unique_id=993048046]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 798.0
+offset_right = 353.0
+offset_bottom = 969.0
+theme_override_colors/font_color = Color(0.4509804, 0.6901961, 0.28235295, 1)
+theme_override_font_sizes/font_size = 40
+text = "Correct
+Answer:"
+horizontal_alignment = 2
+
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="lastQuestion" to="." method="_on_last_question_pressed"]
+[connection signal="pressed" from="nextQuestion" to="." method="_on_next_question_pressed"]
