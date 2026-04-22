@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dfc2nyikdg282" path="res://results_screen.gd" id="1_5gcrs"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_6evo4"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="3_6evo4"]
+[ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="3_bbv8t"]
+[ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="4_q8e3e"]
+[ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="5_6m2jr"]
+[ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="6_4bsep"]
+[ext_resource type="Texture2D" uid="uid://ccblu66qtfuwa" path="res://assets/quiz_mode/nextButton_2.png" id="7_sye30"]
+[ext_resource type="Texture2D" uid="uid://ldqgli6ukae7" path="res://assets/quiz_mode/scoreTextBox.png" id="8_q8e3e"]
 
 [node name="Control" type="Control" unique_id=1455783758]
 layout_mode = 3
@@ -23,17 +28,7 @@ offset_left = 31.0
 offset_top = 24.0
 offset_right = 331.0
 offset_bottom = 224.0
-texture_normal = ExtResource("3_6evo4")
-
-[node name="ScoreLabel" type="Label" parent="." unique_id=2058724637]
-layout_mode = 0
-offset_left = 516.0
-offset_top = 195.0
-offset_right = 1402.0
-offset_bottom = 456.0
-theme_override_font_sizes/font_size = 80
-text = "Your Score:"
-horizontal_alignment = 1
+texture_normal = ExtResource("3_bbv8t")
 
 [node name="wrongQuestion" type="RichTextLabel" parent="." unique_id=1635616321]
 layout_mode = 0
@@ -50,7 +45,8 @@ offset_left = 315.0
 offset_top = 347.0
 offset_right = 615.0
 offset_bottom = 547.0
-texture_normal = ExtResource("3_6evo4")
+texture_normal = ExtResource("4_q8e3e")
+texture_hover = ExtResource("5_6m2jr")
 
 [node name="nextQuestion" type="TextureButton" parent="." unique_id=1411527662]
 layout_mode = 0
@@ -58,7 +54,8 @@ offset_left = 1283.0
 offset_top = 344.0
 offset_right = 1583.0
 offset_bottom = 544.0
-texture_normal = ExtResource("3_6evo4")
+texture_normal = ExtResource("6_4bsep")
+texture_hover = ExtResource("7_sye30")
 
 [node name="corrAns" type="RichTextLabel" parent="." unique_id=503571110]
 layout_mode = 0
@@ -93,6 +90,22 @@ theme_override_font_sizes/font_size = 40
 text = "Correct
 Answer:"
 horizontal_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1006883718]
+position = Vector2(952, 209.99998)
+scale = Vector2(0.88169646, 0.8816964)
+texture = ExtResource("8_q8e3e")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=2058724637]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 246.0
+offset_right = 1387.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
+theme_override_font_sizes/font_size = 80
+text = "#"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="lastQuestion" to="." method="_on_last_question_pressed"]

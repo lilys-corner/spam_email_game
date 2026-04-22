@@ -12,7 +12,7 @@ func _ready() -> void:
 	database.open_db()
 	
 	# bam your score is that global variable
-	$ScoreLabel.text = "Your Score: " + str(Global.quizscore) + "%"
+	$ScoreLabel.text = str(Global.quizscore) + "%"
 	
 	# display first question
 	updateQuestion()
