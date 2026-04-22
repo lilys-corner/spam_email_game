@@ -282,5 +282,17 @@ func checkAllAnswers() -> void:
 		# NOOOOOO YOU CAN'T DO THATTTTT
 		#testing a bit here
 		$missingQBox/qText.text = ANSWERME
+		#bring the text box over here, gang
+		var position = Vector2(960.0, 500.0)
+		#yoink
+		$missingQBox.global_position = position
 		pass
 		#I want my java forloops back
+
+
+func _on_texture_button_pressed() -> void:
+	# BEGONE, TEXTBOX
+	# SENDING IT BACK INTO EXILE
+	var position = Vector2(-400, -400)
+	$missingQBox.global_position = position
+	pass # Replace with function body.
