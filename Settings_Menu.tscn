@@ -141,6 +141,17 @@ stream = ExtResource("8_or27b")
 stream = ExtResource("9_4k8ag")
 pitch_scale = 2.0
 
+[node name="dysFont" type="CheckButton" parent="." unique_id=714211324]
+layout_mode = 0
+offset_left = 699.0
+offset_top = 647.0
+offset_right = 1319.0
+offset_bottom = 699.0
+tooltip_text = "Changes the size of the font to be dyslexia friendly."
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Dyslexia Font"
+
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
@@ -148,3 +159,4 @@ pitch_scale = 2.0
 [connection signal="pressed" from="saveSettings" to="." method="_on_save_settings_pressed"]
 [connection signal="pressed" from="cancelSettings" to="." method="_on_cancel_settings_pressed"]
 [connection signal="toggled" from="largeText" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="dysFont" to="." method="_on_dys_font_toggled"]

@@ -7,7 +7,7 @@ extends Node
 
 
 #loading in the default settings
-var dyslexiaFont = false
+var dyslexiaFont = load("res://assets/fonts/comici.ttf")
 var fontSize = 0 #OK we will adjust the default values later when we implement this
 
 var fullScreen = false #Not entirely sure how we implement this though

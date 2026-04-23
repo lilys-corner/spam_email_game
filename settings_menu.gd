@@ -82,3 +82,11 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	else:
 		pass
 		
+
+
+func _on_dys_font_toggled(toggled_on: bool) -> void:
+	if (toggled_on == true):
+		ThemeDB.get_default_theme().default_font = Global.dyslexiaFont
+	else:
+		ThemeDB.get_default_theme().default_font = null
+		pass # Replace with function body.
