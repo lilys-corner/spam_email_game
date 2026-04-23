@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dtbcajy18c8ir" path="res://scoreboard.gd" id="1_0ya6e"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_1oo4x"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="3_5jfn8"]
+[ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="3_ide3a"]
+[ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="4_6ddnf"]
 
 [node name="Scoreboard" type="Control" unique_id=625598879]
 layout_mode = 3
@@ -19,11 +20,12 @@ texture = ExtResource("1_1oo4x")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=1592053921]
 layout_mode = 0
-offset_left = -168.0
-offset_top = -75.0
-offset_right = 132.0
-offset_bottom = 125.0
-texture_normal = ExtResource("3_5jfn8")
+offset_left = 23.0
+offset_top = 13.0
+offset_right = 323.0
+offset_bottom = 213.0
+texture_normal = ExtResource("3_ide3a")
+texture_hover = ExtResource("4_6ddnf")
 
 [node name="tempLabel" type="Label" parent="." unique_id=121359660]
 layout_mode = 0
@@ -32,9 +34,9 @@ offset_bottom = 23.0
 
 [node name="qBoard" type="VBoxContainer" parent="." unique_id=1391595028]
 layout_mode = 0
-offset_left = 154.0
+offset_left = 234.0
 offset_top = 136.0
-offset_right = 786.0
+offset_right = 883.0
 offset_bottom = 1005.0
 
 [node name="Label" type="Label" parent="qBoard" unique_id=25758268]
