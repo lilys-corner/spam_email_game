@@ -12,7 +12,6 @@ extends Control
 #Ok I've got a question is this just the
 #dyslexia font option or is there also the font sizing thing
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#set up the fullscreen etc
@@ -77,10 +76,30 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	#it's now done in the ready and save functions
 	
 	$clickSFX.play()
+	var settings_theme = preload("res://settings_theme.tres")
+	var quiz_theme = preload("res://quiz_theme.tres")
+	var score_values_theme = preload("res://scoreboard_rank_theme.tres")
+	var results_label_theme = preload("res://results_label_theme.tres")
+	var results_text_theme = preload("res://results_text_theme.tres")
+	
 	if(toggled_on == true):
-		ThemeDB.get_default_theme().default_font_size = 38
+		settings_theme.set_font_size("font_size", "Label", 34)
+		settings_theme.set_font_size("font_size", "CheckButton", 34)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 35)
+		score_values_theme.set_font_size("font_size", "Label", 36)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 50)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 38)
+		
+		
+		#ThemeDB.get_default_theme().default_font_size = 38
 	else:
-		ThemeDB.get_default_theme().default_font_size = 28
+		settings_theme.set_font_size("font_size", "Label", 24)
+		settings_theme.set_font_size("font_size", "CheckButton", 24)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
+		score_values_theme.set_font_size("font_size", "Label", 26)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 40)
+		results_text_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
+		
 		
 
 

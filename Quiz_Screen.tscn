@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bso4bqb8xs0e4"]
 
 [ext_resource type="Script" uid="uid://b63xr4xsu0u6x" path="res://quiz_screen.gd" id="1_fhpnn"]
+[ext_resource type="Theme" uid="uid://bgj4rengweb5o" path="res://quiz_theme.tres" id="1_x0tmw"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_3ojmc"]
 [ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_fw00n"]
 [ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="4_4ns74"]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_x0tmw")
 script = ExtResource("1_fhpnn")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=2123064636]
@@ -57,7 +59,6 @@ offset_top = 222.0
 offset_right = 1474.0
 offset_bottom = 457.0
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1
 
 [node name="questionCount" type="RichTextLabel" parent="." unique_id=347104112]
@@ -67,7 +68,6 @@ offset_top = 120.0
 offset_right = 1558.0
 offset_bottom = 226.0
 theme_override_colors/default_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_font_sizes/normal_font_size = 28
 text = "Question v/x"
 
 [node name="aChoicebox" type="VBoxContainer" parent="." unique_id=333627872]
@@ -91,7 +91,6 @@ texture_normal = ExtResource("4_4ns74")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="aChoicebox" unique_id=1346147837]
 layout_mode = 2
@@ -106,7 +105,6 @@ texture_normal = ExtResource("4_4ns74")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="aChoicebox" unique_id=727415704]
 layout_mode = 2
@@ -121,7 +119,6 @@ texture_normal = ExtResource("4_4ns74")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_font_sizes/normal_font_size = 28
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="aChoicebox" unique_id=1890304107]
 layout_mode = 2
@@ -136,7 +133,6 @@ texture_normal = ExtResource("4_4ns74")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
-theme_override_font_sizes/normal_font_size = 28
 
 [node name="missingQBox" type="Sprite2D" parent="." unique_id=1848027258]
 position = Vector2(-765, 334)

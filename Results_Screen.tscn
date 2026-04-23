@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dfc2nyikdg282" path="res://results_screen.gd" id="1_5gcrs"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_6evo4"]
 [ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="3_bbv8t"]
+[ext_resource type="Theme" uid="uid://btrjyi4m2gj0m" path="res://results_text_theme.tres" id="4_4bsep"]
 [ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="4_q8e3e"]
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="5_6m2jr"]
 [ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="6_4bsep"]
 [ext_resource type="Texture2D" uid="uid://ccblu66qtfuwa" path="res://assets/quiz_mode/nextButton_2.png" id="7_sye30"]
 [ext_resource type="Texture2D" uid="uid://ldqgli6ukae7" path="res://assets/quiz_mode/scoreTextBox.png" id="8_q8e3e"]
+[ext_resource type="Theme" uid="uid://kg66rjk8yo4a" path="res://results_label_theme.tres" id="10_sye30"]
 
 [node name="Control" type="Control" unique_id=1455783758]
 layout_mode = 3
@@ -36,7 +38,7 @@ offset_left = 476.0
 offset_top = 529.0
 offset_right = 1438.0
 offset_bottom = 764.0
-theme_override_font_sizes/normal_font_size = 28
+theme = ExtResource("4_4bsep")
 vertical_alignment = 1
 
 [node name="lastQuestion" type="TextureButton" parent="." unique_id=789881320]
@@ -63,8 +65,8 @@ offset_left = 476.0
 offset_top = 739.0
 offset_right = 1438.0
 offset_bottom = 974.0
+theme = ExtResource("4_4bsep")
 theme_override_colors/default_color = Color(0.4527853, 0.6914769, 0.28300613, 1)
-theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1006883718]
@@ -89,7 +91,7 @@ offset_left = 145.0
 offset_top = 570.0
 offset_right = 517.0
 offset_bottom = 787.0
-theme_override_font_sizes/normal_font_size = 40
+theme = ExtResource("10_sye30")
 text = "Incorrectly
 Answered
 Question:"
@@ -100,8 +102,8 @@ offset_left = 198.0
 offset_top = 801.0
 offset_right = 570.0
 offset_bottom = 1018.0
+theme = ExtResource("10_sye30")
 theme_override_colors/default_color = Color(0.4509804, 0.6901961, 0.28235295, 1)
-theme_override_font_sizes/normal_font_size = 40
 text = "Correct
 Answer:"
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtbcajy18c8ir" path="res://scoreboard.gd" id="1_0ya6e"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_1oo4x"]
+[ext_resource type="Theme" uid="uid://b4wb45h3qvc8d" path="res://scoreboard_rank_theme.tres" id="1_6ddnf"]
 [ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="3_ide3a"]
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="4_6ddnf"]
 
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6ddnf")
 script = ExtResource("1_0ya6e")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=1287348432]
@@ -28,6 +30,7 @@ texture_normal = ExtResource("3_ide3a")
 texture_hover = ExtResource("4_6ddnf")
 
 [node name="tempLabel" type="Label" parent="." unique_id=121359660]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -52,17 +55,14 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/top" unique_id=776368884]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 
 [node name="username" type="Label" parent="qBoard/top" unique_id=415193300]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "                    USERNAME"
 
 [node name="score" type="Label" parent="qBoard/top" unique_id=1238481091]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier1" type="HBoxContainer" parent="qBoard" unique_id=1908025117]
@@ -72,18 +72,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier1" unique_id=763109730]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#1 "
 
 [node name="username" type="Label" parent="qBoard/tier1" unique_id=903448870]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier1" unique_id=1752153971]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier2" type="HBoxContainer" parent="qBoard" unique_id=1030277384]
@@ -93,18 +90,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier2" unique_id=1422796207]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#2 "
 
 [node name="username" type="Label" parent="qBoard/tier2" unique_id=1217240058]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier2" unique_id=2086540674]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier3" type="HBoxContainer" parent="qBoard" unique_id=2128173350]
@@ -114,18 +108,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier3" unique_id=648061374]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#3 "
 
 [node name="username" type="Label" parent="qBoard/tier3" unique_id=81968882]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier3" unique_id=1368374123]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier4" type="HBoxContainer" parent="qBoard" unique_id=1371447046]
@@ -135,18 +126,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier4" unique_id=1875032312]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#4 "
 
 [node name="username" type="Label" parent="qBoard/tier4" unique_id=901287261]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier4" unique_id=124821659]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier5" type="HBoxContainer" parent="qBoard" unique_id=1151715962]
@@ -156,18 +144,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier5" unique_id=1579507689]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#5 "
 
 [node name="username" type="Label" parent="qBoard/tier5" unique_id=1187640004]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier5" unique_id=1758499830]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier6" type="HBoxContainer" parent="qBoard" unique_id=240481477]
@@ -177,18 +162,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier6" unique_id=656531639]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#6 "
 
 [node name="username" type="Label" parent="qBoard/tier6" unique_id=1708148218]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier6" unique_id=202807837]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier7" type="HBoxContainer" parent="qBoard" unique_id=653314142]
@@ -198,18 +180,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier7" unique_id=1086598940]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#7 "
 
 [node name="username" type="Label" parent="qBoard/tier7" unique_id=1109561170]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier7" unique_id=421316349]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier8" type="HBoxContainer" parent="qBoard" unique_id=342491889]
@@ -219,18 +198,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier8" unique_id=1037132159]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#8 "
 
 [node name="username" type="Label" parent="qBoard/tier8" unique_id=571309924]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier8" unique_id=1665927880]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier9" type="HBoxContainer" parent="qBoard" unique_id=1290450904]
@@ -240,18 +216,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier9" unique_id=1218139099]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#9 "
 
 [node name="username" type="Label" parent="qBoard/tier9" unique_id=726449749]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier9" unique_id=130017532]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier10" type="HBoxContainer" parent="qBoard" unique_id=1618797658]
@@ -261,18 +234,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="qBoard/tier10" unique_id=2032495023]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#10 "
 
 [node name="username" type="Label" parent="qBoard/tier10" unique_id=2038839942]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="qBoard/tier10" unique_id=1024348363]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="gBoard" type="VBoxContainer" parent="." unique_id=1200596507]
@@ -288,66 +258,57 @@ theme_override_font_sizes/font_size = 40
 text = "Game Leaderboard"
 horizontal_alignment = 1
 
-[node name="top" type="HBoxContainer" parent="gBoard" unique_id=1094712703]
+[node name="top" type="HBoxContainer" parent="gBoard" unique_id=1094712703 groups=["leaderboard"]]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="rank" type="Label" parent="gBoard/top" unique_id=1729892555]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 
 [node name="username" type="Label" parent="gBoard/top" unique_id=2010537022]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "                    USERNAME"
 
 [node name="score" type="Label" parent="gBoard/top" unique_id=1622237007]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier1" type="HBoxContainer" parent="gBoard" unique_id=1135159891]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="rank" type="Label" parent="gBoard/tier1" unique_id=1108505288]
+[node name="rank" type="Label" parent="gBoard/tier1" unique_id=1108505288 groups=["leaderboard"]]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#1 "
 
-[node name="username" type="Label" parent="gBoard/tier1" unique_id=1465116000]
+[node name="username" type="Label" parent="gBoard/tier1" unique_id=1465116000 groups=["leaderboard"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
-[node name="score" type="Label" parent="gBoard/tier1" unique_id=799097112]
+[node name="score" type="Label" parent="gBoard/tier1" unique_id=799097112 groups=["leaderboard"]]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier2" type="HBoxContainer" parent="gBoard" unique_id=1735051955]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="rank" type="Label" parent="gBoard/tier2" unique_id=1383887964]
+[node name="rank" type="Label" parent="gBoard/tier2" unique_id=1383887964 groups=["leaderboard"]]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#2 "
 
-[node name="username" type="Label" parent="gBoard/tier2" unique_id=231563341]
+[node name="username" type="Label" parent="gBoard/tier2" unique_id=231563341 groups=["leaderboard"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
-[node name="score" type="Label" parent="gBoard/tier2" unique_id=1343676402]
+[node name="score" type="Label" parent="gBoard/tier2" unique_id=1343676402 groups=["leaderboard"]]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier3" type="HBoxContainer" parent="gBoard" unique_id=1430002831]
@@ -357,18 +318,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier3" unique_id=1014033419]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#3 "
 
 [node name="username" type="Label" parent="gBoard/tier3" unique_id=852853897]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier3" unique_id=1554562665]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier4" type="HBoxContainer" parent="gBoard" unique_id=1053404067]
@@ -378,18 +336,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier4" unique_id=446299132]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#4 "
 
 [node name="username" type="Label" parent="gBoard/tier4" unique_id=717160622]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier4" unique_id=908516637]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier5" type="HBoxContainer" parent="gBoard" unique_id=1081817182]
@@ -399,18 +354,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier5" unique_id=1956952688]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#5 "
 
 [node name="username" type="Label" parent="gBoard/tier5" unique_id=2013264717]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier5" unique_id=1389114682]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier6" type="HBoxContainer" parent="gBoard" unique_id=811147038]
@@ -420,18 +372,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier6" unique_id=1361341073]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#6 "
 
 [node name="username" type="Label" parent="gBoard/tier6" unique_id=441704125]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier6" unique_id=1830290540]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier7" type="HBoxContainer" parent="gBoard" unique_id=1161922754]
@@ -441,18 +390,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier7" unique_id=550992916]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#7 "
 
 [node name="username" type="Label" parent="gBoard/tier7" unique_id=254080703]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier7" unique_id=1753021407]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier8" type="HBoxContainer" parent="gBoard" unique_id=954154256]
@@ -462,18 +408,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier8" unique_id=309111402]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#8 "
 
 [node name="username" type="Label" parent="gBoard/tier8" unique_id=522260986]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier8" unique_id=1585805280]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier9" type="HBoxContainer" parent="gBoard" unique_id=1327448883]
@@ -483,18 +426,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier9" unique_id=719158015]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#9 "
 
 [node name="username" type="Label" parent="gBoard/tier9" unique_id=1622719811]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier9" unique_id=339361818]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [node name="tier10" type="HBoxContainer" parent="gBoard" unique_id=1739563831]
@@ -504,18 +444,15 @@ size_flags_vertical = 3
 [node name="rank" type="Label" parent="gBoard/tier10" unique_id=652156299]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7529412, 0.16078432, 0.19607843, 1)
-theme_override_font_sizes/font_size = 26
 text = "#10 "
 
 [node name="username" type="Label" parent="gBoard/tier10" unique_id=1309333902]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "USERNAME"
 
 [node name="score" type="Label" parent="gBoard/tier10" unique_id=1320697532]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_font_sizes/font_size = 26
 text = "SCORE"
 
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

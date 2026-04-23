@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
 [ext_resource type="Texture2D" uid="uid://d118km7o08kbh" path="res://assets/settings/settings-bkg.png" id="2_h7jdq"]
+[ext_resource type="Theme" uid="uid://cpeqwlbhrauh" path="res://settings_theme.tres" id="3_4k8ag"]
 [ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
 [ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="4_a7sdu"]
 [ext_resource type="Texture2D" uid="uid://gjpqboyvm4f8" path="res://assets/settings/saveSettings.png" id="5_50pbl"]
@@ -17,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_4k8ag")
 script = ExtResource("1_nrlic")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=684385920]
@@ -31,7 +33,6 @@ offset_right = 1325.0
 offset_bottom = 372.0
 tooltip_text = "Toggles fullscreen on or off."
 theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
-theme_override_font_sizes/font_size = 24
 text = "Fullscreen
 "
 script = ExtResource("3_oj84s")
@@ -101,7 +102,6 @@ offset_right = 1317.0
 offset_bottom = 641.0
 tooltip_text = "Changes the size of the font to be larger."
 theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
-theme_override_font_sizes/font_size = 24
 text = "Large font"
 
 [node name="overallVol" type="Label" parent="." unique_id=1908844878]
@@ -111,7 +111,6 @@ offset_top = 392.0
 offset_right = 822.0
 offset_bottom = 415.0
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_font_sizes/font_size = 24
 text = "Master Volume"
 
 [node name="musicVol" type="Label" parent="." unique_id=1210965805]
@@ -121,7 +120,6 @@ offset_top = 463.0
 offset_right = 814.0
 offset_bottom = 486.0
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_font_sizes/font_size = 24
 text = "Music Volume"
 
 [node name="sfxVol" type="Label" parent="." unique_id=211413804]
@@ -131,7 +129,6 @@ offset_top = 534.0
 offset_right = 817.0
 offset_bottom = 557.0
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
-theme_override_font_sizes/font_size = 24
 text = "Sound Volume"
 
 [node name="backSFX" type="AudioStreamPlayer" parent="." unique_id=339092108]
@@ -149,7 +146,6 @@ offset_right = 1319.0
 offset_bottom = 699.0
 tooltip_text = "Changes the size of the font to be dyslexia friendly."
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 24
 text = "Dyslexia Font"
 
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]

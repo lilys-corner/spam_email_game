@@ -32,6 +32,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
+[global_group]
+
+leaderboard=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
