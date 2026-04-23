@@ -67,30 +67,6 @@ theme_override_colors/default_color = Color(0.4527853, 0.6914769, 0.28300613, 1)
 theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1
 
-[node name="ScoreLabel2" type="Label" parent="." unique_id=548878652]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 570.0
-offset_right = 353.0
-offset_bottom = 741.0
-theme_override_font_sizes/font_size = 40
-text = "Incorrectly
-Answered
-Question:"
-horizontal_alignment = 2
-
-[node name="ScoreLabel3" type="Label" parent="." unique_id=993048046]
-layout_mode = 0
-offset_left = 116.0
-offset_top = 798.0
-offset_right = 353.0
-offset_bottom = 969.0
-theme_override_colors/font_color = Color(0.4509804, 0.6901961, 0.28235295, 1)
-theme_override_font_sizes/font_size = 40
-text = "Correct
-Answer:"
-horizontal_alignment = 2
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1006883718]
 position = Vector2(952, 209.99998)
 scale = Vector2(0.88169646, 0.8816964)
@@ -106,6 +82,28 @@ theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
 theme_override_font_sizes/font_size = 80
 text = "#"
 horizontal_alignment = 1
+
+[node name="QuestionLabel" type="RichTextLabel" parent="." unique_id=2071301659]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 570.0
+offset_right = 517.0
+offset_bottom = 787.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Incorrectly
+Answered
+Question:"
+
+[node name="AnswerLabel" type="RichTextLabel" parent="." unique_id=948248550]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 801.0
+offset_right = 570.0
+offset_bottom = 1018.0
+theme_override_colors/default_color = Color(0.4509804, 0.6901961, 0.28235295, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Correct
+Answer:"
 
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="lastQuestion" to="." method="_on_last_question_pressed"]
