@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://bwnhtgph7tqpt"]
+
+[ext_resource type="Script" uid="uid://c3sejevofhdg1" path="res://game_screen.gd" id="1_gkjso"]
+[ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_ptrv4"]
+[ext_resource type="Texture2D" uid="uid://uef1v13eq76a" path="res://assets/options_popup/optionsPage.png" id="3_xu7al"]
+[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="4_13hxu"]
+[ext_resource type="Texture2D" uid="uid://cijsv56knpm4v" path="res://assets/options_popup/saveButton.png" id="5_3r6pg"]
+[ext_resource type="Texture2D" uid="uid://bb5vn1mrdqrai" path="res://assets/options_popup/cancelButton.png" id="6_i1db5"]
+[ext_resource type="Texture2D" uid="uid://3r7kw2a3f6jh" path="res://assets/options_popup/quitGame.png" id="7_ptrv4"]
+[ext_resource type="Texture2D" uid="uid://co43bp01jrjhw" path="res://assets/options_popup/closeMenu.png" id="8_qw3rj"]
+[ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="9_qw3rj"]
+[ext_resource type="Texture2D" uid="uid://ccblu66qtfuwa" path="res://assets/quiz_mode/nextButton_2.png" id="10_xbpgu"]
+[ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="11_fbxt5"]
+[ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="12_eir2f"]
+[ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="13_1v100"]
+[ext_resource type="Texture2D" uid="uid://b6k7qw7gg6uj3" path="res://assets/quiz_mode/missingQTextBox.png" id="14_j83fh"]
+
+[node name="Control" type="Control" unique_id=210518850]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gkjso")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=842374438]
+position = Vector2(965, 552)
+texture = ExtResource("2_ptrv4")
+
+[node name="nextE" type="TextureButton" parent="." unique_id=1161933239]
+layout_mode = 0
+offset_left = 1598.0
+offset_top = 419.0
+offset_right = 1898.0
+offset_bottom = 619.0
+texture_normal = ExtResource("9_qw3rj")
+texture_hover = ExtResource("10_xbpgu")
+
+[node name="prevE" type="TextureButton" parent="." unique_id=2088409595]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 398.0
+offset_right = 327.0
+offset_bottom = 598.0
+texture_normal = ExtResource("11_fbxt5")
+texture_hover = ExtResource("12_eir2f")
+
+[node name="emailFrom" type="Label" parent="." unique_id=846815752]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 229.0
+offset_right = 1413.0
+offset_bottom = 277.0
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/font_size = 28
+text = "From:"
+
+[node name="emailSubj" type="Label" parent="." unique_id=569260154]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 306.0
+offset_right = 1413.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/font_size = 28
+text = "Subject:"
+
+[node name="emailBody" type="RichTextLabel" parent="." unique_id=235317151]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 396.0
+offset_right = 1474.0
+offset_bottom = 689.0
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
+vertical_alignment = 1
+
+[node name="emailCount" type="RichTextLabel" parent="." unique_id=2059862849]
+layout_mode = 0
+offset_left = 1303.0
+offset_top = 120.0
+offset_right = 1558.0
+offset_bottom = 226.0
+theme_override_colors/default_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "Email v/x"
+horizontal_alignment = 1
+
+[node name="aChoicebox" type="VBoxContainer" parent="." unique_id=272173583]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 688.0
+offset_right = 1447.0
+offset_bottom = 977.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="aChoicebox" unique_id=1671070202]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="optionA" type="TextureButton" parent="aChoicebox/HBoxContainer" unique_id=662833283]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("13_1v100")
+
+[node name="answerY" type="RichTextLabel" parent="aChoicebox/HBoxContainer" unique_id=1577556349]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "This email is spam."
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="aChoicebox" unique_id=1281978248]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="optionB" type="TextureButton" parent="aChoicebox/HBoxContainer2" unique_id=632590854]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("13_1v100")
+
+[node name="answerN" type="RichTextLabel" parent="aChoicebox/HBoxContainer2" unique_id=952098103]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "This email is not spam."
+vertical_alignment = 1
+
+[node name="missingQBox" type="Sprite2D" parent="." unique_id=938038240]
+position = Vector2(-765, 334)
+texture = ExtResource("14_j83fh")
+
+[node name="qtext2" type="RichTextLabel" parent="missingQBox" unique_id=1471292776]
+offset_left = -393.0
+offset_top = -122.0
+offset_right = 400.0
+offset_bottom = 67.0
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 26
+text = "Quiz could not be submitted, the following questions have not been answered: "
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="qText" type="RichTextLabel" parent="missingQBox" unique_id=1667482013]
+offset_left = -372.0
+offset_top = 12.0
+offset_right = 384.0
+offset_bottom = 146.0
+theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_font_sizes/normal_font_size = 26
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="missingQBox" unique_id=801926920]
+offset_left = 376.0
+offset_top = -252.0
+offset_right = 496.0
+offset_bottom = -132.0
+texture_normal = ExtResource("8_qw3rj")
+metadata/_edit_use_anchors_ = true
+
+[node name="opBKG" type="Sprite2D" parent="." unique_id=285545698]
+position = Vector2(-462, 592)
+texture = ExtResource("3_xu7al")
+
+[node name="optionsMenu" type="VBoxContainer" parent="opBKG" unique_id=735156166]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -677.0
+offset_top = -644.0
+offset_right = -73.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullscreenBtn" type="CheckButton" parent="opBKG/optionsMenu" unique_id=1303647890]
+layout_mode = 2
+tooltip_text = "Toggles fullscreen on or off."
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen
+"
+script = ExtResource("4_13hxu")
+
+[node name="overallVol" type="Label" parent="opBKG/optionsMenu" unique_id=1390296027]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+
+[node name="overallVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=919942570]
+layout_mode = 2
+tooltip_text = "Sets the overall volume of all sound."
+ticks_on_borders = true
+
+[node name="musicVol" type="Label" parent="opBKG/optionsMenu" unique_id=809261307]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Music Volume"
+
+[node name="musicVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=982212870]
+layout_mode = 2
+tooltip_text = "Sets the volume of music only."
+
+[node name="sfxVol" type="Label" parent="opBKG/optionsMenu" unique_id=1904307766]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Sound Volume"
+
+[node name="sfxVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=1965849997]
+layout_mode = 2
+tooltip_text = "Sets the volume of sound effects only."
+
+[node name="largeText" type="CheckButton" parent="opBKG/optionsMenu" unique_id=799488148]
+layout_mode = 2
+tooltip_text = "Changes the size of the font to be larger."
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_font_sizes/font_size = 24
+text = "Large font"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="opBKG/optionsMenu" unique_id=1493868946]
+layout_mode = 2
+
+[node name="saveOpt" type="TextureButton" parent="opBKG/optionsMenu/HBoxContainer" unique_id=1442321745]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_3r6pg")
+
+[node name="cancelOpt" type="TextureButton" parent="opBKG/optionsMenu/HBoxContainer" unique_id=236403478]
+layout_mode = 2
+texture_normal = ExtResource("6_i1db5")
+
+[node name="quitGame" type="TextureButton" parent="opBKG/optionsMenu" unique_id=343737246]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_ptrv4")
+
+[node name="exitMenu" type="TextureButton" parent="opBKG" unique_id=975410514]
+offset_left = 264.0
+offset_top = -417.0
+offset_right = 384.0
+offset_bottom = -297.0
+texture_normal = ExtResource("8_qw3rj")
+
+[connection signal="pressed" from="nextE" to="." method="_on_next_e_pressed"]
+[connection signal="pressed" from="prevE" to="." method="_on_prev_e_pressed"]
+[connection signal="pressed" from="aChoicebox/HBoxContainer/optionA" to="." method="_on_option_a_pressed"]
+[connection signal="pressed" from="aChoicebox/HBoxContainer2/optionB" to="." method="_on_option_b_pressed"]
+[connection signal="pressed" from="missingQBox/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
+[connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/saveOpt" to="." method="_on_save_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/cancelOpt" to="." method="_on_cancel_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/quitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="opBKG/exitMenu" to="." method="_on_exit_menu_pressed"]

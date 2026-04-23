@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://edmc2ycd4gqv"]
+
+[ext_resource type="Script" uid="uid://fhmbcqmxxydj" path="res://g_results_screen.gd" id="1_mh2bt"]
+[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_rvfet"]
+[ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="2_mh2bt"]
+[ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="3_byc8n"]
+[ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="4_2yxqr"]
+[ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="5_vgq3r"]
+[ext_resource type="Texture2D" uid="uid://ccblu66qtfuwa" path="res://assets/quiz_mode/nextButton_2.png" id="6_6dpeb"]
+[ext_resource type="Texture2D" uid="uid://ldqgli6ukae7" path="res://assets/quiz_mode/scoreTextBox.png" id="7_odifk"]
+
+[node name="Control" type="Control" unique_id=1409169327]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mh2bt")
+
+[node name="bkg" type="Sprite2D" parent="." unique_id=1652120827]
+position = Vector2(965, 552)
+texture = ExtResource("1_rvfet")
+
+[node name="backButton" type="TextureButton" parent="." unique_id=310151912]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 24.0
+offset_right = 331.0
+offset_bottom = 224.0
+texture_normal = ExtResource("2_mh2bt")
+
+[node name="wrongFrom" type="Label" parent="." unique_id=688160215]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 536.0
+offset_right = 556.0
+offset_bottom = 575.0
+theme_override_font_sizes/font_size = 28
+text = "From:"
+
+[node name="wrongSubj" type="Label" parent="." unique_id=1105928644]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 584.0
+offset_right = 584.0
+offset_bottom = 623.0
+theme_override_font_sizes/font_size = 28
+text = "Subject:"
+
+[node name="wrongBody" type="RichTextLabel" parent="." unique_id=618769830]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 633.0
+offset_right = 1438.0
+offset_bottom = 868.0
+theme_override_font_sizes/normal_font_size = 28
+vertical_alignment = 1
+
+[node name="lastEmail" type="TextureButton" parent="." unique_id=292669873]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 347.0
+offset_right = 615.0
+offset_bottom = 547.0
+texture_normal = ExtResource("3_byc8n")
+texture_hover = ExtResource("4_2yxqr")
+
+[node name="nextEmail" type="TextureButton" parent="." unique_id=303675880]
+layout_mode = 0
+offset_left = 1283.0
+offset_top = 344.0
+offset_right = 1583.0
+offset_bottom = 544.0
+texture_normal = ExtResource("5_vgq3r")
+texture_hover = ExtResource("6_6dpeb")
+
+[node name="corrAns" type="RichTextLabel" parent="." unique_id=1756868004]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 827.0
+offset_right = 1438.0
+offset_bottom = 1062.0
+theme_override_colors/default_color = Color(0.4527853, 0.6914769, 0.28300613, 1)
+theme_override_font_sizes/normal_font_size = 28
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1918253083]
+position = Vector2(952, 209.99998)
+scale = Vector2(0.88169646, 0.8816964)
+texture = ExtResource("7_odifk")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1642587077]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 246.0
+offset_right = 1387.0
+offset_bottom = 507.0
+theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
+theme_override_font_sizes/font_size = 80
+text = "#"
+horizontal_alignment = 1
+
+[node name="QuestionLabel" type="RichTextLabel" parent="." unique_id=776445003]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 626.0
+offset_right = 389.0
+offset_bottom = 843.0
+theme_override_font_sizes/normal_font_size = 40
+text = "Incorrectly
+ Answered
+		 Email:"
+
+[node name="AnswerLabel" type="RichTextLabel" parent="." unique_id=2075666380]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 889.0
+offset_right = 570.0
+offset_bottom = 1106.0
+theme_override_colors/default_color = Color(0.4509804, 0.6901961, 0.28235295, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Correct
+Answer:"
+
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="lastEmail" to="." method="_on_last_email_pressed"]
+[connection signal="pressed" from="nextEmail" to="." method="_on_next_email_pressed"]
