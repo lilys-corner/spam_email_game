@@ -78,9 +78,9 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 	
 	$clickSFX.play()
 	if(toggled_on == true):
-		pass
+		ThemeDB.get_default_theme().default_font_size = 38
 	else:
-		pass
+		ThemeDB.get_default_theme().default_font_size = 28
 		
 
 
