@@ -143,7 +143,7 @@ func _on_next_e_pressed() -> void:
 	#update
 
 func updateEmail() -> void:
-	var emailID = emailSet[emailNum]
+	var emailID = emailSet[emailNum] + 1
 	
 	var my_query = "SELECT * FROM emails WHERE emailID = " + str(emailID) + ";"
 	database.query(my_query)
@@ -186,7 +186,7 @@ func ScoreCalc() -> void:
 		var emailID = emailSet[i] + 1
 		
 		# query for the int number of the correct answer. this will be stored in database.query_result
-		var my_query = "SELECT emailAnswer FROM questions WHERE emailID = " + str(emailID)
+		var my_query = "SELECT emailAnswer FROM emails WHERE emailID = " + str(emailID)
 		database.query(my_query)
 		
 		# now. if it matches, correctCount + 1. if not, ignore (for now)
@@ -272,7 +272,7 @@ func checkAllAnswers() -> void:
 		if Global.userID != 0:
 			SubmitToLeaderboard()
 		# go to results page
-		get_tree().change_scene_to_file("res://Results_Screen.tscn")
+		get_tree().change_scene_to_file("res://GResults_Screen.tscn")
 	
 	else:
 		# you haven't answered everything
