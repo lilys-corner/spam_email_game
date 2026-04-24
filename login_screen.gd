@@ -21,10 +21,3 @@ func _on_guest_button_pressed() -> void:
 	# 0 is not an id in the database, account ids start at 1
 	Global.userID = 0
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
-
-# this is temporary to get me to the results screen to avoid doing the 20 questions
-func _on_temp_button_pressed() -> void:
-	Global.quizscore = 80
-	Global.incorrectquiz.resize(4)
-	Global.incorrectquiz = [4, 9, 21, 40]
-	get_tree().change_scene_to_file("res://Results_Screen.tscn")

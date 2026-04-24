@@ -86,16 +86,16 @@ theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1918253083]
-position = Vector2(952, 209.99998)
-scale = Vector2(0.88169646, 0.8816964)
+position = Vector2(952, 175.25)
+scale = Vector2(0.88169646, 0.72656256)
 texture = ExtResource("7_odifk")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1642587077]
 layout_mode = 0
 offset_left = 501.0
-offset_top = 246.0
+offset_top = 190.0
 offset_right = 1387.0
-offset_bottom = 507.0
+offset_bottom = 451.0
 theme_override_colors/font_color = Color(0.06, 0.06, 0.06, 1)
 theme_override_font_sizes/font_size = 80
 text = "#"

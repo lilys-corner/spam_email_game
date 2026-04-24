@@ -41,15 +41,6 @@ offset_right = 1098.0
 offset_bottom = 840.0
 texture_normal = ExtResource("2_6b3mx")
 
-[node name="tempButton" type="TextureButton" parent="." unique_id=618434836]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 24.0
-offset_right = 366.0
-offset_bottom = 224.0
-texture_normal = ExtResource("2_6b3mx")
-
 [connection signal="pressed" from="logIn" to="." method="_on_log_in_pressed"]
 [connection signal="pressed" from="signUp" to="." method="_on_sign_up_pressed"]
 [connection signal="pressed" from="guestButton" to="." method="_on_guest_button_pressed"]
-[connection signal="pressed" from="tempButton" to="." method="_on_temp_button_pressed"]
