@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="12_eir2f"]
 [ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="13_1v100"]
 [ext_resource type="Texture2D" uid="uid://b6k7qw7gg6uj3" path="res://assets/quiz_mode/missingQTextBox.png" id="14_j83fh"]
+[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="15_qw3rj"]
 
 [node name="Control" type="Control" unique_id=210518850]
 layout_mode = 3
@@ -69,12 +70,11 @@ text = "Subject:"
 [node name="emailBody" type="RichTextLabel" parent="." unique_id=235317151]
 layout_mode = 0
 offset_left = 512.0
-offset_top = 396.0
+offset_top = 388.0
 offset_right = 1474.0
-offset_bottom = 689.0
+offset_bottom = 681.0
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 theme_override_font_sizes/normal_font_size = 28
-vertical_alignment = 1
 
 [node name="emailCount" type="RichTextLabel" parent="." unique_id=2059862849]
 layout_mode = 0
@@ -90,9 +90,9 @@ horizontal_alignment = 1
 [node name="aChoicebox" type="VBoxContainer" parent="." unique_id=272173583]
 layout_mode = 0
 offset_left = 527.0
-offset_top = 688.0
+offset_top = 624.0
 offset_right = 1447.0
-offset_bottom = 977.0
+offset_bottom = 913.0
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="aChoicebox" unique_id=1671070202]
@@ -154,7 +154,7 @@ theme_override_font_sizes/normal_font_size = 26
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureButton" type="TextureButton" parent="missingQBox" unique_id=801926920]
+[node name="CloseButton" type="TextureButton" parent="missingQBox" unique_id=801926920]
 offset_left = 376.0
 offset_top = -252.0
 offset_right = 496.0
@@ -251,13 +251,22 @@ offset_right = 384.0
 offset_bottom = -297.0
 texture_normal = ExtResource("8_qw3rj")
 
+[node name="menuButton" type="TextureButton" parent="." unique_id=1534044368]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -1.0
+offset_right = 315.0
+offset_bottom = 199.0
+texture_normal = ExtResource("15_qw3rj")
+
 [connection signal="pressed" from="nextE" to="." method="_on_next_e_pressed"]
 [connection signal="pressed" from="prevE" to="." method="_on_prev_e_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer/optionA" to="." method="_on_option_a_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer2/optionB" to="." method="_on_option_b_pressed"]
-[connection signal="pressed" from="missingQBox/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="missingQBox/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/saveOpt" to="." method="_on_save_opt_pressed"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/cancelOpt" to="." method="_on_cancel_opt_pressed"]
 [connection signal="pressed" from="opBKG/optionsMenu/quitGame" to="." method="_on_quit_game_pressed"]
 [connection signal="pressed" from="opBKG/exitMenu" to="." method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="menuButton" to="." method="_on_menu_button_pressed"]

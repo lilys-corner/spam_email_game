@@ -33,7 +33,7 @@ func _ready() -> void:
 			temp_val = rng.randi_range(0, 34)
 		emailSet[i] = temp_val
 	
-	var emailID = emailSet[emailNum]
+	var emailID = emailSet[emailNum] + 1
 	#retrieve information for first question
 	var my_query = "SELECT * FROM emails WHERE emailID = " + str(emailID) + ";"
 	database.query(my_query)
@@ -72,8 +72,8 @@ func _input(event):
 
 #Close already open menu
 func _on_exit_menu_pressed() -> void:
-	#var options1 = false
-	$opBKG.global_position = Vector2(760.0, -400.0)
+	options1 = false
+	$opBKG.global_position = Vector2(960.0, -600.0)
 	#Closes the options menu
 
 func _on_save_opt_pressed() -> void:
@@ -127,7 +127,6 @@ func _on_prev_e_pressed() -> void:
 		#update
 		updateEmail()
 
-
 func _on_next_e_pressed() -> void:
 	#check
 	if(emailNum == 19):
@@ -153,8 +152,8 @@ func updateEmail() -> void:
 	var emailBody : String = database.query_result[0]["emailBody"]
 	
 	# update labels
-	$emailFrom.text = emailFrom
-	$emailSubj.text = emailSubj
+	$emailFrom.text = "From: " + emailFrom
+	$emailSubj.text = "Subject: " + emailSubj
 	$emailBody.text = emailBody
 	
 	var tempnum = emailNum + 1
@@ -282,8 +281,15 @@ func checkAllAnswers() -> void:
 		
 		$missingQBox.global_position = position
 
-func _on_texture_button_pressed() -> void:
+func _on_close_button_pressed() -> void:
 	# BEGONE, TEXTBOX
 	# SENDING IT BACK INTO EXILE
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
+
+
+func _on_menu_button_pressed() -> void:
+	var optionsPosition = Vector2(0.0, 0.0)
+	optionsPosition = Vector2(960.0, 500.0)
+	options1 = true
+	$opBKG.global_position = optionsPosition

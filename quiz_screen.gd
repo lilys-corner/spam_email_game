@@ -267,8 +267,11 @@ func checkAllAnswers() -> void:
 	for i in range(0, 20):
 		if answerSet[i] == 0:
 			allAns = false
-			ANSWERME = ANSWERME + ", " + str(i + 1)
-		
+			if (i == 0):
+				ANSWERME = ANSWERME + str(i + 1)
+			else:
+				ANSWERME = ANSWERME + ", " + str(i + 1)
+	
 	if allAns == true:
 		#calculate score
 		ScoreCalc()
@@ -286,8 +289,6 @@ func checkAllAnswers() -> void:
 		var position = Vector2(960.0, 500.0)
 		#yoink
 		$missingQBox.global_position = position
-		pass
-		#I want my java forloops back
 
 
 func _on_texture_button_pressed() -> void:

@@ -54,7 +54,7 @@ func _ready() -> void:
 	# we will retrieve from the game_scores data table:
 	# score id, game score, then username in descending order of scores (first is highest)
 	# we will only be using the first 10
-	account_db.query("SELECT username, score FROM quiz_scores JOIN accounts ON quiz_scores.ID = accounts.ID ORDER BY score")
+	account_db.query("SELECT username, score FROM quiz_scores JOIN accounts ON quiz_scores.ID = accounts.ID ORDER BY score DESC;")
 	# we now have each entry's first value is username, second is score stored in query_result
 	fill_quiz()
 	
@@ -93,7 +93,7 @@ func _ready() -> void:
 	$gBoard/tier10/username.text = ""
 	$gBoard/tier10/score.text = ""
 	
-	account_db.query("SELECT username, score FROM game_scores JOIN accounts ON game_scores.ID = accounts.ID ORDER BY score")
+	account_db.query("SELECT username, score FROM game_scores JOIN accounts ON game_scores.ID = accounts.ID ORDER BY score DESC;")
 	# we now have each entry's first value is username, second is score stored in query_result
 	fill_game()
 	
