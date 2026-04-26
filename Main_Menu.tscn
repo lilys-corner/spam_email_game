@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bvknexfd5lkew" path="res://assets/main_menu/quizButton_2.png" id="7_t301m"]
 [ext_resource type="Texture2D" uid="uid://bv4cn103pi3d2" path="res://assets/main_menu/exitButton_1.png" id="7_tu7k8"]
 [ext_resource type="Texture2D" uid="uid://d4dswwp3ianuv" path="res://assets/main_menu/gameButton_2.png" id="9_wrfco"]
+[ext_resource type="Texture2D" uid="uid://c8ypebkmfdhno" path="res://assets/main_menu/LOGO-BAYBEEEE.png" id="12_wrfco"]
 
 [node name="Control" type="Control" unique_id=246110809]
 layout_mode = 3
@@ -68,6 +69,10 @@ offset_top = 717.0
 offset_right = 1625.0
 offset_bottom = 1037.0
 texture_normal = ExtResource("7_tu7k8")
+
+[node name="title" type="Sprite2D" parent="." unique_id=623264015]
+position = Vector2(945, 193)
+texture = ExtResource("12_wrfco")
 
 [connection signal="pressed" from="settingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="scoreboardButton" to="." method="_on_scoreboard_button_pressed"]
