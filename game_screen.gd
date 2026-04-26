@@ -10,8 +10,8 @@ func _ready() -> void:
 
 	#set the actual volumes of the back and click sfx
 	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
-	#%clickSFX.set_volume_linear(sfxVol)
-	#%backSFX.set_volume_linear(sfxVol)
+	$opBKG/clickSFX.set_volume_linear(sfxVol)
+	$opBKG/backSFX.set_volume_linear(sfxVol)
 	
 	# ^ pop up menu
 	# rest of _ready is for the game
@@ -42,8 +42,8 @@ func _ready() -> void:
 	var emailBody : String = database.query_result[0]["emailBody"]
 	
 	# update labels
-	$emailFrom.text = emailFrom
-	$emailSubj.text = emailSubj
+	$emailFrom.text = "From: " + emailFrom
+	$emailSubj.text = "Subject: " + emailSubj
 	$emailBody.text = emailBody
 	
 	var tempnum = emailNum + 1
@@ -84,8 +84,8 @@ func _on_save_opt_pressed() -> void:
 	
 	#recalculating the volume
 	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
-	#$clickSFX.set_volume_linear(sfxVol)
-	#$backSFX.set_volume_linear(sfxVol)
+	$opBKG/clickSFX.set_volume_linear(sfxVol)
+	$opBKG/backSFX.set_volume_linear(sfxVol)
 
 func _on_cancel_opt_pressed() -> void:
 	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
@@ -94,7 +94,6 @@ func _on_cancel_opt_pressed() -> void:
 
 func _on_quit_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
-	pass
 
 # here we go... all this is like basically quiz_screen.gd
 var database: SQLite
@@ -189,8 +188,13 @@ func ScoreCalc() -> void:
 		database.query(my_query)
 		
 		# now. if it matches, correctCount + 1. if not, ignore (for now)
-		# answers are 1 for no, 2 for yes, emailAnswer is 0 for no, 1 for yes
-		if (database.query_result[0]["emailAnswer"] == answerSet[i] - 1):
+		# answers are 1 for yes, 2 for no, emailAnswer is 0 for no, 1 for yes
+		# are both the answer and the data Yes?
+		if (database.query_result[0]["emailAnswer"] == 1 && answerSet[i] == 1):
+			correctCount += 1
+			correct[i] = 1
+		# are they both No?
+		elif (database.query_result[0]["emailAnswer"] == 0 && answerSet[i] == 2):
 			correctCount += 1
 			correct[i] = 1
 	
@@ -287,9 +291,36 @@ func _on_close_button_pressed() -> void:
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
 
-
 func _on_menu_button_pressed() -> void:
 	var optionsPosition = Vector2(0.0, 0.0)
 	optionsPosition = Vector2(960.0, 500.0)
 	options1 = true
 	$opBKG.global_position = optionsPosition
+
+
+func _on_large_text_toggled(toggled_on: bool) -> void:
+	$opBKG/clickSFX.play()
+	var settings_theme = preload("res://settings_theme.tres")
+	var quiz_theme = preload("res://quiz_theme.tres")
+	var score_values_theme = preload("res://scoreboard_rank_theme.tres")
+	var results_label_theme = preload("res://results_label_theme.tres")
+	var results_text_theme = preload("res://results_text_theme.tres")
+	var game_theme = preload("res://game_theme.tres")
+	
+	if(toggled_on == true):
+		settings_theme.set_font_size("font_size", "Label", 34)
+		settings_theme.set_font_size("font_size", "CheckButton", 34)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 35)
+		score_values_theme.set_font_size("font_size", "Label", 36)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 50)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 38)
+		game_theme.set_font_size("normal_font_size", "RichTextLabel", 38)
+	
+	else:
+		settings_theme.set_font_size("font_size", "Label", 24)
+		settings_theme.set_font_size("font_size", "CheckButton", 24)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
+		score_values_theme.set_font_size("font_size", "Label", 26)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 40)
+		results_text_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
+		game_theme.set_font_size("normal_font_size", "RichTextLabel", 28)

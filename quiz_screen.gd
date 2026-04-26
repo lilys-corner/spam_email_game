@@ -2,6 +2,9 @@ extends Control
 var database: SQLite
 var account_db
 
+#Is the options menu available?
+var options1 = false
+
 #ok so you gotta put your variables up here so the program doesn't
 #scream at you
 #maybe have a total question variable that can be adjusted
@@ -21,6 +24,14 @@ var select = preload("res://assets/quiz_mode/opt_selected.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
+	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
+	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
+	
+	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
+	$opBKG/clickSFX.set_volume_linear(sfxVol)
+	$opBKG/backSFX.set_volume_linear(sfxVol)
+	
 	database = SQLite.new()
 	database.path = "res://questionsData.db" #would want to be using user:// for saves
 	database.open_db()
@@ -290,10 +301,77 @@ func checkAllAnswers() -> void:
 		#yoink
 		$missingQBox.global_position = position
 
-
 func _on_texture_button_pressed() -> void:
 	# BEGONE, TEXTBOX
 	# SENDING IT BACK INTO EXILE
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
-	pass # Replace with function body.
+
+func _input(event):
+	var optionsPosition = Vector2(0.0, 0.0)
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			if options1 == false:
+				optionsPosition = Vector2(960.0, 500.0)
+				options1 = true
+			else:
+				optionsPosition = Vector2(960.0, -600.0)
+				options1 = false
+			#replace with the options menu
+			
+			$opBKG.global_position = optionsPosition
+
+#Close already open menu
+func _on_exit_menu_pressed() -> void:
+	options1 = false
+	$opBKG.global_position = Vector2(960.0, -600.0)
+	#Closes the options menu
+
+func _on_save_opt_pressed() -> void:
+	#save settings to the global variables
+	Global.masterVolume = $opBKG/optionsMenu/overallVolume.value
+	Global.musicVolume = $opBKG/optionsMenu/musicVolume.value
+	Global.sfxVolume = $opBKG/optionsMenu/sfxVolume.value
+	
+	#recalculating the volume
+	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
+	$opBKG/clickSFX.set_volume_linear(sfxVol)
+	$opBKG/backSFX.set_volume_linear(sfxVol)
+
+func _on_cancel_opt_pressed() -> void:
+	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
+	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
+	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
+
+func _on_quit_game_pressed() -> void:
+	get_tree().change_scene_to_file("res://Main_Menu.tscn")
+
+func _on_menu_button_pressed() -> void:
+	var optionsPosition = Vector2(0.0, 0.0)
+	optionsPosition = Vector2(960.0, 500.0)
+	options1 = true
+	$opBKG.global_position = optionsPosition
+
+func _on_large_text_toggled(toggled_on: bool) -> void:
+	$opBKG/clickSFX.play()
+	var settings_theme = preload("res://settings_theme.tres")
+	var quiz_theme = preload("res://quiz_theme.tres")
+	var score_values_theme = preload("res://scoreboard_rank_theme.tres")
+	var results_label_theme = preload("res://results_label_theme.tres")
+	var results_text_theme = preload("res://results_text_theme.tres")
+	
+	if(toggled_on == true):
+		settings_theme.set_font_size("font_size", "Label", 34)
+		settings_theme.set_font_size("font_size", "CheckButton", 34)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 35)
+		score_values_theme.set_font_size("font_size", "Label", 36)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 50)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 38)
+	
+	else:
+		settings_theme.set_font_size("font_size", "Label", 24)
+		settings_theme.set_font_size("font_size", "CheckButton", 24)
+		quiz_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
+		score_values_theme.set_font_size("font_size", "Label", 26)
+		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 40)
+		results_text_theme.set_font_size("normal_font_size", "RichTextLabel", 28)

@@ -60,9 +60,9 @@ func updateQuestion() -> void:
 	var emailBody : String = database.query_result[0]["emailBody"]
 	var quesAns : String
 	if (database.query_result[0]["emailAnswer"] == 0):
-		quesAns = "No, this email is not spam."
+		quesAns = "This email is not spam."
 	else:
-		quesAns = "Yes, this email is spam."
+		quesAns = "This email is spam."
 	
 	#update:
 	$wrongFrom.text = emailFrom

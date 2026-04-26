@@ -68,8 +68,6 @@ func _on_save_settings_pressed() -> void:
 	$backSFX.set_volume_linear(sfxVol)
 	#No need to recalculate music for here
 	#You know what I should probably just put it in the global variables at this point
-	
-
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	#volume math
@@ -99,9 +97,6 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		score_values_theme.set_font_size("font_size", "Label", 26)
 		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 40)
 		results_text_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
-		
-		
-
 
 func _on_dys_font_toggled(toggled_on: bool) -> void:
 	if (toggled_on == true):

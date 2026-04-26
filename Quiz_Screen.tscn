@@ -11,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="7_no4nv"]
 [ext_resource type="Texture2D" uid="uid://b6k7qw7gg6uj3" path="res://assets/quiz_mode/missingQTextBox.png" id="9_870kp"]
 [ext_resource type="Texture2D" uid="uid://co43bp01jrjhw" path="res://assets/options_popup/closeMenu.png" id="10_x0tmw"]
+[ext_resource type="Texture2D" uid="uid://uef1v13eq76a" path="res://assets/options_popup/optionsPage.png" id="12_4gl2m"]
+[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="13_k0d0e"]
+[ext_resource type="Texture2D" uid="uid://cijsv56knpm4v" path="res://assets/options_popup/saveButton.png" id="14_up6hk"]
+[ext_resource type="Texture2D" uid="uid://bb5vn1mrdqrai" path="res://assets/options_popup/cancelButton.png" id="15_7uabc"]
+[ext_resource type="Texture2D" uid="uid://3r7kw2a3f6jh" path="res://assets/options_popup/quitGame.png" id="16_iplcg"]
+[ext_resource type="AudioStream" uid="uid://csubhjvam1kaw" path="res://assets/audio/back-sfx.mp3" id="17_up6hk"]
+[ext_resource type="AudioStream" uid="uid://cjvm38d7utiro" path="res://assets/audio/select-sfx.mp3" id="18_7uabc"]
 
 [node name="Control" type="Control" unique_id=1808749728]
 layout_mode = 3
@@ -164,6 +171,110 @@ offset_right = 496.0
 offset_bottom = -132.0
 texture_normal = ExtResource("10_x0tmw")
 
+[node name="opBKG" type="Sprite2D" parent="." unique_id=862456472]
+position = Vector2(-462, 592)
+texture = ExtResource("12_4gl2m")
+
+[node name="optionsMenu" type="VBoxContainer" parent="opBKG" unique_id=1291336455]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -677.0
+offset_top = -644.0
+offset_right = -73.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FullscreenBtn" type="CheckButton" parent="opBKG/optionsMenu" unique_id=758881470]
+layout_mode = 2
+tooltip_text = "Toggles fullscreen on or off."
+theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen
+"
+script = ExtResource("13_k0d0e")
+
+[node name="overallVol" type="Label" parent="opBKG/optionsMenu" unique_id=299915243]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Master Volume"
+
+[node name="overallVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=303565781]
+layout_mode = 2
+tooltip_text = "Sets the overall volume of all sound."
+ticks_on_borders = true
+
+[node name="musicVol" type="Label" parent="opBKG/optionsMenu" unique_id=1052960146]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Music Volume"
+
+[node name="musicVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=1498222800]
+layout_mode = 2
+tooltip_text = "Sets the volume of music only."
+
+[node name="sfxVol" type="Label" parent="opBKG/optionsMenu" unique_id=1845906083]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_font_sizes/font_size = 24
+text = "Sound Volume"
+
+[node name="sfxVolume" type="HSlider" parent="opBKG/optionsMenu" unique_id=1336249524]
+layout_mode = 2
+tooltip_text = "Sets the volume of sound effects only."
+
+[node name="largeText" type="CheckButton" parent="opBKG/optionsMenu" unique_id=2071259534]
+layout_mode = 2
+tooltip_text = "Changes the size of the font to be larger."
+theme_override_colors/font_color = Color(0.0093103545, 0.0093103545, 0.0093103545, 1)
+theme_override_font_sizes/font_size = 24
+text = "Large font"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="opBKG/optionsMenu" unique_id=1043518191]
+layout_mode = 2
+
+[node name="saveOpt" type="TextureButton" parent="opBKG/optionsMenu/HBoxContainer" unique_id=1052566121]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("14_up6hk")
+
+[node name="cancelOpt" type="TextureButton" parent="opBKG/optionsMenu/HBoxContainer" unique_id=549935767]
+layout_mode = 2
+texture_normal = ExtResource("15_7uabc")
+
+[node name="quitGame" type="TextureButton" parent="opBKG/optionsMenu" unique_id=744879425]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("16_iplcg")
+
+[node name="exitMenu" type="TextureButton" parent="opBKG" unique_id=1879920435]
+offset_left = 264.0
+offset_top = -417.0
+offset_right = 384.0
+offset_bottom = -297.0
+texture_normal = ExtResource("10_x0tmw")
+
+[node name="backSFX" type="AudioStreamPlayer" parent="opBKG" unique_id=377526479]
+stream = ExtResource("17_up6hk")
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="opBKG" unique_id=1190206696]
+stream = ExtResource("18_7uabc")
+pitch_scale = 2.0
+
+[node name="menuButton" type="TextureButton" parent="." unique_id=645011562]
+layout_mode = 0
+offset_left = 15.0
+offset_top = -1.0
+offset_right = 315.0
+offset_bottom = 199.0
+texture_normal = ExtResource("2_3ojmc")
+
 [connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]
 [connection signal="pressed" from="prevQ" to="." method="_on_prev_q_pressed"]
@@ -172,3 +283,10 @@ texture_normal = ExtResource("10_x0tmw")
 [connection signal="pressed" from="aChoicebox/HBoxContainer3/optionC" to="." method="_on_option_c_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer4/optionD" to="." method="_on_option_d_pressed"]
 [connection signal="pressed" from="missingQBox/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
+[connection signal="toggled" from="opBKG/optionsMenu/largeText" to="." method="_on_large_text_toggled"]
+[connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/saveOpt" to="." method="_on_save_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/cancelOpt" to="." method="_on_cancel_opt_pressed"]
+[connection signal="pressed" from="opBKG/optionsMenu/quitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="opBKG/exitMenu" to="." method="_on_exit_menu_pressed"]
+[connection signal="pressed" from="menuButton" to="." method="_on_menu_button_pressed"]
