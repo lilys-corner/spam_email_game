@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://box64nh10rttr"]
 
 [ext_resource type="Script" uid="uid://dxxhdgcbhb01" path="res://login_screen.gd" id="1_hoyjq"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_6b3mx"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_lf3kl"]
+[ext_resource type="Texture2D" uid="uid://c0ks607wyabk0" path="res://assets/signup_login/login_1.png" id="3_j360b"]
+[ext_resource type="Texture2D" uid="uid://gxe61i0jtejj" path="res://assets/signup_login/login_2.png" id="4_i5q4r"]
+[ext_resource type="Texture2D" uid="uid://cltsfihroxnou" path="res://assets/signup_login/signup_1.png" id="5_a2ya0"]
+[ext_resource type="Texture2D" uid="uid://2kgjnikdjys1" path="res://assets/signup_login/signup_2.png" id="6_87fso"]
+[ext_resource type="Texture2D" uid="uid://c5lgaqs4pbyc0" path="res://assets/signup_login/guest_1.png" id="7_rbn3y"]
+[ext_resource type="Texture2D" uid="uid://dnu636xqt3lom" path="res://assets/signup_login/guest_2.png" id="8_6p76y"]
 
 [node name="Control" type="Control" unique_id=64377879]
 layout_mode = 3
@@ -19,27 +24,30 @@ texture = ExtResource("2_lf3kl")
 
 [node name="logIn" type="TextureButton" parent="." unique_id=1271053747]
 layout_mode = 0
-offset_left = 786.0
-offset_top = 216.0
-offset_right = 1086.0
+offset_left = 717.0
+offset_top = 166.0
+offset_right = 1217.0
 offset_bottom = 416.0
-texture_normal = ExtResource("2_6b3mx")
+texture_normal = ExtResource("3_j360b")
+texture_hover = ExtResource("4_i5q4r")
 
 [node name="signUp" type="TextureButton" parent="." unique_id=951069641]
 layout_mode = 0
-offset_left = 796.0
-offset_top = 422.0
-offset_right = 1096.0
-offset_bottom = 622.0
-texture_normal = ExtResource("2_6b3mx")
+offset_left = 716.0
+offset_top = 427.0
+offset_right = 1216.0
+offset_bottom = 677.0
+texture_normal = ExtResource("5_a2ya0")
+texture_pressed = ExtResource("6_87fso")
 
 [node name="guestButton" type="TextureButton" parent="." unique_id=932030143]
 layout_mode = 0
-offset_left = 798.0
-offset_top = 640.0
-offset_right = 1098.0
-offset_bottom = 840.0
-texture_normal = ExtResource("2_6b3mx")
+offset_left = 714.0
+offset_top = 688.0
+offset_right = 1214.0
+offset_bottom = 938.0
+texture_normal = ExtResource("7_rbn3y")
+texture_pressed = ExtResource("8_6p76y")
 
 [connection signal="pressed" from="logIn" to="." method="_on_log_in_pressed"]
 [connection signal="pressed" from="signUp" to="." method="_on_sign_up_pressed"]
