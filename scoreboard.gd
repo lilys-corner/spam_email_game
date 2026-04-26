@@ -15,8 +15,6 @@ func _ready() -> void:
 	# open the database so we can get stuff
 	account_db.open_db()
 	
-	# WHOO labels and the like
-	#Oh god there's so many
 	# QUIZ LEADERBOARD----------------------->>
 	$qBoard/tier1/username.text = ""
 	$qBoard/tier1/score.text = ""
@@ -49,18 +47,10 @@ func _ready() -> void:
 	$qBoard/tier10/username.text = ""
 	$qBoard/tier10/score.text = ""
 	
-	# DATABASE STUFF
-	# perform a queryyyy
-	# we will retrieve from the game_scores data table:
-	# score id, game score, then username in descending order of scores (first is highest)
-	# we will only be using the first 10
+	# DATABASE Query for selecting top 10
 	account_db.query("SELECT username, score FROM quiz_scores JOIN accounts ON quiz_scores.ID = accounts.ID ORDER BY score DESC;")
 	# we now have each entry's first value is username, second is score stored in query_result
 	fill_quiz()
-	
-	# now. let's get to work putting these in the lil boxes
-	print(account_db.query_result)
-	print(account_db.query_result)
 	
 	# GAME LEADERBOARD----------------------->>
 	$gBoard/tier1/username.text = ""
@@ -93,6 +83,7 @@ func _ready() -> void:
 	$gBoard/tier10/username.text = ""
 	$gBoard/tier10/score.text = ""
 	
+	#Database Query
 	account_db.query("SELECT username, score FROM game_scores JOIN accounts ON game_scores.ID = accounts.ID ORDER BY score DESC;")
 	# we now have each entry's first value is username, second is score stored in query_result
 	fill_game()
@@ -107,6 +98,7 @@ func _process(delta: float) -> void:
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
+#Fill in Quiz Leaderboard
 func fill_quiz() -> void:
 	if not account_db.query_result:
 		return
@@ -144,6 +136,7 @@ func fill_quiz() -> void:
 		$qBoard/tier10/username.text = account_db.query_result[9]["username"]
 		$qBoard/tier10/score.text = str(account_db.query_result[9]["score"])
 
+#Fill in Game Leaderboard
 func fill_game() -> void:
 	if not account_db.query_result:
 		return

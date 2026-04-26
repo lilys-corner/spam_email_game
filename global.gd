@@ -1,11 +1,5 @@
 extends Node
 
-#the global variables file
-#put variables here
-#it autoloads in the loading screen
-#variables will be updated as necessary if you load up the different settings
-
-
 #loading in the default settings
 var dyslexiaFont = load("res://assets/fonts/comici.ttf")
 var fontSize = 0 #OK we will adjust the default values later when we implement this

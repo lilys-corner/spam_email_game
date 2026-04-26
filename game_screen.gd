@@ -244,9 +244,9 @@ func clearOpt() -> void:
 		$aChoicebox/HBoxContainer2/optionB.texture_normal = select
 
 func next_submit_swap() -> void:
+	#Load in assets
 	var next1 = preload("res://assets/quiz_mode/nextButton_1.png")
 	var next2 = preload("res://assets/quiz_mode/nextButton_2.png")
-	
 	var submit1 = preload("res://assets/quiz_mode/submitButton_1.png")
 	var submit2 = preload("res://assets/quiz_mode/submitButton_2.png")
 	
@@ -257,6 +257,7 @@ func next_submit_swap() -> void:
 		$nextE.texture_normal = next1
 		$nextE.texture_hover = next2
 
+#Check if all questions have been answered
 func checkAllAnswers() -> void:
 	var allAns = true
 	var ANSWERME = ""
@@ -285,9 +286,8 @@ func checkAllAnswers() -> void:
 		
 		$missingQBox.global_position = position
 
+#Close Popup 
 func _on_close_button_pressed() -> void:
-	# BEGONE, TEXTBOX
-	# SENDING IT BACK INTO EXILE
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
 
@@ -297,7 +297,7 @@ func _on_menu_button_pressed() -> void:
 	options1 = true
 	$opBKG.global_position = optionsPosition
 
-
+#Resize Text to be larger
 func _on_large_text_toggled(toggled_on: bool) -> void:
 	$opBKG/clickSFX.play()
 	var settings_theme = preload("res://settings_theme.tres")

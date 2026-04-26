@@ -5,20 +5,16 @@ var account_db
 #Is the options menu available?
 var options1 = false
 
-#ok so you gotta put your variables up here so the program doesn't
-#scream at you
-#maybe have a total question variable that can be adjusted
-#with user input?
+#Variables
 var totalQuestion = 20
 var correctCount = 0
 var questionNum = 0
-var questionSet = [] # question set full of qIDs in order, correlate with answerSet
+# question set full of qIDs in order, correlate with answerSet
+var questionSet = [] 
+#0 = no answer selected
 var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-#assuming I can count that is 20 0s. if we change the number of questions we will have to change that too
-#0: no answer selected
-#we will want the submit button to check and see if there are any 0s left
 var rng = RandomNumberGenerator.new()
-
+#asset loading for answers
 var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 var select = preload("res://assets/quiz_mode/opt_selected.png")
 
@@ -42,17 +38,13 @@ func _ready() -> void:
 	#initialize question ID array
 	#randomize numbers and fill in array
 	for i in range(0, 20):
-		#pass
-		var temp_val = rng.randi_range(0, 39) #not a clue how many entries we will have
-		print("Before reroll", temp_val)
+		var temp_val = rng.randi_range(0, 39) 
 		# confirmed to be 40 questions in db (for randi_range)
 		
 		while questionSet.has(temp_val):
 			temp_val = rng.randi_range(0, 39)
-			print("After reroll", temp_val)
 		questionSet[i] = temp_val
 	
-	print(questionSet)
 	var qID = questionSet[questionNum]
 	#retrieve information for first question
 	var questionData = database.select_rows("questions", "qID = qID", ["*"])
@@ -64,11 +56,6 @@ func _ready() -> void:
 	
 	
 	#update labels
-	#$questionItself.text = "QUESTION HERE"
-	#$aChoicebox/HBoxContainer/answer1.text = "AAAAA"
-	#$aChoicebox/HBoxContainer2/answer2.text = "BBBBB"
-	#$aChoicebox/HBoxContainer3/answer3.text = "C"
-	#$aChoicebox/HBoxContainer4/answer4.text = "DEFGHIJKLMNOP"
 	$questionItself.text = quesBody
 	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
 	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
@@ -81,15 +68,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_return_to_menutemp_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
+#Back Button Pressed to go back to previous question
 func _on_prev_q_pressed() -> void:
 	#check
 	if questionNum == 0:
 		pass
-		#do nothing. you can't go back. unless we want you to be able to quit out of the quiz.
 	else:
 		#decrement
 		questionNum = questionNum - 1
@@ -97,12 +83,10 @@ func _on_prev_q_pressed() -> void:
 		#update
 		updateQuestion()
 
-
+#Next Button Pressed to advance to next question
 func _on_next_q_pressed() -> void:
 	#check
 	if(questionNum == 19):
-		#texture is submit button
-		
 		#check if all answers are filled
 		checkAllAnswers()
 		#obligatory are you sure you want to submit warning
@@ -110,22 +94,18 @@ func _on_next_q_pressed() -> void:
 		#increment
 		questionNum = questionNum + 1
 		updateQuestion()
-	#update
 
+#Update the question
 func updateQuestion() -> void:
 	var qID = questionSet[questionNum]
-	#var qID = questionNum
-	print(questionNum)
 	var questionData = database.select_rows("questions", "qID = qID", ["*"])
-	print(qID)
 	var quesBody : String = questionData[qID]["qBody"]
 	var quesChoice1 : String = questionData[qID]["qChoice1"]
 	var quesChoice2 : String = questionData[qID]["qChoice2"]
 	var quesChoice3 : String = questionData[qID]["qChoice3"]
 	var quesChoice4 : String = questionData[qID]["qChoice4"]
-	print(questionSet)
 	
-	#update:
+	#update text:
 	$questionItself.text = quesBody
 	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
 	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
@@ -144,26 +124,11 @@ func _on_option_a_pressed() -> void:
 	#set this sprite to different sprite
 	clearOpt()
 	
-	#draft code for adding number to score, Correct values as we get database together - Shay
-	#for now I was thinking depending on the question number each value will add up to 100 for a max score
-	#if(answerSet[questionNum] == questions.answer(qID)): #placeholder, replace when quiz database complete
-		#correctCount+=1
-		
-	#Current thoughts are that we just calculate it out at the end I feel like that would be much easier
-	#as far as scoring goes so it doesn't need to recalculate whenever the player picks a different option
-	#we can just make a second array that pulls the correct number every time you load a question if necessary
-	
-	# Correct values will be determined in ScoreCalc() let's gooo
 
 #score calculation function
 func ScoreCalc() -> void:
 	# this is pretty temporary it's just so i can search it later
 	var correct = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-	
-	# we need to get correctCount and totalQuestion (we got totalQuestion)
-	# we also need to make an array with the incorrect question ids for the results page. this is done after
-	# when we have the num of correct questions. and then we can get num of incorrect, then make array
-	# first order of business. go through questions, match answers with info from the qid in questionSet
 	
 	for i in range(0, 20):
 		# the question we are currently checking, goes from first to last
@@ -184,8 +149,7 @@ func ScoreCalc() -> void:
 	# quizscore is an int hence why i *100 and then divide, bc otherwise it's 0
 	Global.quizscore = (correctCount*100)/totalQuestion
 	
-	# OKAY. so we have the number of correct questions.
-	# get incorrectCount for our incorrect array!
+	#Count incorrect questions
 	var incorrectCount = totalQuestion - correctCount
 	
 	# resize array to incorrect amount
@@ -223,6 +187,7 @@ func SubmitToLeaderboard() -> void:
 	account_db.close_db()
 
 func clearOpt() -> void:
+	# Load in asset
 	var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 	var select = preload("res://assets/quiz_mode/opt_selected.png")
 	#resets the sprites of all options when you change questions forwards or back actually
@@ -240,10 +205,9 @@ func clearOpt() -> void:
 	elif answerSet[questionNum] == 4:
 		$aChoicebox/HBoxContainer4/optionD.texture_normal = select
 
-
+# Selecting Answers
 func _on_option_b_pressed() -> void:
 		answerSet[questionNum] = 2
-		#set this sprite to different sprite
 		clearOpt()
 
 
@@ -256,6 +220,7 @@ func _on_option_d_pressed() -> void:
 	answerSet[questionNum] = 4
 	clearOpt()
 	
+#Switch Next Button Asset to Submit
 func next_submit_swap() -> void:
 	var next1 = preload("res://assets/quiz_mode/nextButton_1.png")
 	var next2 = preload("res://assets/quiz_mode/nextButton_2.png")
@@ -270,10 +235,10 @@ func next_submit_swap() -> void:
 		$nextQ.texture_normal = next1
 		$nextQ.texture_hover = next2
 
+#Check if all questions were answered
 func checkAllAnswers() -> void:
 	var allAns = true
 	var ANSWERME = ""
-	#you are legally required to submit an answer for every question now
 	#step 1: LOOPS BABEY
 	for i in range(0, 20):
 		if answerSet[i] == 0:
@@ -293,8 +258,6 @@ func checkAllAnswers() -> void:
 		get_tree().change_scene_to_file("res://Results_Screen.tscn")
 
 	else:
-		# NOOOOOO YOU CAN'T DO THATTTTT
-		#testing a bit here
 		$missingQBox/qText.text = ANSWERME
 		#bring the text box over here, gang
 		var position = Vector2(960.0, 500.0)
@@ -302,8 +265,6 @@ func checkAllAnswers() -> void:
 		$missingQBox.global_position = position
 
 func _on_texture_button_pressed() -> void:
-	# BEGONE, TEXTBOX
-	# SENDING IT BACK INTO EXILE
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
 
@@ -321,7 +282,7 @@ func _input(event):
 			
 			$opBKG.global_position = optionsPosition
 
-#Close already open menu
+#Close already option menu
 func _on_exit_menu_pressed() -> void:
 	options1 = false
 	$opBKG.global_position = Vector2(960.0, -600.0)
@@ -338,11 +299,13 @@ func _on_save_opt_pressed() -> void:
 	$opBKG/clickSFX.set_volume_linear(sfxVol)
 	$opBKG/backSFX.set_volume_linear(sfxVol)
 
+#Reset Volume Settings to last saved state
 func _on_cancel_opt_pressed() -> void:
 	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
 	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
 	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
 
+#Exit to Main Menu
 func _on_quit_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
@@ -352,6 +315,7 @@ func _on_menu_button_pressed() -> void:
 	options1 = true
 	$opBKG.global_position = optionsPosition
 
+# Large Text Toggle
 func _on_large_text_toggled(toggled_on: bool) -> void:
 	$opBKG/clickSFX.play()
 	var settings_theme = preload("res://settings_theme.tres")

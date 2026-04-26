@@ -1,22 +1,7 @@
 extends Control
-#Hello and welcome to my Settings Menu Script
-#OK I honestly wish that I had my second monitor for this but you know. whatever.
-
-#LIST OF SETTINGS
-# Fullscreen (ON/OFF)
-# Volume (3 subcategories)
-#   Overall Volume (Slider)
-#   SFX Volume (Slider)
-#   Music Volume (Slider)
-# Readable Font
-#Ok I've got a question is this just the
-#dyslexia font option or is there also the font sizing thing
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#set up the fullscreen etc
-	#Global.sfxVolume = 50.0
-	
+func _ready() -> void:	
 	#volumes
 	$overallVolume.value = Global.masterVolume
 	$musicVolume.value = Global.musicVolume
@@ -32,21 +17,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_temp_pressed() -> void:
 	get_tree().quit()
 
-
+#Travel back to menu
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
-	#We are going to need to change the texture later
-	#This one does *not* get deleted I think it's a good idea to simply not allow
-	#The player to get stuck in the settings menu for the rest of their life
-
 
 func _on_h_slider_changed() -> void:
 	pass # Replace with function body.
-
 
 func _on_cancel_settings_pressed() -> void:
 	#set all settings back to how it was before
@@ -56,8 +35,7 @@ func _on_cancel_settings_pressed() -> void:
 
 
 func _on_save_settings_pressed() -> void:
-	#save settings to the global variables. and maybe in to the
-	#player's settings file or something idfk
+	#save settings to the global variables
 	Global.masterVolume = $overallVolume.value
 	Global.musicVolume = $musicVolume.value
 	Global.sfxVolume = $sfxVolume.value
@@ -66,14 +44,12 @@ func _on_save_settings_pressed() -> void:
 	var sfxVol = 1*(Global.masterVolume/100)*(Global.sfxVolume/100)
 	$clickSFX.set_volume_linear(sfxVol)
 	$backSFX.set_volume_linear(sfxVol)
-	#No need to recalculate music for here
-	#You know what I should probably just put it in the global variables at this point
 
+#Larger Font Size Toggle
 func _on_check_button_toggled(toggled_on: bool) -> void:
-	#volume math
-	#it's now done in the ready and save functions
-	
+	#Sound Effects
 	$clickSFX.play()
+	#Load in Themes for text sizing
 	var settings_theme = preload("res://settings_theme.tres")
 	var quiz_theme = preload("res://quiz_theme.tres")
 	var score_values_theme = preload("res://scoreboard_rank_theme.tres")
@@ -88,8 +64,6 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 50)
 		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 38)
 		
-		
-		#ThemeDB.get_default_theme().default_font_size = 38
 	else:
 		settings_theme.set_font_size("font_size", "Label", 24)
 		settings_theme.set_font_size("font_size", "CheckButton", 24)
@@ -98,6 +72,7 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 		results_label_theme.set_font_size("normal_font_size", "RichTextLabel", 40)
 		results_text_theme.set_font_size("normal_font_size", "RichTextLabel", 28)
 
+#Dyslexia Font Toggle
 func _on_dys_font_toggled(toggled_on: bool) -> void:
 	if (toggled_on == true):
 		ThemeDB.get_default_theme().default_font = Global.dyslexiaFont
