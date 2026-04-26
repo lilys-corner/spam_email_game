@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://box64nh10rttr"]
 
 [ext_resource type="Script" uid="uid://dxxhdgcbhb01" path="res://login_screen.gd" id="1_hoyjq"]
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_lf3kl"]
+[ext_resource type="Texture2D" uid="uid://ydu3sea5rk28" path="res://assets/signup_login/bkg-signup.png" id="2_j360b"]
 [ext_resource type="Texture2D" uid="uid://c0ks607wyabk0" path="res://assets/signup_login/login_1.png" id="3_j360b"]
 [ext_resource type="Texture2D" uid="uid://gxe61i0jtejj" path="res://assets/signup_login/login_2.png" id="4_i5q4r"]
 [ext_resource type="Texture2D" uid="uid://cltsfihroxnou" path="res://assets/signup_login/signup_1.png" id="5_a2ya0"]
@@ -20,7 +20,7 @@ script = ExtResource("1_hoyjq")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=753982945]
 position = Vector2(965, 552)
-texture = ExtResource("2_lf3kl")
+texture = ExtResource("2_j360b")
 
 [node name="logIn" type="TextureButton" parent="." unique_id=1271053747]
 layout_mode = 0
