@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://davuqqvx4o2yw"]
 
 [ext_resource type="Script" uid="uid://x65aw3p5xulx" path="res://main_menu.gd" id="1_m625n"]
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="2_gtid3"]
+[ext_resource type="Texture2D" uid="uid://bc66lsgo8sr5g" path="res://assets/main_menu/mainMenuBkg.png" id="2_wrfco"]
 [ext_resource type="Texture2D" uid="uid://3anxmnn3x2wd" path="res://assets/main_menu/optionsButton_1.png" id="3_t301m"]
 [ext_resource type="Texture2D" uid="uid://b22odagkyyo3m" path="res://assets/main_menu/scoreboardButton_1.png" id="4_3mro0"]
 [ext_resource type="Texture2D" uid="uid://bl3psriqdmgjw" path="res://assets/main_menu/quizButton_1.png" id="4_257up"]
@@ -23,8 +23,8 @@ grow_vertical = 2
 script = ExtResource("1_m625n")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=173408306]
-position = Vector2(965, 552)
-texture = ExtResource("2_gtid3")
+position = Vector2(961, 540)
+texture = ExtResource("2_wrfco")
 
 [node name="settingsButton" type="TextureButton" parent="." unique_id=1852969848]
 layout_mode = 0
