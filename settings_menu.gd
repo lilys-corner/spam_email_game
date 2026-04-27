@@ -17,9 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_temp_pressed() -> void:
-	get_tree().quit()
-
 #Travel back to menu
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")

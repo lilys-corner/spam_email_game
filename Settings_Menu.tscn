@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://d118km7o08kbh" path="res://assets/settings/settings-bkg.png" id="2_h7jdq"]
 [ext_resource type="Theme" uid="uid://cpeqwlbhrauh" path="res://settings_theme.tres" id="3_4k8ag"]
 [ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="4_a7sdu"]
 [ext_resource type="Texture2D" uid="uid://gjpqboyvm4f8" path="res://assets/settings/saveSettings.png" id="5_50pbl"]
 [ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="5_rysv1"]
 [ext_resource type="Texture2D" uid="uid://b08ts35vbrufy" path="res://assets/settings/cancelSettings.png" id="6_rysv1"]
@@ -36,14 +35,6 @@ theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 
 text = "Fullscreen
 "
 script = ExtResource("3_oj84s")
-
-[node name="temp" type="TextureButton" parent="." unique_id=2128716427]
-layout_mode = 0
-offset_left = -434.0
-offset_top = 589.0
-offset_right = -134.0
-offset_bottom = 789.0
-texture_normal = ExtResource("4_a7sdu")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=286580873]
 layout_mode = 0
@@ -149,7 +140,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Dyslexia Font"
 
 [connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
-[connection signal="pressed" from="temp" to="." method="_on_temp_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="changed" from="overallVolume" to="." method="_on_h_slider_changed"]
 [connection signal="pressed" from="saveSettings" to="." method="_on_save_settings_pressed"]

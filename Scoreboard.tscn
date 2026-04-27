@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ukoc6cxibic8"]
 
 [ext_resource type="Script" uid="uid://dtbcajy18c8ir" path="res://scoreboard.gd" id="1_0ya6e"]
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_1oo4x"]
 [ext_resource type="Theme" uid="uid://b4wb45h3qvc8d" path="res://scoreboard_rank_theme.tres" id="1_6ddnf"]
+[ext_resource type="Texture2D" uid="uid://8d4v0rybb1fp" path="res://assets/quiz_mode/bkg_results.png" id="3_6ddnf"]
 [ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="3_ide3a"]
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="4_6ddnf"]
 
@@ -17,8 +17,8 @@ theme = ExtResource("1_6ddnf")
 script = ExtResource("1_0ya6e")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=1287348432]
-position = Vector2(965, 552)
-texture = ExtResource("1_1oo4x")
+position = Vector2(960, 540)
+texture = ExtResource("3_6ddnf")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=1592053921]
 layout_mode = 0

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://3r7kw2a3f6jh" path="res://assets/options_popup/quitGame.png" id="16_iplcg"]
 [ext_resource type="AudioStream" uid="uid://csubhjvam1kaw" path="res://assets/audio/back-sfx.mp3" id="17_up6hk"]
 [ext_resource type="AudioStream" uid="uid://cjvm38d7utiro" path="res://assets/audio/select-sfx.mp3" id="18_7uabc"]
+[ext_resource type="Texture2D" uid="uid://cjemkavswt5ph" path="res://assets/quiz_mode/menuButton.png" id="19_7uabc"]
 
 [node name="Control" type="Control" unique_id=1808749728]
 layout_mode = 3
@@ -269,11 +270,11 @@ pitch_scale = 2.0
 
 [node name="menuButton" type="TextureButton" parent="." unique_id=645011562]
 layout_mode = 0
-offset_left = 15.0
-offset_top = -1.0
-offset_right = 315.0
-offset_bottom = 199.0
-texture_normal = ExtResource("2_3ojmc")
+offset_left = 39.0
+offset_top = 36.0
+offset_right = 144.0
+offset_bottom = 143.0
+texture_normal = ExtResource("19_7uabc")
 
 [connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]

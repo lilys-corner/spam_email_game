@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="13_1v100"]
 [ext_resource type="Texture2D" uid="uid://b6k7qw7gg6uj3" path="res://assets/quiz_mode/missingQTextBox.png" id="14_j83fh"]
 [ext_resource type="AudioStream" uid="uid://csubhjvam1kaw" path="res://assets/audio/back-sfx.mp3" id="15_fbxt5"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="15_qw3rj"]
 [ext_resource type="AudioStream" uid="uid://cjvm38d7utiro" path="res://assets/audio/select-sfx.mp3" id="16_eir2f"]
+[ext_resource type="Texture2D" uid="uid://cjemkavswt5ph" path="res://assets/quiz_mode/menuButton.png" id="18_eir2f"]
 
 [node name="Control" type="Control" unique_id=210518850]
 layout_mode = 3
@@ -74,9 +74,9 @@ text = "Subject:"
 
 [node name="emailBody" type="RichTextLabel" parent="." unique_id=235317151]
 layout_mode = 0
-offset_left = 512.0
+offset_left = 632.0
 offset_top = 419.0
-offset_right = 1474.0
+offset_right = 1585.0
 offset_bottom = 681.0
 theme = ExtResource("7_eir2f")
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
@@ -265,11 +265,11 @@ pitch_scale = 2.0
 
 [node name="menuButton" type="TextureButton" parent="." unique_id=1534044368]
 layout_mode = 0
-offset_left = 15.0
-offset_top = -1.0
-offset_right = 315.0
-offset_bottom = 199.0
-texture_normal = ExtResource("15_qw3rj")
+offset_left = 50.0
+offset_top = 36.0
+offset_right = 152.0
+offset_bottom = 134.0
+texture_normal = ExtResource("18_eir2f")
 
 [connection signal="pressed" from="nextE" to="." method="_on_next_e_pressed"]
 [connection signal="pressed" from="prevE" to="." method="_on_prev_e_pressed"]

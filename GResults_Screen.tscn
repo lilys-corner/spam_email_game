@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://edmc2ycd4gqv"]
 
 [ext_resource type="Script" uid="uid://fhmbcqmxxydj" path="res://g_results_screen.gd" id="1_mh2bt"]
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_rvfet"]
+[ext_resource type="Texture2D" uid="uid://8d4v0rybb1fp" path="res://assets/quiz_mode/bkg_results.png" id="2_byc8n"]
 [ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="2_mh2bt"]
 [ext_resource type="Texture2D" uid="uid://mg53yersann0" path="res://assets/quiz_mode/backButton_1.png" id="3_byc8n"]
 [ext_resource type="Texture2D" uid="uid://cogjsrlnapo5n" path="res://assets/quiz_mode/backButton_2.png" id="4_2yxqr"]
@@ -19,8 +19,8 @@ grow_vertical = 2
 script = ExtResource("1_mh2bt")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=1652120827]
-position = Vector2(965, 552)
-texture = ExtResource("1_rvfet")
+position = Vector2(960, 540)
+texture = ExtResource("2_byc8n")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=310151912]
 layout_mode = 0
@@ -50,9 +50,9 @@ text = "Subject:"
 
 [node name="wrongBody" type="RichTextLabel" parent="." unique_id=618769830]
 layout_mode = 0
-offset_left = 476.0
+offset_left = 580.0
 offset_top = 633.0
-offset_right = 1438.0
+offset_right = 1542.0
 offset_bottom = 868.0
 theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1

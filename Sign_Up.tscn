@@ -22,25 +22,25 @@ grow_vertical = 2
 script = ExtResource("1_vs0ng")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=968946604]
-position = Vector2(965, 552)
+position = Vector2(961, 540)
 texture = ExtResource("2_wn1l2")
 
 [node name="TextBox" type="Sprite2D" parent="." unique_id=1350829049]
-position = Vector2(951.31537, 410)
+position = Vector2(951.31537, 474)
 scale = Vector2(0.9162562, 0.9162561)
 texture = ExtResource("3_veg5m")
 
 [node name="TextBox2" type="Sprite2D" parent="." unique_id=1442296429]
-position = Vector2(951.3153, 587)
+position = Vector2(951.31525, 651)
 scale = Vector2(0.9162562, 0.9162561)
 texture = ExtResource("3_veg5m")
 
 [node name="EnterUsername" type="LineEdit" parent="." unique_id=969608368]
 layout_mode = 0
 offset_left = 640.3153
-offset_top = 364.0
+offset_top = 428.0
 offset_right = 1247.3153
-offset_bottom = 444.0
+offset_bottom = 508.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.6)
 theme_override_font_sizes/font_size = 30
@@ -50,9 +50,9 @@ placeholder_text = "Username"
 [node name="EnterPassword" type="LineEdit" parent="." unique_id=640915989]
 layout_mode = 0
 offset_left = 639.3153
-offset_top = 542.0
+offset_top = 606.0
 offset_right = 1246.3153
-offset_bottom = 622.0
+offset_bottom = 686.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.6)
 theme_override_font_sizes/font_size = 30
