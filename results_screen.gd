@@ -14,14 +14,13 @@ func _ready() -> void:
 	# bam your score is that global variable
 	$ScoreLabel.text = str(Global.quizscore) + "%"
 	
-	# display first question
-	updateQuestion()
-
+	if (Global.incorrectquiz.size() != 0):
+		# display first question
+		updateQuestion()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 
 func _on_back_button_pressed() -> void:
 	# if you're done here go back to the main menu
