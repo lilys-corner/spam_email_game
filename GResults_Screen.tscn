@@ -50,9 +50,9 @@ text = "Subject:"
 
 [node name="wrongBody" type="RichTextLabel" parent="." unique_id=618769830]
 layout_mode = 0
-offset_left = 580.0
+offset_left = 476.0
 offset_top = 633.0
-offset_right = 1542.0
+offset_right = 1438.0
 offset_bottom = 868.0
 theme_override_font_sizes/normal_font_size = 28
 vertical_alignment = 1

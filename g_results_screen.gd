@@ -56,8 +56,8 @@ func updateQuestion() -> void:
 	database.query(my_query)
 	var this_correct = database.query_result[0]["emailAnswer"]
 	
-	var emailFrom : String = database.query_result[0]["emailAddress"]
-	var emailSubj : String = database.query_result[0]["emailSubject"]
+	var emailFrom : String = "From: " + database.query_result[0]["emailAddress"]
+	var emailSubj : String = "Subject: " + database.query_result[0]["emailSubject"]
 	var emailBody : String = database.query_result[0]["emailBody"]
 	var quesAns : String
 	
