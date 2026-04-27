@@ -38,7 +38,7 @@ offset_top = 427.0
 offset_right = 1216.0
 offset_bottom = 677.0
 texture_normal = ExtResource("5_a2ya0")
-texture_pressed = ExtResource("6_87fso")
+texture_hover = ExtResource("6_87fso")
 
 [node name="guestButton" type="TextureButton" parent="." unique_id=932030143]
 layout_mode = 0
@@ -47,7 +47,7 @@ offset_top = 688.0
 offset_right = 1214.0
 offset_bottom = 938.0
 texture_normal = ExtResource("7_rbn3y")
-texture_pressed = ExtResource("8_6p76y")
+texture_hover = ExtResource("8_6p76y")
 
 [connection signal="pressed" from="logIn" to="." method="_on_log_in_pressed"]
 [connection signal="pressed" from="signUp" to="." method="_on_sign_up_pressed"]

@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://lg5b1akrtr08"]
 
-[ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_la24p"]
 [ext_resource type="Script" uid="uid://g4n441hkiosa" path="res://sign_up.gd" id="1_vs0ng"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_2p5i4"]
+[ext_resource type="Texture2D" uid="uid://rt3bhcadf1yn" path="res://assets/signup_login/bkg-login.png" id="2_wn1l2"]
 [ext_resource type="Texture2D" uid="uid://ddekx6ex50tld" path="res://assets/signup_login/textBox.png" id="3_veg5m"]
+[ext_resource type="Texture2D" uid="uid://c66ppyw5go4v5" path="res://assets/signup_login/enter_1.png" id="4_wn1l2"]
+[ext_resource type="Texture2D" uid="uid://yplgwjh0dvf4" path="res://assets/signup_login/enter_2.png" id="5_7brti"]
+[ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="6_nee13"]
+[ext_resource type="Texture2D" uid="uid://b76qshvf7baev" path="res://assets/signup_login/signup_title.png" id="7_7brti"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cjkq"]
 
@@ -20,33 +23,23 @@ script = ExtResource("1_vs0ng")
 
 [node name="bkg" type="Sprite2D" parent="." unique_id=968946604]
 position = Vector2(965, 552)
-texture = ExtResource("1_la24p")
+texture = ExtResource("2_wn1l2")
 
 [node name="TextBox" type="Sprite2D" parent="." unique_id=1350829049]
-position = Vector2(977.00006, 410)
+position = Vector2(951.31537, 410)
 scale = Vector2(0.9162562, 0.9162561)
 texture = ExtResource("3_veg5m")
 
 [node name="TextBox2" type="Sprite2D" parent="." unique_id=1442296429]
-position = Vector2(977, 587)
+position = Vector2(951.3153, 587)
 scale = Vector2(0.9162562, 0.9162561)
 texture = ExtResource("3_veg5m")
 
-[node name="SignUpLabel" type="Label" parent="." unique_id=885151074]
-layout_mode = 0
-offset_left = 776.0
-offset_top = 100.0
-offset_right = 1179.0
-offset_bottom = 210.0
-theme_override_font_sizes/font_size = 80
-text = "SIGN UP"
-horizontal_alignment = 1
-
 [node name="EnterUsername" type="LineEdit" parent="." unique_id=969608368]
 layout_mode = 0
-offset_left = 666.0
+offset_left = 640.3153
 offset_top = 364.0
-offset_right = 1273.0
+offset_right = 1247.3153
 offset_bottom = 444.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.6)
@@ -56,9 +49,9 @@ placeholder_text = "Username"
 
 [node name="EnterPassword" type="LineEdit" parent="." unique_id=640915989]
 layout_mode = 0
-offset_left = 665.0
+offset_left = 639.3153
 offset_top = 542.0
-offset_right = 1272.0
+offset_right = 1246.3153
 offset_bottom = 622.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(0, 0, 0, 0.6)
@@ -68,17 +61,18 @@ placeholder_text = "Password"
 
 [node name="submitButton" type="TextureButton" parent="." unique_id=1953447015]
 layout_mode = 0
-offset_left = 832.0
-offset_top = 832.0
-offset_right = 1132.0
-offset_bottom = 1032.0
-texture_normal = ExtResource("2_2p5i4")
+offset_left = 712.3153
+offset_top = 835.0
+offset_right = 1178.3153
+offset_bottom = 1079.0
+texture_normal = ExtResource("4_wn1l2")
+texture_hover = ExtResource("5_7brti")
 
 [node name="ErrorLabel" type="Label" parent="." unique_id=1234693254]
 layout_mode = 0
-offset_left = 714.0
+offset_left = 688.3153
 offset_top = 738.0
-offset_right = 1265.0
+offset_right = 1239.3153
 offset_bottom = 796.0
 theme_override_colors/font_color = Color(1, 0.26, 0.26, 1)
 theme_override_font_sizes/font_size = 26
@@ -86,11 +80,15 @@ horizontal_alignment = 1
 
 [node name="backButton" type="TextureButton" parent="." unique_id=1956903885]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 32.0
-offset_right = 347.0
-offset_bottom = 232.0
-texture_normal = ExtResource("2_2p5i4")
+offset_left = 190.0
+offset_top = 78.0
+offset_right = 490.0
+offset_bottom = 278.0
+texture_normal = ExtResource("6_nee13")
+
+[node name="SignUpLabel" type="Sprite2D" parent="." unique_id=1024757643]
+position = Vector2(970, 240)
+texture = ExtResource("7_7brti")
 
 [connection signal="pressed" from="submitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
