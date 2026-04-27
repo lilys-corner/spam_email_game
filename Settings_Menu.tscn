@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://xgbx7fq4fk8u" path="res://settings_menu.gd" id="1_nrlic"]
 [ext_resource type="Texture2D" uid="uid://d118km7o08kbh" path="res://assets/settings/settings-bkg.png" id="2_h7jdq"]
 [ext_resource type="Theme" uid="uid://cpeqwlbhrauh" path="res://settings_theme.tres" id="3_4k8ag"]
-[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="3_oj84s"]
 [ext_resource type="Texture2D" uid="uid://gjpqboyvm4f8" path="res://assets/settings/saveSettings.png" id="5_50pbl"]
 [ext_resource type="Texture2D" uid="uid://b4mq1fwe7n5f8" path="res://assets/settings/backButton.png" id="5_rysv1"]
 [ext_resource type="Texture2D" uid="uid://b08ts35vbrufy" path="res://assets/settings/cancelSettings.png" id="6_rysv1"]
@@ -23,18 +22,6 @@ script = ExtResource("1_nrlic")
 [node name="bkg" type="Sprite2D" parent="." unique_id=684385920]
 position = Vector2(965, 552)
 texture = ExtResource("2_h7jdq")
-
-[node name="FullscreenBtn" type="CheckButton" parent="." unique_id=264676510]
-layout_mode = 0
-offset_left = 699.0
-offset_top = 306.0
-offset_right = 1325.0
-offset_bottom = 372.0
-tooltip_text = "Toggles fullscreen on or off."
-theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
-text = "Fullscreen
-"
-script = ExtResource("3_oj84s")
 
 [node name="backButton" type="TextureButton" parent="." unique_id=286580873]
 layout_mode = 0
@@ -139,7 +126,6 @@ tooltip_text = "Changes the size of the font to be dyslexia friendly."
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Dyslexia Font"
 
-[connection signal="toggled" from="FullscreenBtn" to="FullscreenBtn" method="_on_toggled"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]
 [connection signal="changed" from="overallVolume" to="." method="_on_h_slider_changed"]
 [connection signal="pressed" from="saveSettings" to="." method="_on_save_settings_pressed"]

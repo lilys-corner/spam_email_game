@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b63xr4xsu0u6x" path="res://quiz_screen.gd" id="1_fhpnn"]
 [ext_resource type="Theme" uid="uid://bgj4rengweb5o" path="res://quiz_theme.tres" id="1_x0tmw"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="2_3ojmc"]
 [ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_fw00n"]
 [ext_resource type="Texture2D" uid="uid://bm67x13b06lpf" path="res://assets/quiz_mode/opt_unselect.png" id="4_4ns74"]
 [ext_resource type="Texture2D" uid="uid://cdsdry1w4tige" path="res://assets/quiz_mode/nextButton_1.png" id="4_s6iab"]
@@ -12,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b6k7qw7gg6uj3" path="res://assets/quiz_mode/missingQTextBox.png" id="9_870kp"]
 [ext_resource type="Texture2D" uid="uid://co43bp01jrjhw" path="res://assets/options_popup/closeMenu.png" id="10_x0tmw"]
 [ext_resource type="Texture2D" uid="uid://uef1v13eq76a" path="res://assets/options_popup/optionsPage.png" id="12_4gl2m"]
-[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="13_k0d0e"]
 [ext_resource type="Texture2D" uid="uid://cijsv56knpm4v" path="res://assets/options_popup/saveButton.png" id="14_up6hk"]
 [ext_resource type="Texture2D" uid="uid://bb5vn1mrdqrai" path="res://assets/options_popup/cancelButton.png" id="15_7uabc"]
 [ext_resource type="Texture2D" uid="uid://3r7kw2a3f6jh" path="res://assets/options_popup/quitGame.png" id="16_iplcg"]
@@ -33,14 +31,6 @@ script = ExtResource("1_fhpnn")
 [node name="bkg" type="Sprite2D" parent="." unique_id=2123064636]
 position = Vector2(965, 552)
 texture = ExtResource("2_fw00n")
-
-[node name="returnToMenu-temp" type="TextureButton" parent="." unique_id=536488155]
-layout_mode = 0
-offset_left = 1840.0
-offset_top = 1362.0
-offset_right = 2140.0
-offset_bottom = 1562.0
-texture_normal = ExtResource("2_3ojmc")
 
 [node name="nextQ" type="TextureButton" parent="." unique_id=213149958]
 layout_mode = 0
@@ -189,15 +179,6 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FullscreenBtn" type="CheckButton" parent="opBKG/optionsMenu" unique_id=758881470]
-layout_mode = 2
-tooltip_text = "Toggles fullscreen on or off."
-theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
-theme_override_font_sizes/font_size = 24
-text = "Fullscreen
-"
-script = ExtResource("13_k0d0e")
-
 [node name="overallVol" type="Label" parent="opBKG/optionsMenu" unique_id=299915243]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
@@ -276,7 +257,6 @@ offset_right = 144.0
 offset_bottom = 143.0
 texture_normal = ExtResource("19_7uabc")
 
-[connection signal="pressed" from="returnToMenu-temp" to="." method="_on_return_to_menutemp_pressed"]
 [connection signal="pressed" from="nextQ" to="." method="_on_next_q_pressed"]
 [connection signal="pressed" from="prevQ" to="." method="_on_prev_q_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer/optionA" to="." method="_on_option_a_pressed"]
@@ -284,7 +264,6 @@ texture_normal = ExtResource("19_7uabc")
 [connection signal="pressed" from="aChoicebox/HBoxContainer3/optionC" to="." method="_on_option_c_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer4/optionD" to="." method="_on_option_d_pressed"]
 [connection signal="pressed" from="missingQBox/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
 [connection signal="toggled" from="opBKG/optionsMenu/largeText" to="." method="_on_large_text_toggled"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/saveOpt" to="." method="_on_save_opt_pressed"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/cancelOpt" to="." method="_on_cancel_opt_pressed"]

@@ -9,17 +9,21 @@ var options1 = false
 var totalQuestion = 20
 var correctCount = 0
 var questionNum = 0
+
 # question set full of qIDs in order, correlate with answerSet
 var questionSet = [] 
+
 #0 = no answer selected
 var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 var rng = RandomNumberGenerator.new()
+
 #asset loading for answers
 var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 var select = preload("res://assets/quiz_mode/opt_selected.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Set volume
 	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
 	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
 	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
@@ -28,24 +32,22 @@ func _ready() -> void:
 	$opBKG/clickSFX.set_volume_linear(sfxVol)
 	$opBKG/backSFX.set_volume_linear(sfxVol)
 	
+	# Open questionsData for question data
 	database = SQLite.new()
-	database.path = "res://questionsData.db" #would want to be using user:// for saves
+	database.path = "res://questionsData.db"
 	database.open_db()
-	questionSet.resize(20)
-	print(questionSet)
+	questionSet.resize(20) # 20 questions
 
-	#get numbers of each question, put IDs in array
-	#initialize question ID array
-	#randomize numbers and fill in array
+	# Fill array questionSet with questions
 	for i in range(0, 20):
 		var temp_val = rng.randi_range(0, 39) 
-		# confirmed to be 40 questions in db (for randi_range)
 		
 		while questionSet.has(temp_val):
 			temp_val = rng.randi_range(0, 39)
 		questionSet[i] = temp_val
 	
 	var qID = questionSet[questionNum]
+	
 	#retrieve information for first question
 	var questionData = database.select_rows("questions", "qID = qID", ["*"])
 	var quesBody : String = questionData[qID]["qBody"]
@@ -54,49 +56,43 @@ func _ready() -> void:
 	var quesChoice3 : String = questionData[qID]["qChoice3"]
 	var quesChoice4 : String = questionData[qID]["qChoice4"]
 	
-	
 	#update labels
 	$questionItself.text = quesBody
 	$aChoicebox/HBoxContainer/answer1.text = quesChoice1
 	$aChoicebox/HBoxContainer2/answer2.text = quesChoice2
 	$aChoicebox/HBoxContainer3/answer3.text = quesChoice3
 	$aChoicebox/HBoxContainer4/answer4.text = quesChoice4
+	
+	# Reflect current question number
 	var tempnum = questionNum + 1
 	$questionCount.text = "Question " + str(tempnum) + "/20"
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func _on_return_to_menutemp_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main_Menu.tscn")
-
 #Back Button Pressed to go back to previous question
 func _on_prev_q_pressed() -> void:
-	#check
 	if questionNum == 0:
 		pass
+		# No going back on first question
 	else:
-		#decrement
+		# Go to previous question
 		questionNum = questionNum - 1
-		
-		#update
 		updateQuestion()
 
 #Next Button Pressed to advance to next question
 func _on_next_q_pressed() -> void:
-	#check
 	if(questionNum == 19):
-		#check if all answers are filled
+		# Submit button, check if all questions are answered
 		checkAllAnswers()
-		#obligatory are you sure you want to submit warning
 	else:
-		#increment
+		# Go to next question
 		questionNum = questionNum + 1
 		updateQuestion()
 
 #Update the question
 func updateQuestion() -> void:
+	# Retrieve question data
 	var qID = questionSet[questionNum]
 	var questionData = database.select_rows("questions", "qID = qID", ["*"])
 	var quesBody : String = questionData[qID]["qBody"]
@@ -112,85 +108,74 @@ func updateQuestion() -> void:
 	$aChoicebox/HBoxContainer3/answer3.text = quesChoice3
 	$aChoicebox/HBoxContainer4/answer4.text = quesChoice4
 	
+	# Update question number
 	var tempnum = questionNum + 1
 	$questionCount.text = "Question " + str(tempnum) + "/20"
-	#^ updating the text box that shows you how far you are
+	
+	# Reflect current answers
 	clearOpt()
+	
+	# Change to submit texture if on last question
 	next_submit_swap()
 
+# Select option 1
 func _on_option_a_pressed() -> void:
 	#set current selected answer to 1
 	answerSet[questionNum] = 1
 	#set this sprite to different sprite
 	clearOpt()
-	
 
 #score calculation function
 func ScoreCalc() -> void:
-	# this is pretty temporary it's just so i can search it later
+	# To search correct answers
 	var correct = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	
 	for i in range(0, 20):
 		# the question we are currently checking, goes from first to last
 		var qID = questionSet[i] + 1
-		# i don't know why i need to + 1 but if i encounter a 0 it crashes and this works
-		# my sanity is gone but i live
 		
 		# query for the int number of the correct answer. this will be stored in database.query_result
 		var my_query = "SELECT qCorrect FROM questions WHERE qID = " + str(qID)
 		database.query(my_query)
 		
-		# now. if it matches, correctCount + 1. if not, ignore (for now)
+		# If it matches, correctCount + 1, correct array is 1 there
 		if (database.query_result[0]["qCorrect"] == answerSet[i]):
 			correctCount += 1
 			correct[i] = 1
 	
-	# when we are done with this for loop, we have correctCount. yayy we can calculate the score!!
-	# quizscore is an int hence why i *100 and then divide, bc otherwise it's 0
+	# Calculate score
 	Global.quizscore = (correctCount*100)/totalQuestion
 	
-	#Count incorrect questions
+	# Count incorrect questions to resize incorrect array
 	var incorrectCount = totalQuestion - correctCount
-	
-	# resize array to incorrect amount
-	# cur_index is to make sure we fill in the array correctly
 	Global.incorrectquiz.resize(incorrectCount)
 	var cur_index = 0
 	
+	# Fill array with IDs of incorrectly answered questions
 	for i in range (0, 20):
 		if (correct[i] == 0):
-			# fill incorrectquiz with the IDs of the wrongly answered questions
 			Global.incorrectquiz[cur_index] = questionSet[i] + 1
 			cur_index += 1
-	# now we should have a global array filled with qIDs
-	
-	print(Global.incorrectquiz)
 
 func SubmitToLeaderboard() -> void:
-	pass
-	#insert code to import value quizscore to database
-	#leaderboard name should be linked to logged in user using global var
-	# use var quizscore when submitted
-	
-	# it's database time
-	# we're going to insert into quiz scores table the score and user id
+	# Open account db
 	account_db = SQLite.new()
 	account_db.path = "res://accounts.db"
-	
-	# open the database so we can get stuff
 	account_db.open_db()
 	
-	# put it on in, this is saved in the database to you the user yay
+	# Enter quiz score to the user in the database
 	var my_query = "INSERT INTO quiz_scores (score, ID) VALUES (" + str(Global.quizscore) + ", " + str(Global.userID) + ");"
 	account_db.query(my_query)
 	
 	account_db.close_db()
 
+# Reflect chosen answer (if any) in texture
 func clearOpt() -> void:
 	# Load in asset
 	var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 	var select = preload("res://assets/quiz_mode/opt_selected.png")
-	#resets the sprites of all options when you change questions forwards or back actually
+	
+	#resets the sprites of all options when you change questions forwards or back
 	$aChoicebox/HBoxContainer/optionA.texture_normal = nonSelect
 	$aChoicebox/HBoxContainer2/optionB.texture_normal = nonSelect
 	$aChoicebox/HBoxContainer3/optionC.texture_normal = nonSelect
@@ -205,16 +190,14 @@ func clearOpt() -> void:
 	elif answerSet[questionNum] == 4:
 		$aChoicebox/HBoxContainer4/optionD.texture_normal = select
 
-# Selecting Answers
+# Selecting answers other than the first
 func _on_option_b_pressed() -> void:
 		answerSet[questionNum] = 2
 		clearOpt()
 
-
 func _on_option_c_pressed() -> void:
 	answerSet[questionNum] = 3
 	clearOpt()
-
 
 func _on_option_d_pressed() -> void:
 	answerSet[questionNum] = 4
@@ -239,7 +222,8 @@ func next_submit_swap() -> void:
 func checkAllAnswers() -> void:
 	var allAns = true
 	var ANSWERME = ""
-	#step 1: LOOPS BABEY
+	
+	# If any questions are not answered (0 in answerSet), you cannot submit
 	for i in range(0, 20):
 		if answerSet[i] == 0:
 			allAns = false
@@ -248,26 +232,30 @@ func checkAllAnswers() -> void:
 			else:
 				ANSWERME = ANSWERME + ", " + str(i + 1)
 	
+	# If all are answered:
 	if allAns == true:
-		#calculate score
+		# Calculate score
 		ScoreCalc()
-		# put that in the database yippee BUT ONLY if you have an account
+		
+		# Submit to leaderboard if you are logged in
 		if Global.userID != 0:
 			SubmitToLeaderboard()
-		# skedaddle to results page
+		
+		# Continue to results
 		get_tree().change_scene_to_file("res://Results_Screen.tscn")
-
+	
+	# You have not answered all questions. Popup
 	else:
 		$missingQBox/qText.text = ANSWERME
-		#bring the text box over here, gang
 		var position = Vector2(960.0, 500.0)
-		#yoink
 		$missingQBox.global_position = position
 
+# Exit button of popup, closes popup
 func _on_texture_button_pressed() -> void:
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
 
+# Open settings with ESC
 func _input(event):
 	var optionsPosition = Vector2(0.0, 0.0)
 	if event is InputEventKey and event.pressed:
@@ -286,10 +274,9 @@ func _input(event):
 func _on_exit_menu_pressed() -> void:
 	options1 = false
 	$opBKG.global_position = Vector2(960.0, -600.0)
-	#Closes the options menu
 
+# Saves volume
 func _on_save_opt_pressed() -> void:
-	#save settings to the global variables
 	Global.masterVolume = $opBKG/optionsMenu/overallVolume.value
 	Global.musicVolume = $opBKG/optionsMenu/musicVolume.value
 	Global.sfxVolume = $opBKG/optionsMenu/sfxVolume.value
@@ -309,6 +296,7 @@ func _on_cancel_opt_pressed() -> void:
 func _on_quit_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
+# Alternative to opening menu with ESC
 func _on_menu_button_pressed() -> void:
 	var optionsPosition = Vector2(0.0, 0.0)
 	optionsPosition = Vector2(960.0, 500.0)

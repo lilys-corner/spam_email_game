@@ -92,6 +92,5 @@ position = Vector2(978.03564, 240.50002)
 scale = Vector2(1.042857, 1.0428573)
 texture = ExtResource("7_42y2m")
 
-[connection signal="text_submitted" from="EnterUsername" to="." method="_on_enter_username_text_submitted"]
 [connection signal="pressed" from="submitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

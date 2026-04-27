@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c3sejevofhdg1" path="res://game_screen.gd" id="1_gkjso"]
 [ext_resource type="Texture2D" uid="uid://dsdcfglkk3r0i" path="res://assets/quiz_mode/background.png" id="2_ptrv4"]
 [ext_resource type="Texture2D" uid="uid://uef1v13eq76a" path="res://assets/options_popup/optionsPage.png" id="3_xu7al"]
-[ext_resource type="Script" uid="uid://1dyiguk2cvxf" path="res://fullscreen_btn.gd" id="4_13hxu"]
 [ext_resource type="Texture2D" uid="uid://cijsv56knpm4v" path="res://assets/options_popup/saveButton.png" id="5_3r6pg"]
 [ext_resource type="Texture2D" uid="uid://bb5vn1mrdqrai" path="res://assets/options_popup/cancelButton.png" id="6_i1db5"]
 [ext_resource type="Theme" uid="uid://bj2qwt1o4mkd8" path="res://game_theme.tres" id="7_eir2f"]
@@ -74,10 +73,10 @@ text = "Subject:"
 
 [node name="emailBody" type="RichTextLabel" parent="." unique_id=235317151]
 layout_mode = 0
-offset_left = 632.0
-offset_top = 419.0
-offset_right = 1585.0
-offset_bottom = 681.0
+offset_left = 512.0
+offset_top = 403.0
+offset_right = 1465.0
+offset_bottom = 651.0
 theme = ExtResource("7_eir2f")
 theme_override_colors/default_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
 
@@ -184,15 +183,6 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FullscreenBtn" type="CheckButton" parent="opBKG/optionsMenu" unique_id=1303647890]
-layout_mode = 2
-tooltip_text = "Toggles fullscreen on or off."
-theme_override_colors/font_color = Color(0.007843138, 0.007843138, 0.007843138, 1)
-theme_override_font_sizes/font_size = 24
-text = "Fullscreen
-"
-script = ExtResource("4_13hxu")
-
 [node name="overallVol" type="Label" parent="opBKG/optionsMenu" unique_id=1390296027]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
@@ -276,7 +266,6 @@ texture_normal = ExtResource("18_eir2f")
 [connection signal="pressed" from="aChoicebox/HBoxContainer/optionA" to="." method="_on_option_a_pressed"]
 [connection signal="pressed" from="aChoicebox/HBoxContainer2/optionB" to="." method="_on_option_b_pressed"]
 [connection signal="pressed" from="missingQBox/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="toggled" from="opBKG/optionsMenu/FullscreenBtn" to="opBKG/optionsMenu/FullscreenBtn" method="_on_toggled"]
 [connection signal="toggled" from="opBKG/optionsMenu/largeText" to="." method="_on_large_text_toggled"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/saveOpt" to="." method="_on_save_opt_pressed"]
 [connection signal="pressed" from="opBKG/optionsMenu/HBoxContainer/cancelOpt" to="." method="_on_cancel_opt_pressed"]

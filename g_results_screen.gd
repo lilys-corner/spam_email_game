@@ -1,70 +1,73 @@
 extends Control
-var database: SQLite
 
+# Variables
+var database: SQLite
 var emailNum = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(Global.incorrectgame.size())
+	# To retrieve question information for wrongly answered emails
 	database = SQLite.new()
 	database.path = "res://questionsData.db"
 	database.open_db()
 	
-	# bam your score is that global variable
+	# Set the score to the quizscore global variable
 	$ScoreLabel.text = str(Global.gamescore) + "%"
 	
-	# display first question
-	updateQuestion()
+	# If there are misidentified emails, display the first one
+	if (Global.incorrectgame.size() != 0):
+		updateQuestion()
 
 func _process(delta: float) -> void:
 	pass
 
+# Return to the main menu
 func _on_back_button_pressed() -> void:
-	# if you're done here go back to the main menu
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
+# BACK button
 func _on_last_email_pressed() -> void:
-	#check
+	# Check if the current email is the first one
 	if emailNum == 0:
 		pass
-		#do nothing. you can't go back
+		# You cannot go back on the first email
 	else:
-		#decrement
+		# Go to the previous email and update the information
 		emailNum = emailNum - 1
-		
-		#update
 		updateQuestion()
 
+# NEXT button
 func _on_next_email_pressed() -> void:
-	#check
+	# Check if the current email is the last one
 	if(emailNum >= Global.incorrectgame.size() - 1):
 		pass
+		# You cannot go forward on the last email
 	else:
-		#increment
+		# Go to the next email and update the information
 		emailNum = emailNum + 1
 		updateQuestion()
-	#update
 
+# Update the text boxes to reflect the current email
 func updateQuestion() -> void:
-	# our chosen question is whichever one we're on ig
+	# The email ID of our current email
 	var emailID = Global.incorrectgame[emailNum]
 	
-	# get the correct answer number as an int. is it option 1, 2, 3 or 4
+	# Get the correct answer as an int, is it not spam (0) or spam (1)?
 	var my_query = "SELECT * FROM emails WHERE emailID = " + str(emailID) + ";"
 	database.query(my_query)
 	var this_correct = database.query_result[0]["emailAnswer"]
 	
-	# yay we have that. now let's put them in variables
 	var emailFrom : String = database.query_result[0]["emailAddress"]
 	var emailSubj : String = database.query_result[0]["emailSubject"]
 	var emailBody : String = database.query_result[0]["emailBody"]
 	var quesAns : String
+	
+	# Determine if the answer is if it's not spam (0) or if it is (1)
 	if (database.query_result[0]["emailAnswer"] == 0):
 		quesAns = "This email is not spam."
 	else:
 		quesAns = "This email is spam."
 	
-	#update:
+	# Update text boxes
 	$wrongFrom.text = emailFrom
 	$wrongSubj.text = emailSubj
 	$wrongBody.text = emailBody

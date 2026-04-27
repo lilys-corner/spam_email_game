@@ -12,8 +12,6 @@ func _ready() -> void:
 	$clickSFX.set_volume_linear(sfxVol)
 	$backSFX.set_volume_linear(sfxVol)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -29,7 +27,6 @@ func _on_cancel_settings_pressed() -> void:
 	$overallVolume.value = Global.masterVolume
 	$musicVolume.value = Global.musicVolume
 	$sfxVolume.value = Global.sfxVolume
-
 
 func _on_save_settings_pressed() -> void:
 	#save settings to the global variables

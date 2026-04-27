@@ -1,9 +1,11 @@
 extends Control
 
-#Is the options menu available?
+#Is the options menu up?
 var options1 = false
 
+# Executes when the scene is opened
 func _ready() -> void:
+	# Set volume
 	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
 	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
 	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
@@ -13,11 +15,10 @@ func _ready() -> void:
 	$opBKG/clickSFX.set_volume_linear(sfxVol)
 	$opBKG/backSFX.set_volume_linear(sfxVol)
 	
-	# ^ pop up menu
 	# rest of _ready is for the game
 	# other quiz stuff is way below
 	database = SQLite.new()
-	database.path = "res://questionsData.db" #would want to be using user:// for saves
+	database.path = "res://questionsData.db"
 	database.open_db()
 	emailSet.resize(20)
 
@@ -25,15 +26,16 @@ func _ready() -> void:
 	#initialize question ID array
 	#randomize numbers and fill in array
 	for i in range(0, 20):
-		var temp_val = rng.randi_range(0, 34) #not a clue how many entries we will have
+		var temp_val = rng.randi_range(0, 34)
 		print("Before reroll", temp_val)
-		# confirmed to be 40 questions in db (for randi_range)
 		
 		while emailSet.has(temp_val):
 			temp_val = rng.randi_range(0, 34)
 		emailSet[i] = temp_val
 	
+	# Email ID to retrieve information from
 	var emailID = emailSet[emailNum] + 1
+	
 	#retrieve information for first question
 	var my_query = "SELECT * FROM emails WHERE emailID = " + str(emailID) + ";"
 	database.query(my_query)
@@ -46,6 +48,7 @@ func _ready() -> void:
 	$emailSubj.text = "Subject: " + emailSubj
 	$emailBody.text = emailBody
 	
+	# Set the email number at the top right to the current email
 	var tempnum = emailNum + 1
 	$emailCount.text = "Email " + str(tempnum) + "/20"
 
@@ -58,6 +61,7 @@ func _process(delta: float) -> void:
 # Saving off the settings, Quit game
 func _input(event):
 	var optionsPosition = Vector2(0.0, 0.0)
+	# If the user clicks escape, the options will appear or disappear
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ESCAPE:
 			if options1 == false:
@@ -70,14 +74,13 @@ func _input(event):
 			
 			$opBKG.global_position = optionsPosition
 
-#Close already open menu
+# Close the menu with the X button as an alternative to ESC
 func _on_exit_menu_pressed() -> void:
 	options1 = false
 	$opBKG.global_position = Vector2(960.0, -600.0)
-	#Closes the options menu
 
+# Save the volume settings
 func _on_save_opt_pressed() -> void:
-	#save settings to the global variables
 	Global.masterVolume = $opBKG/optionsMenu/overallVolume.value
 	Global.musicVolume = $opBKG/optionsMenu/musicVolume.value
 	Global.sfxVolume = $opBKG/optionsMenu/sfxVolume.value
@@ -87,22 +90,41 @@ func _on_save_opt_pressed() -> void:
 	$opBKG/clickSFX.set_volume_linear(sfxVol)
 	$opBKG/backSFX.set_volume_linear(sfxVol)
 
+# Reset the volume settings to before the changes
 func _on_cancel_opt_pressed() -> void:
 	$opBKG/optionsMenu/overallVolume.value = Global.masterVolume
 	$opBKG/optionsMenu/musicVolume.value = Global.musicVolume
 	$opBKG/optionsMenu/sfxVolume.value = Global.sfxVolume
 
+# Quit the game upon clicking Quit Game
 func _on_quit_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Main_Menu.tscn")
 
-# here we go... all this is like basically quiz_screen.gd
+# Open the settings as an alternative to ESC
+func _on_menu_button_pressed() -> void:
+	var optionsPosition = Vector2(0.0, 0.0)
+	optionsPosition = Vector2(960.0, 500.0)
+	options1 = true
+	$opBKG.global_position = optionsPosition
+
+# Game from here and below
+# Declare both databases questionsData.db and accounts.db
 var database: SQLite
 var account_db
 
+# total email count
 var totalEmail = 20
+
+# correct answers (changed during calculation)
 var correctCount = 0
+
+# current email
 var emailNum = 0
+
+# Set of randomized emails
 var emailSet = []
+
+# Answers chosen for each email
 var answerSet = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 var rng = RandomNumberGenerator.new()
@@ -110,37 +132,32 @@ var rng = RandomNumberGenerator.new()
 var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 var select = preload("res://assets/quiz_mode/opt_selected.png")
 
-func _on_return_to_menutemp_pressed() -> void:
-	get_tree().change_scene_to_file("res://Main_Menu.tscn")
-
-# from here on is quiz
+# BACK button
 func _on_prev_e_pressed() -> void:
-	#check
+	# Check if you are on the first question
 	if emailNum == 0:
 		pass
-		#do nothing. you can't go back. unless we want you to be able to quit out of the quiz.
+		# You cannot go back if you are on the first question
 	else:
-		#decrement
+		# Go back a question and update the email information to reflect the previous question
 		emailNum = emailNum - 1
-		
-		#update
 		updateEmail()
 
+# NEXT button
 func _on_next_e_pressed() -> void:
-	#check
+	# Check if you are on the last question
 	if(emailNum == 19):
-		#texture is submit button
-		
-		#check if all answers are filled
+		# The texture is currently the SUBMIT button as per next_submit_swap()
+		# Are all answers filled?
 		checkAllAnswers()
-		#obligatory are you sure you want to submit warning
 	else:
-		#increment
+		# Go forward a question and update the email information to reflect the next question
 		emailNum = emailNum + 1
 		updateEmail()
-	#update
 
+# Update the email text boxes when you change the question
 func updateEmail() -> void:
+	# Retrieve all fields from the email ID in the emails table of questionsData.db
 	var emailID = emailSet[emailNum] + 1
 	
 	var my_query = "SELECT * FROM emails WHERE emailID = " + str(emailID) + ";"
@@ -150,91 +167,94 @@ func updateEmail() -> void:
 	var emailSubj : String = database.query_result[0]["emailSubject"]
 	var emailBody : String = database.query_result[0]["emailBody"]
 	
-	# update labels
+	# Update email labels
 	$emailFrom.text = "From: " + emailFrom
 	$emailSubj.text = "Subject: " + emailSubj
 	$emailBody.text = emailBody
 	
+	# Update email number
 	var tempnum = emailNum + 1
 	$emailCount.text = "Email " + str(tempnum) + "/20"
-
+	
+	# Ensure that multiple choice bubbles reflect the chosen answer for this email (if any)
 	clearOpt()
+	
+	# Check if the NEXT button needs to be swapped for the SUBMIT button
 	next_submit_swap()
 
+# If the first multiple choice answer is selected
 func _on_option_a_pressed() -> void:
-	#set current selected answer to 1
+	# Set the current selected answer to 1
 	answerSet[emailNum] = 1
-	#set this sprite to different sprite
+	
+	# Reflect this answer in the sprites
 	clearOpt()
 
+# If the first multiple choice answer is selected
 func _on_option_b_pressed() -> void:
-		answerSet[emailNum] = 2
-		#set this sprite to different sprite
-		clearOpt()
+	# Set the current selected answer to 2
+	answerSet[emailNum] = 2
+	
+	# Reflect this answer in the sprites
+	clearOpt()
 
-#score calculation function
+# Score calculation
 func ScoreCalc() -> void:
-	# for searching later
+	# Array for whether or not the answers are correct
 	var correct = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	
-	# same deal as quiz, get correctCount, make incorrect array yay
-	
+	# Check the correctness of each answer
 	for i in range(0, 20):
-		# the question we are currently checking, goes from first to last
+		# The ID of the email we are currently checking, goes from first to last
 		var emailID = emailSet[i] + 1
 		
-		# query for the int number of the correct answer. this will be stored in database.query_result
+		# Query for the the correct answer
 		var my_query = "SELECT emailAnswer FROM emails WHERE emailID = " + str(emailID)
 		database.query(my_query)
 		
-		# now. if it matches, correctCount + 1. if not, ignore (for now)
-		# answers are 1 for yes, 2 for no, emailAnswer is 0 for no, 1 for yes
-		# are both the answer and the data Yes?
+		# Change the correct array and the number of correct answers based on correctness
+		# Is yes chosen and is yes correct?
 		if (database.query_result[0]["emailAnswer"] == 1 && answerSet[i] == 1):
 			correctCount += 1
 			correct[i] = 1
-		# are they both No?
+		# Is no chosen and is no correct?
 		elif (database.query_result[0]["emailAnswer"] == 0 && answerSet[i] == 2):
 			correctCount += 1
 			correct[i] = 1
 	
-	# when we are done with this for loop, we have correctCount. yayy we can calculate the score!!
-	# quizscore is an int hence why i *100 and then divide, bc otherwise it's 0
+	# Calculate the score
 	Global.gamescore = (correctCount*100)/totalEmail
 	
-	# OKAY. so we have the number of correct questions.
-	# get incorrectCount for our incorrect array!
+	# Create an array for incorrect emails for the result screen
 	var incorrectCount = totalEmail - correctCount
-	
-	# resize array to incorrect amount
-	# cur_index is to make sure we fill in the array correctly
 	Global.incorrectgame.resize(incorrectCount)
 	var cur_index = 0
 	
+	# Fill array with incorrectly identified emails
 	for i in range (0, 20):
 		if (correct[i] == 0):
-			# fill incorrectquiz with the IDs of the wrongly answered questions
+			# Fill incorrectEmail with the IDs of the wrongly identified emails
 			Global.incorrectgame[cur_index] = emailSet[i] + 1
 			cur_index += 1
-	# now we should have a global array filled with qIDs
 
 func SubmitToLeaderboard() -> void:
-	# insert into game scores table the score and user id
+	# Insert into game scores table the score and user id
 	account_db = SQLite.new()
 	account_db.path = "res://accounts.db"
 	
 	account_db.open_db()
 	
-	# query to insert data
+	# Insert the game score correlating to the current user into the database
 	var my_query = "INSERT INTO game_scores (score, ID) VALUES (" + str(Global.gamescore) + ", " + str(Global.userID) + ");"
 	account_db.query(my_query)
 	
 	account_db.close_db()
 
+# Sprites reflect chosen answers
 func clearOpt() -> void:
 	var nonSelect = preload("res://assets/quiz_mode/opt_unselect.png")
 	var select = preload("res://assets/quiz_mode/opt_selected.png")
-	#resets the sprites of all options when you change questions forwards or back actually
+	#resets the sprites of all options when you change questions forwards or back
 	$aChoicebox/HBoxContainer/optionA.texture_normal = nonSelect
 	$aChoicebox/HBoxContainer2/optionB.texture_normal = nonSelect
 	
@@ -266,7 +286,10 @@ func checkAllAnswers() -> void:
 	for i in range(0, 20):
 		if answerSet[i] == 0:
 			allAns = false
-			ANSWERME = ANSWERME + ", " + str(i + 1)
+			if (i == 0):
+				ANSWERME = ANSWERME + str(i + 1)
+			else:
+				ANSWERME = ANSWERME + ", " + str(i + 1)
 		
 	if allAns == true:
 		#calculate score
@@ -290,12 +313,6 @@ func checkAllAnswers() -> void:
 func _on_close_button_pressed() -> void:
 	var position = Vector2(-400, -400)
 	$missingQBox.global_position = position
-
-func _on_menu_button_pressed() -> void:
-	var optionsPosition = Vector2(0.0, 0.0)
-	optionsPosition = Vector2(960.0, 500.0)
-	options1 = true
-	$opBKG.global_position = optionsPosition
 
 #Resize Text to be larger
 func _on_large_text_toggled(toggled_on: bool) -> void:

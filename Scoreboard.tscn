@@ -29,12 +29,6 @@ offset_bottom = 213.0
 texture_normal = ExtResource("3_ide3a")
 texture_hover = ExtResource("4_6ddnf")
 
-[node name="tempLabel" type="Label" parent="." unique_id=121359660]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="qBoard" type="VBoxContainer" parent="." unique_id=1391595028]
 layout_mode = 0
 offset_left = 234.0

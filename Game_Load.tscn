@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dal4ujurqi7p5" path="res://game_load.gd" id="1_2516a"]
 [ext_resource type="Texture2D" uid="uid://c2i2k1wojhyba" path="res://assets/temp/tempBkg.png" id="1_aef7h"]
-[ext_resource type="Texture2D" uid="uid://dkimilt46v4r6" path="res://assets/temp/tempButton.png" id="3_6g653"]
 
 [node name="Control" type="Control" unique_id=1934789281]
 layout_mode = 3
@@ -16,20 +15,3 @@ script = ExtResource("1_2516a")
 [node name="bkg" type="Sprite2D" parent="." unique_id=1786471392]
 position = Vector2(965, 552)
 texture = ExtResource("1_aef7h")
-
-[node name="Label" type="Label" parent="." unique_id=1706616730]
-layout_mode = 0
-offset_left = 695.0
-offset_top = 314.0
-offset_right = 1069.0
-offset_bottom = 411.0
-
-[node name="tempnext" type="TextureButton" parent="." unique_id=1678314643]
-layout_mode = 0
-offset_left = -107.0
-offset_top = -771.0
-offset_right = 193.0
-offset_bottom = -571.0
-texture_normal = ExtResource("3_6g653")
-
-[connection signal="pressed" from="tempnext" to="." method="_on_tempnext_pressed"]
