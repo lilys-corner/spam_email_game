@@ -1,7 +1,9 @@
 # Catch the Phish
 
 ## Project Instructions
-[insert project instructions here]
+1. Download the Game_Final folder
+2. Run the ScamEmailProject.exe file
+3. Have fun!
 
 ## Game Description
 This application, in the form of an educational game, is to raise awareness and educate players on risks of spam/phishing emails and how to identify spam email. 
@@ -18,7 +20,6 @@ There are two modes of game play:
   - Displays the top 10 registered users scores for both Game and Quiz
 - Settings
   - Users have the ability to customize these settings:
-    - Windowed/Full Screen
     - Volume
     - Font Size
     - Dyslexia Font
